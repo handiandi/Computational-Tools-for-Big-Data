@@ -10,6 +10,23 @@ def bitStrings(number):
 	print(bit_String)
 	print(bit_String_end)
 
+	test = [0,1,2,3]
+	print(test)
+	test.reverse()
+	print(test)
+
+
+	bit_String.reverse()
+	indices_zero = [i for i, x in enumerate(bit_String) if x == 0] #find all indices of 0 in the list bit_String
+	min_index = min(indices_zero)
+	if min_index == 0:
+		bit_String[0] = 1
+
+	else:
+		
+	for index in indices_zero:
+
+		pass
 	#while (bit_String != bit_String_end):
 
 	#	pass
