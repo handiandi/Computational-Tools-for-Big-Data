@@ -39,6 +39,5 @@ from itertools import repeat
 arguments = sys.argv[1:]
 
 for argument in arguments:
-	print("Run binary")
 	result = bit_strings(int(argument))
 	print("Bit strings for {0}: \n {1}\n\n".format(argument, result))
