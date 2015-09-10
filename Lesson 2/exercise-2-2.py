@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-from itertools import repeat
-
-arguments = sys.argv[1:]
-
-for argument in arguments:
-	print("Run binary")
-	result = bit_strings(int(argument))
-	print("Bit strings for {0}: \n {1}\n\n".format(argument, result))
-
-
-
 """
 	Create a list of list of bit strings of the input value
 
@@ -41,3 +29,16 @@ def bit_strings(number):
 		bit_strings.append(bit_string[:]) #Append all elements by value, not reference! 
 	
 	return bit_strings
+
+
+
+
+import sys
+from itertools import repeat
+
+arguments = sys.argv[1:]
+
+for argument in arguments:
+	print("Run binary")
+	result = bit_strings(int(argument))
+	print("Bit strings for {0}: \n {1}\n\n".format(argument, result))
