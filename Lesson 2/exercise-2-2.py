@@ -20,16 +20,14 @@ def bit_strings(number):
 			bit_string[0] = 1 #Set the zero to one!
 
 		else:
-			for index in range(0,min_index+1):
-				if bit_string[index] == 0:
-					bit_string[index] = 1
-				else:
-					bit_string[index] = 0
+			end = bit_string[(min_index+1):]
+			bit_string = [1 if bit_string[index] == 0 else 0 for index in range(0,min_index+1)]
+			bit_string.extend(end)
+			
 		bit_string.reverse() #Reverse the order of elements in list (back to original order)
 		bit_strings.append(bit_string[:]) #Append all elements by value, not reference! 
 	
 	return bit_strings
-
 
 
 
