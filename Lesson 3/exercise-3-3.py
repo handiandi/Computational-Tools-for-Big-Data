@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-
+from __future__ import print_function #Used to use print function in list comprehension (line 26)
 import pandas as pd
+import numpy as np
 
 pd.set_option('display.max_columns', None) #Allow pandas to print unlimmited no. of columns in the terminal
-pd.set_option('display.width', None) #Allow pandas to print unlimmited no. of characters in the terminal before a new row
+pd.set_option('display.width', 100) #Allow pandas to print unlimmited no. of characters in the terminal before a new row
 print("Loading data. Please wait...")
 
 movies_col_names = ["movie id", "title", "genre"] #Defining column names for movies
@@ -18,4 +19,26 @@ ratings = pd.read_table("ml-1m/ratings.dat", sep="::", names=ratings_col_names) 
 
 movie_data = pd.merge(ratings, users, on="user id") #Merging data from ratings and users on column name 'user id'
 movie_data = pd.merge(movie_data, movies, on="movie id") #Merging the already merged data with movies on column name 'movie id'
-print(movie_data)
+#print(movie_data.iloc[0])
+
+
+#---Exercise 2!
+"""
+The 5 movies with the most number of ratings
+"""
+#Gets the top 5 movie title:
+#   (1) Use the value_counts() on dataframe to get the titles and no. of occurences
+#   (2) Use keys() to get only titles (not occurences)
+titles = movie_data['title'].value_counts().keys()
+[print(title) for title in titles[:5]] #Printing the first 5 titles
+
+"""
+A new object called active_titles that is made up of movies each having at least 250 ratings
+"""
+occurences =  movie_data['title'].value_counts().values #Get the occurences of the movies (no. of ratings)
+stop_index = np.where(occurences==249)[0][0] #Finding the index where the occurence is 249 (less than 250)
+active_titles = movie_data[movie_data.title.isin(titles[:stop_index])] #Get all data for movies with 250 or more ratings (based of the index from before)
+
+""" 
+The 3 movies with the highest average rating for females.
+"""
