@@ -45,6 +45,26 @@ occurences =  movie_data['title'].value_counts().values #Get the occurences of t
 stop_index = np.where(occurences==249)[0][0] #Finding the index where the occurence is 249 (less than 250)
 active_titles = movie_data[movie_data.title.isin(titles[:stop_index])] #Get all data for movies with 250 or more ratings (based of the index from before)
 print("\n'active_titles' created\n------------------------------------")
+
 """ 
 The 3 movies with the highest average rating for females.
 """
+print(len(active_titles))
+movie_titles = pd.unique(movie_data['title'])
+
+print(len(movie_titles)) #test
+print(movie_titles[2]) #test
+print(movie_titles[3]) #test
+avg = []
+i = 0
+print(movie_data.info())
+for movie in movie_titles: 
+	temp = movie_data[(movie_data.title == movie) & (movie_data.gender == 'F')]['rating'].astype('int64').mean(axis=1) #beregner mean hvor title==?? og gender=='F'
+	#avg.append(temp['rating'].astype('float64').mean(axis=1))
+	if(i%100 == 0):
+		print(i)
+	i = i+1
+
+avg_sorted, m_titles_sorted = (list(x) for x in zip(*sorted(zip(avg, movie_titles))))
+
+
