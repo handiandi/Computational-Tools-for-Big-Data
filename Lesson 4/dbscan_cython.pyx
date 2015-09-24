@@ -53,6 +53,13 @@ def run_program():
 
     global data
     data = X.data.astype(DTYPE_FLOAT)
+    print(type(data))
+    #print(data[])
+    global indices
+    indices = X.indices.astype(np.dtype("i"))
+    #print(indices[a_index])
+    #print(indptr_view[a_index+1])
+
 
     global num_rows
     num_rows = X.get_shape()[0]
@@ -105,12 +112,23 @@ def compute_jaccard_distance(int a_index, int b_index):
     cdef int M_11, M_01_and_M_10
     cdef float jaccard_index, jaccard_distance
 
-    cdef np.ndarray[DTYPE, ndim=1] X_a_index_row
-    cdef np.ndarray[DTYPE, ndim=1] X_b_index_row
+    cdef np.ndarray[float, ndim=1] X_a_index_row
+    cdef np.ndarray[float, ndim=1] X_b_index_row
 
-    X_a_index_row = data[indptr[a_index]:indptr[a_index+1]]
-    X_b_index_row = data[indptr[b_index]:indptr[b_index+1]]
-
+    print(type(data_view))
+    numpy_array = np.asarray(data_view) #np.asarray(<np.int32_t[:10, :10]> my_pointer)
+    print(a_index)
+    print(b_index)
+    print(numpy_array)
+    print(indices_view[a_index])
+    print(indices_view[a_index+1])
+    X_a_index_row = numpy_array[indptr_view[a_index]:indptr_view[a_index+1]]
+    X_b_index_row = numpy_array[indptr_view[b_index]:indptr_view[b_index+1]]
+    print(X_a_index_row)
+    print(X_b_index_row)
+    print("Det er mig!")
+    print(np.multiply(X_a_index_row,X_b_index_row))
+    print("Det er stadig mig!")
     M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row)) #np.logical_and(X_a_index_row, X_b_index_row)) - #np.multiply(X_a_index_row,X_b_index_row))
     M_01_and_M_10 = np.sum(np.absolute(X_a_index_row-X_b_index_row)) #np.logical_xor(X_a_index_row, X_b_index_row)) - #np.absolute((X_a_index_row-X_b_index_row)))
     #jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
