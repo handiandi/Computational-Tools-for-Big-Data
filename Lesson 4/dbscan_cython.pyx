@@ -72,10 +72,11 @@ def compute_jaccard_distance(np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_
 
 	X_a_index_row = X[a_index,:]
 	X_b_index_row = X[b_index,:]
-	M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row))
-	M_01_and_M_10 = np.sum(np.absolute((X_a_index_row-X_b_index_row)))
-	jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
-	jaccard_distance = 1 - jaccard_index
+
+	M_11 = np.sum(np.logical_and(X_a_index_row, X_b_index_row)) #np.logical_and(X_a_index_row, X_b_index_row)) - #np.multiply(X_a_index_row,X_b_index_row))
+	M_01_and_M_10 = np.sum(np.logical_xor(X_a_index_row, X_b_index_row)) #np.logical_xor(X_a_index_row, X_b_index_row)) - #np.absolute((X_a_index_row-X_b_index_row)))
+	#jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
+	jaccard_distance = 1 - ((M_11)/ float((M_01_and_M_10 + M_11))) #jaccard_index
 	
 	distance_matrix[a_index, b_index] = jaccard_distance
 	distance_matrix[b_index, a_index] = jaccard_distance
