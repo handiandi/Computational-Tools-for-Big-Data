@@ -69,19 +69,15 @@ def compute_jaccard_distance(np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_
 	cdef int M_11, M_01_and_M_10
 	cdef float jaccard_index, jaccard_distance
 
-	if (distance_matrix[a_index,b_index] != -1):
-		return distance_matrix[a_index,b_index]
-	elif (distance_matrix[b_index, a_index] != -1):
-		return distance_matrix[b_index, a_index]
-	else:
-		M_11 = np.sum(np.multiply(X[a_index,:],X[b_index,:]))
-		M_01_and_M_10 = np.sum(np.absolute((X[a_index,:]-X[b_index,:])))
-		jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
-		jaccard_distance = 1 - jaccard_index
-		
-		distance_matrix[a_index, b_index] = jaccard_distance
-		distance_matrix[b_index, a_index] = jaccard_distance
-		return jaccard_distance
+	
+	M_11 = np.sum(np.multiply(X[a_index,:],X[b_index,:]))
+	M_01_and_M_10 = np.sum(np.absolute((X[a_index,:]-X[b_index,:])))
+	jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
+	jaccard_distance = 1 - jaccard_index
+	
+	distance_matrix[a_index, b_index] = jaccard_distance
+	distance_matrix[b_index, a_index] = jaccard_distance
+	return jaccard_distance
 
 def region_query(int p_index, float eps, np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_t, ndim=2] distance_matrix):
 	""" compute distance for every row other than X(index)
@@ -92,7 +88,12 @@ def region_query(int p_index, float eps, np.ndarray[DTYPE_t, ndim=2] X, np.ndarr
 	cdef float distance = 0.0
 	cdef int num_rows = X.shape[0]
 	for i in range(0, num_rows):
-		distance = compute_jaccard_distance(X, distance_matrix, i, p_index)
+		if (distance_matrix[i,p_index] != -1):
+			distance = distance_matrix[p_index, i]
+		elif (distance_matrix[p_index, i] != -1):
+			distance = distance_matrix[p_index, i]
+		else:
+			distance = compute_jaccard_distance(X, distance_matrix, i, p_index)
 		if distance <= eps:
 			neighbor_indexes[i] = 1
 	# why does it return tuple, fix this
