@@ -56,22 +56,24 @@ def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int
 	cluster_indexes[p_index] = C
 	cdef int i = 0
 	while i < neighbor_points.size:
-		if not visited_indexes[neighbor_points[i]]:
-			visited_indexes[neighbor_points[i]] = 1
-			neighbor_points_prime = region_query(neighbor_points[i], eps, X, distance_matrix)
+		index = neighbor_points[i]
+		if not visited_indexes[index]:
+			visited_indexes[index] = 1
+			neighbor_points_prime = region_query(index, eps, X, distance_matrix)
 			if neighbor_points_prime.size >= m:
 				neighbor_points = np.append(neighbor_points, neighbor_points_prime)
-		if cluster_indexes[neighbor_points[i]] == 0:
-			cluster_indexes[neighbor_points[i]] = C
+		if cluster_indexes[index] == 0:
+			cluster_indexes[index] = C
 		i += 1
 
 def compute_jaccard_distance(np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_t, ndim=2] distance_matrix, int a_index, int b_index):
 	cdef int M_11, M_01_and_M_10
 	cdef float jaccard_index, jaccard_distance
 
-	
-	M_11 = np.sum(np.multiply(X[a_index,:],X[b_index,:]))
-	M_01_and_M_10 = np.sum(np.absolute((X[a_index,:]-X[b_index,:])))
+	X_a_index_row = X[a_index,:]
+	X_b_index_row = X[b_index,:]
+	M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row))
+	M_01_and_M_10 = np.sum(np.absolute((X_a_index_row-X_b_index_row)))
 	jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
 	jaccard_distance = 1 - jaccard_index
 	
@@ -102,7 +104,7 @@ def region_query(int p_index, float eps, np.ndarray[DTYPE_t, ndim=2] X, np.ndarr
 cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
 
 s = pstats.Stats("Profile.prof")
-s.strip_dirs().sort_stats("time").print_stats()
+s.strip_dirs().sort_stats("tottime").print_stats()
 
 #print(timeit.timeit(run_program, number=1))
 
