@@ -13,7 +13,6 @@ import os
 import numpy as np
 cimport numpy as np
 import timeit
-#from cython.parallel import parallel, prange
 
 ctypedef np.int_t DTYPE_t
 
@@ -57,13 +56,14 @@ def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int
 	cluster_indexes[p_index] = C
 	cdef int i = 0
 	while i < neighbor_points.size:
-		if not visited_indexes[neighbor_points[i]]:
-			visited_indexes[neighbor_points[i]] = 1
-			neighbor_points_prime = region_query(neighbor_points[i], eps, X, distance_matrix)
+		index = neighbor_points[i]
+		if not visited_indexes[index]:
+			visited_indexes[index] = 1
+			neighbor_points_prime = region_query(index, eps, X, distance_matrix)
 			if neighbor_points_prime.size >= m:
 				neighbor_points = np.append(neighbor_points, neighbor_points_prime)
-		if cluster_indexes[neighbor_points[i]] == 0:
-			cluster_indexes[neighbor_points[i]] = C
+		if cluster_indexes[index] == 0:
+			cluster_indexes[index] = C
 		i += 1
 
 def compute_jaccard_distance(np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_t, ndim=2] distance_matrix, int a_index, int b_index):
@@ -75,11 +75,13 @@ def compute_jaccard_distance(np.ndarray[DTYPE_t, ndim=2] X, np.ndarray[np.float_
 	elif (distance_matrix[b_index, a_index] != -1):
 		return distance_matrix[b_index, a_index]
 	else:
-		M_11 = np.sum(np.multiply(X[a_index,:],X[b_index,:]))
-		M_01_and_M_10 = np.sum(np.absolute((X[a_index,:]-X[b_index,:])))
+		X_a_index_row = X[a_index,:]
+		X_b_index_row = X[b_index,:]
+		M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row))
+		M_01_and_M_10 = np.sum(np.absolute((X_a_index_row-X_b_index_row)))
 		jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
 		jaccard_distance = 1 - jaccard_index
-		
+	
 		distance_matrix[a_index, b_index] = jaccard_distance
 		distance_matrix[b_index, a_index] = jaccard_distance
 		return jaccard_distance
@@ -88,19 +90,18 @@ def region_query(int p_index, float eps, np.ndarray[DTYPE_t, ndim=2] X, np.ndarr
 	""" compute distance for every row other than X(index)
 		if distance < eps, keep neighbour as index
 	"""
-	cdef np.ndarray[DTYPE_t, ndim=1] neighbor_indexes = np.zeros(X.shape[0], dtype=np.int64)
+	cdef np.ndarray[DTYPE_t, ndim=1] neighbor_indexes = np.empty(X.shape[0], dtype=np.int64)
+	neighbor_indexes.fill(-1)
 	cdef int i = 0
 	cdef float distance = 0.0
 	cdef int num_rows = X.shape[0]
 
-	#with nogil, parallel():
-		#for p_index in prange(0, num_rows, schedule="guided"):
 	for i in range(0, num_rows):
-		distance = compute_jaccard_distance(X, distance_matrix, i, p_index)
-		if distance <= eps:
-			neighbor_indexes[i] = 1
+			distance = compute_jaccard_distance(X, distance_matrix, i, p_index)
+			if distance <= eps:
+				neighbor_indexes[i] = 1
 	# why does it return tuple, fix this
-	return neighbor_indexes.nonzero()[0]
+	return np.where(neighbor_indexes != -1)[0]
 
 cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
 
