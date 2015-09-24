@@ -98,12 +98,12 @@ def region_query(int p_index, float eps, np.ndarray[DTYPE_t, ndim=2] X, np.ndarr
 	# why does it return tuple, fix this
 	return neighbor_indexes.nonzero()[0]
 
-#cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
+cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
 
-#s = pstats.Stats("Profile.prof")
-#s.strip_dirs().sort_stats("time").print_stats()
+s = pstats.Stats("Profile.prof")
+s.strip_dirs().sort_stats("time").print_stats()
 
-print(timeit.timeit(run_program, number=1))
+#print(timeit.timeit(run_program, number=1))
 
 #assert (np.array([ 1,  2, -1,  3,  4, -1,  4,  4, -1,  4, -1,  2,  2,  1, -1,  1,  1,  4,
 # -1,  1,  2,  1,  1,  4, -1, -1,  2,  2,  1,  4,  4,  4,  4,  1, -1, -1,
