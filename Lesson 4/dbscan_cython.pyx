@@ -84,7 +84,8 @@ def db_scan(float eps, int m):
     cdef int p_index, C = 0
     cdef int num_rows = distance_matrix.shape[0]
     for p_index in range(0, num_rows):
-        if visited_indexes[p_index]:
+        # check if visited or already in cluster
+        if visited_indexes[p_index] or cluster_indexes[p_index] != 0:
             continue
         visited_indexes[p_index] = 1
         neighbor_points = region_query(p_index, eps)
