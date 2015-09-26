@@ -38,8 +38,8 @@ cdef int [:] indptr_view = indptr
 data = X.data.astype(np.dtype("f"))
 cdef float [:] data_view = data
 
-cdef int num_rows
-cdef int num_cols
+cdef int num_rows = X.get_shape()[0]
+cdef int num_cols = X.get_shape()[1]
 
 distance_matrix = np.empty((num_rows,num_cols), dtype=np.dtype("f"))
 cdef float [:,:] distance_matrix_view = distance_matrix
@@ -62,9 +62,9 @@ def run_program():
 
 
     global num_rows
-    num_rows = X.get_shape()[0]
+    #num_rows = X.get_shape()[0]
     global num_cols
-    num_cols = X.get_shape()[1]
+    #num_cols = X.get_shape()[1]
 
     global distance_matrix
     distance_matrix = np.empty((num_rows,num_cols), dtype=np.float)
@@ -93,7 +93,7 @@ def db_scan(float eps, int m):
             cluster_indexes[p_index] = -1
         else:
             C += 1
-            expand_cluster(p_index, neighbor_points, C, eps)
+            expand_cluster(p_index, neighbor_points, C, eps, m)
 
 def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int C, float eps, int m):
     cluster_indexes[p_index] = C
@@ -113,31 +113,53 @@ def compute_jaccard_distance(int a_index, int b_index):
     cdef int M_11, M_01_and_M_10
     cdef float jaccard_index, jaccard_distance
 
-    cdef np.ndarray[float, ndim=1] X_a_index_row
-    cdef np.ndarray[float, ndim=1] X_b_index_row
+    #cdef np.ndarray[float, ndim=1] X_a_index_row
+    #cdef np.ndarray[float, ndim=1] X_b_index_row
 
-    print(type(data_view))
+    X_a_index_row = []
+    X_b_index_row = []
+
     numpy_array = np.asarray(data_view) #np.asarray(<np.int32_t[:10, :10]> my_pointer)
-    print(a_index)
-    print(b_index)
-    print(numpy_array)
-    print(indices_view[a_index])
-    print(indices_view[a_index+1])
-    X_a_index_row = numpy_array[indptr_view[a_index]:indptr_view[a_index+1]]
-    X_b_index_row = numpy_array[indptr_view[b_index]:indptr_view[b_index+1]]
-    print(X_a_index_row)
-    print(X_b_index_row)
-    print("Det er mig!")
-    print(np.multiply(X_a_index_row,X_b_index_row))
-    print("Det er stadig mig!")
-    M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row)) #np.logical_and(X_a_index_row, X_b_index_row)) - #np.multiply(X_a_index_row,X_b_index_row))
-    M_01_and_M_10 = np.sum(np.absolute(X_a_index_row-X_b_index_row)) #np.logical_xor(X_a_index_row, X_b_index_row)) - #np.absolute((X_a_index_row-X_b_index_row)))
+    X_a_index_row = extract_row(a_index) #numpy_array[indptr_view[a_index]:indptr_view[a_index+1]]
+    X_b_index_row = extract_row(b_index) #numpy_array[indptr_view[b_index]:indptr_view[b_index+1]]
+
+    M_11 = 0
+    M_01_and_M_10 = 0
+    for i in range(0,num_rows):
+        if X_a_index_row[i] == 1 and X_a_index_row[i] == X_b_index_row[i]:
+            M_11 += 1
+        elif X_a_index_row[i] != X_b_index_row[i]:
+            M_01_and_M_10 +=1
+        else:
+            continue
+
+    jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
+    jaccard_distance = 1-jaccard_index
+
+    #M_11 = np.sum(np.multiply(X_a_index_row,X_b_index_row)) #np.logical_and(X_a_index_row, X_b_index_row)) - #np.multiply(X_a_index_row,X_b_index_row))
+    #M_01_and_M_10 = np.sum(np.absolute(X_a_index_row-X_b_index_row)) #np.logical_xor(X_a_index_row, X_b_index_row)) - #np.absolute((X_a_index_row-X_b_index_row)))
     #jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
-    jaccard_distance = 1 - (M_11/ (M_01_and_M_10 + M_11)) #jaccard_index
+    #jaccard_distance = 1 - (M_11/ (M_01_and_M_10 + M_11)) #jaccard_index
     
     distance_matrix[a_index, b_index] = jaccard_distance
     distance_matrix[b_index, a_index] = jaccard_distance
     return jaccard_distance
+
+def extract_row(int i):
+    row_list = []
+    zero_index = 0
+
+    for i in range(indptr_view[i], indptr_view[i+1]):
+        j = indices_view[i]
+        while(zero_index < j):
+            row_list.append(0)
+            zero_index += 1
+        row_list.append(1)
+        zero_index += 1
+    while(zero_index < num_rows):
+        row_list.append(0)
+        zero_index += 1
+    return row_list
 
 def region_query(int p_index, float eps):
     """ compute distance for every row other than X(index)
