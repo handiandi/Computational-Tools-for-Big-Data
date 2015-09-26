@@ -20,7 +20,7 @@ cluster_indexes = np.zeros(X.shape[0])
 def db_scan(eps, m):
 	C = 0
 	for p_index in np.arange(X.shape[0]):
-		if visited_indexes[p_index]:
+		if visited_indexes[p_index] or cluster_indexes[p_index] != 0:
 			continue
 		visited_indexes[p_index] = 1
 		neighbor_points = region_query(p_index, eps)
@@ -34,7 +34,7 @@ def expand_cluster(p_index, neighbor_points, C, eps, m):
 	cluster_indexes[p_index] = C
 	i = 0
 	while i < neighbor_points.size:
-		if not visited_indexes[neighbor_points[i]]:
+		if not visited_indexes[neighbor_points[i]] or cluster_indexes[p_index] == 0:
 			visited_indexes[neighbor_points[i]] = 1
 			neighbor_points_prime = region_query(neighbor_points[i], eps)
 			if neighbor_points_prime.size >= m:
