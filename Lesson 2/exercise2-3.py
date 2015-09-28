@@ -12,7 +12,9 @@ text_lists = [re.split("\W+",dictionary["request_text"]) for dictionary in dicts
 # flatten and set it to only get distinct words, in our case we get 14899 words
 distinct_words = set([word for text in text_lists for word in text])
 
-# print each text as a bag of words count
+# create matrix with each text as a bag of words count
 # if we'd want to see which words belong to which column we'd have to list the distinct words as a set is not ordered
+matrix = []
 for text in text_lists:
-	print(" ".join([str(text.count(word)) for word in distinct_words]))
+	matrix.append([text.count(word) for word in distinct_words])
+print(matrix)
