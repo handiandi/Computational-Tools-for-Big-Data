@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 import json
 import re
+import sys
+# we can either get filename as an arg or just use the pizza-train.json file
+if len(sys.argv) > 1:
+    file_name = sys.argv[1]
+else:
+    file_name = "pizza-train.json"
 
 # first we open the json-encoded pizza train file and load it into a list of dictionaries
-with open("pizza-train.json") as f:
+with open(file_name) as f:
 	dicts = json.loads(f.read())
 
 # we use a list comprehension to extract each request_text and split it using a regex generating a list of lists
@@ -17,4 +23,5 @@ distinct_words = set([word for text in text_lists for word in text])
 matrix = []
 for text in text_lists:
 	matrix.append([text.count(word) for word in distinct_words])
-print(matrix)
+for row in matrix:
+   print(row)
