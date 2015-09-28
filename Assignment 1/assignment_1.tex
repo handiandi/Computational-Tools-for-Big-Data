@@ -5,10 +5,9 @@
 
 \usepackage{listings}
 \usepackage{color}
-\usepackage{xcolor}
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 
-\lstdefinestyle{python}{%
+\lstdefinestyle{python}{
     language=python,
     breaklines=true,
     tabsize=4,
@@ -64,7 +63,7 @@ Write a script that takes an integer N, and outputs all bit-strings of length N 
 \lstinputlisting[style=python]{"../Lesson 2/exercise2-2.py"}
 
 \section{Exercise 2.3}
-Write a script that takes this file (from this Kaggle competition), extracts the request_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).
+Write a script that takes the file from the Kaggle competition, extracts the request_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).
 
 There should be one row pr. text. The matrix should be N x M where N is the number of texts and M is the number of distinct words in all the texts.
 \lstinputlisting[style=python]{"../Lesson 2/exercise2-3.py"}
