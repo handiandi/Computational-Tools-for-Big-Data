@@ -2,7 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,graphicx}
 \usepackage{cleveref}
-%\usepackage{sectsty}
 
 
 % Default fixed font does not support bold face
@@ -12,60 +11,38 @@
 % Custom colors
 \usepackage{color}
 
-\definecolor{deepblue}{rgb}{0,0,0.5}
-\definecolor{deepred}{rgb}{0.6,0,0}
-\definecolor{deepgreen}{rgb}{0,0.5,0}
-\definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
+\definecolor{output_background}{rgb}{0.4, 0.4, 0.4}
+\definecolor{gray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{purple}{rgb}{0.6, 0.1, 0.9}
 \usepackage{listings}
-
-%\usepackage{xcolor}
-
-% \lstdefinestyle{python}{%
-%     language=python,
-%     breaklines=true,
-%     tabsize=4,
-%     basicstyle=\ttfamily\small,
-%     otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},
-%     keywordstyle=\color{blue},
-%     stringstyle=\color{red},
-%     showstringspaces=false,
-%     emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
-%     def, print, exec, break, continue, return},
-%     emphstyle=\color{black}\bfseries,
-%     emph={[2]True, False, None, self},
-%     emphstyle=[2]\color{key},
-%     emph={[3]from, import, as},
-%     emphstyle=[3]\color{blue},
-%     morecomment=[s]{"""}{"""},
-%     commentstyle=\color[GRAY]{0.4}\slshape,
-%     rulesepcolor=\color{blue},
-% }
 
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
-language=Python,
-basicstyle=\ttm\small,
-otherkeywords={self},             % Add keywords here
-keywordstyle=\ttb\small\color{deepblue},
-emph={MyClass,__init__},          % Custom highlighting
-emphstyle=\ttb\color{deepred},    % Custom highlighting style
-stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+language=python,
+breaklines=true,
+basicstyle=\ttfamily\small,
+otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},             % Add keywords here
+keywordstyle=\color{blue},
+emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
+    def, print, exec, break, continue, return},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{purple},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+stringstyle=\color{red},
+frame=tb,
+showstringspaces=false,
+morecomment=[s]{"""}{"""},
+commentstyle=\color{gray},
+rulesepcolor=\color{blue}
 }}
 
 % Python style for output highlighting
 \newcommand\pythonoutputstyle{\lstset{
-backgroundcolor=\color{arsenic},
-%language=Python,
+backgroundcolor=\color{output_background},
 basicstyle=\ttm\small\color{white},
-%otherkeywords={self},             % Add keywords here
-%keywordstyle=\ttb\small\color{deepblue},
-%emph={MyClass,__init__},          % Custom highlighting
-%emphstyle=\ttb\color{deepred},    % Custom highlighting style
-%stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+showstringspaces=false
 }}
 
 
@@ -86,7 +63,7 @@ showstringspaces=false            %
 \lstinputlisting[#1]{#2}}}
 
 \title{Assignment 1\\02807 Computational Tools for Big Data}
-\author{Søren Howe Gersager \\Anders Lønberg Rahbek}
+\author{Anonymous Authors}
 \date{28th September 2015}
 \usepackage[cm]{fullpage}
 \begin{document}
@@ -95,20 +72,17 @@ showstringspaces=false            %
 \newpage
 \section{Exercise 1.1}
 Write a command that finds the 10 most popular words in a file.
-\lstinputlisting[language=bash]{"../Lesson 1/exercise1-1.sh"}
+\lstinputlisting[language=bash,breaklines=true]{"../Lesson 1/exercise1-1.sh"}
 
 \section{Exercise 1.2}
 Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.
-\lstinputlisting[language=bash]{"../Lesson 1/exercise1-2.sh"}
-%\lstinputlisting[language=bash]{"../Lesson 1/exercise1-2.sh"}
+\lstinputlisting[language=bash,breaklines=true]{"../Lesson 1/exercise1-2.sh"}
 
 
 
 \section{Exercise 1.3}
 Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).
-\lstinputlisting[language=bash]{"../Lesson 1/exercise1-3.sh"}
-
-
+\lstinputlisting[language=bash,breaklines=true]{"../Lesson 1/exercise1-3.sh"}
 
 \section{Exercise 1.4}
 Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).
