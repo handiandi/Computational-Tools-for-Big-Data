@@ -28,9 +28,9 @@ X_train, X_test, y_train, y_test = sklearn.cross_validation.train_test_split(X, 
 # we fit the classifier with our test data
 logistic.fit(X_train, y_train)
 
-# we can use score to get the mean accuracy = ~0.68
+# we can use either predict it manually or just use the score method to get the mean accuracy = ~0.68
+#print(sum(logistic.predict(X_test) == y_test)/len(y_test))
 print(logistic.score(X_test, y_test))
-
 # if we want we can extract more features into our dataset like:
 # number of posts on the subreddit at retrieval, which perhaps can be correlated with a request being fulfilled
 num_upvotes = np.array([[dictionary["requester_number_of_posts_on_raop_at_retrieval"]] for dictionary in dicts])
