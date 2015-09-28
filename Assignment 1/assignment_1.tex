@@ -302,9 +302,9 @@ We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We 
 The memoization of distances will not work for the 100000x100000 dataset due memory size constraints, thus the execution for that one is without memoization.
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
 \pythonexternal{"../Lesson 4/dbscan_cython.pyx"}
-\begin{table}[]
+\begin{table}[ht]
 \centering
-\caption{Performance table for DBSCAN}
+\caption{Performance and result table for DBSCAN}
 \label{my-label}
 \begin{tabular}{llll}
 \textbf{Dimensions}                          & \textbf{time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
@@ -333,4 +333,8 @@ We think it's possible to further optimize the code by converting the numpy code
      9076    0.006    0.000    0.022    0.000 fromnumeric.py:1291(ravel)
 
 \end{pythonOutput}
+
+
+
+
 \end{document}
