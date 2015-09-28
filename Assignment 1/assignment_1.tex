@@ -75,16 +75,18 @@ showstringspaces=false
 \textbf{Write a command that finds the 10 most popular words in a file.}
 \lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-1.sh"}
 
-A file containing ``to be or not to be that is the question'' will thus return:
+A file containing five paragraphs of lorem ipsum\footnote{http://pastebin.com/SMZMZzA7} will thus return:
 \begin{pythonOutput}
-      2 to
-      2 be
-      1 the
-      1 that
-      1 question
-      1 or
-      1 not
-      1 is
+     10 id
+      9 in
+      9 a
+      8 eu
+      7 ligula
+      7 ipsum
+      7 et
+      7 ac
+      6 vehicula
+      6 tincidunt
 \end{pythonOutput}
 \section{Exercise 1.2}
 \textbf{Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.}
@@ -222,6 +224,19 @@ We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We 
 The memoization of distances will not work for the 100000x100000 dataset due to memory allocation, thus the execution for that one is without memoization.
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
 \pythonexternal{"../Lesson 4/dbscan_cython.pyx"}
+\begin{table}[]
+\centering
+\caption{Performance table}
+\label{my-label}
+\begin{tabular}{llll}
+\textbf{Dimensions}                          & \textbf{Time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
+10x10                                        & 0.0005862309990334325    & 4                           & 4                                            \\
+100x100                                      & 0.003060722003283445     & 6                           & 30                                           \\
+1000x1000                                    & 0.09427501499885693      & 9                           & 289                                          \\
+10000x10000                                  & 10.893330368002353       & 394                         & 2847                                         \\
+100000x100000\footnote{without memoization of distances} &                          &                             &                                             
+\end{tabular}
+\end{table}
 
 
 \end{document}
