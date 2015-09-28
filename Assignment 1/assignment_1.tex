@@ -297,7 +297,7 @@ and time taken with 500 executions for the cython function is 0.0366\\
 Thus we get a speedup of 27.74x, not too shabby
 \section{Exercise 4.1}
 \textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}
-We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
+We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance\_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
 The memoization of distances will not work for the 100000x100000 dataset due memory size constraints, thus the execution for that one is without memoization.
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
 \pythonexternal{"../Lesson 4/dbscan_cython.pyx"}
@@ -315,7 +315,7 @@ The memoization of distances will not work for the 100000x100000 dataset due mem
 \end{tabular}
 \end{table}
 We tried to run the cprofiler to find hotspots in our code, and the result is the following using the dataset of 10,000 entries.
-We think it's possible to further optimize the code by converting the numpy code of the region_query and expand_cluster functions to cython.
+We think it's possible to further optimize the code by converting the numpy code of the region\_query and expand\_cluster functions to cython.
 \begin{pythonOutput}
         100073275 function calls (100073271 primitive calls) in 27.602 seconds
 
