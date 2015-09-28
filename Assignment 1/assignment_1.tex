@@ -174,13 +174,13 @@ we then get the following output:
 [0, 0, 1, 0, 2, 1, 1, 2, 1, 1, 1]
 \end{pythonOutput}
 \section{Exercise 3.1}
-\textbf{Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.}
+\textbf{Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.}\\
 \pythonexternal{"../Lesson 3/exercise3-1.py"}
 \begin{pythonOutput}
 The answer is [-5.09090909  1.18181818  2.24242424]
 \end{pythonOutput}
 \section{Exercise 3.2}
-\textbf{Write a script that reads in this list of points (x,y), fits/interpolates them with a polynomial of degree 3. Solve for the (real) roots of the polynomial numerically using Scipy’s optimization functions (not the root function in Numpy).}
+\textbf{Write a script that reads in this list of points (x,y), fits/interpolates them with a polynomial of degree 3. Solve for the (real) roots of the polynomial numerically using Scipy’s optimization functions (not the root function in Numpy).}\\
 \pythonexternal{"../Lesson 3/exercise3-2.py"}
 We can see that the interpolation fits in \Cref{fig:interpolation_plot}.
 
@@ -196,8 +196,9 @@ We get the following root:
 [-1.2114903]
 \end{pythonOutput}
 \section{Exercise 3.3}
-\textbf{Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html}
+\textbf{Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html}\\
 \pythonexternal{"../Lesson 3/exercise3-3.py"}
+Doing the two Pandas exercises we get the following output:
 \begin{pythonOutput}
 Loading data. Please wait...
 
@@ -265,7 +266,7 @@ Rocky Horror Picture Show, The (1975)                1.260177
 \textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}
 \pythonexternal{"../Lesson 3/exercise3-4.py"}
 
-%By just using a BoW representation of the request_text, we can predict the accuracy by doing a sum(logistic.predict(X_test) == y_test)/len(y_test) or we can use the logistic regression score method, we get the following score:
+By just using a BoW representation of the request\_text, we can predict the accuracy by doing a sum(logistic.predict(X\_test) == y\_test)/len(y\_test) or we can use the logistic regression score method, we get the following score:
 
 \begin{pythonOutput}
 0.683168316832
@@ -296,7 +297,7 @@ Next we create a cython version, we use two files for this, one importing pyximp
 and time taken with 500 executions for the cython function is 0.0366\\
 Thus we get a speedup of 27.74x, not too shabby
 \section{Exercise 4.1}
-\textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}
+\textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}\\
 We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance\_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
 The memoization of distances will not work for the 100000x100000 dataset due memory size constraints, thus the execution for that one is without memoization.
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
@@ -311,27 +312,25 @@ The memoization of distances will not work for the 100000x100000 dataset due mem
 100x100                                      & 0.003060722003283445     & 6                           & 30                                           \\
 1000x1000                                    & 0.09427501499885693      & 9                           & 289                                          \\
 10000x10000                                  & 10.893330368002353       & 394                         & 2847                                         \\
-100000x100000 (without distance memoization) & 4475.570929656002        & 1692                        & 28470                                       
+100000x100000 \footnote{without distance memoization} & 4475.570929656002        & 1692                        & 28470                                       
 \end{tabular}
 \end{table}
 We tried to run the cprofiler to find hotspots in our code, and the result is the following using the dataset of 10,000 entries.
 We think it's possible to further optimize the code by converting the numpy code of the region\_query and expand\_cluster functions to cython.
 \begin{pythonOutput}
-        100073275 function calls (100073271 primitive calls) in 27.602 seconds
+        50078275 function calls (50078271 primitive calls) in 15.543 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-    10000   17.566    0.002   24.895    0.002 dbscan_cython.pyx:130(region_query)
- 99990000    7.329    0.000    7.329    0.000 dbscan_cython.pyx:96(compute_jaccard_distance)
-     9080    2.404    0.000    2.404    0.000 {built-in method concatenate}
-      393    0.221    0.001   25.551    0.065 dbscan_cython.pyx:79(expand_cluster)
-     9076    0.027    0.000    2.484    0.000 function_base.py:3832(append)
-    18158    0.021    0.000    0.021    0.000 {built-in method array}
-     9082    0.011    0.000    0.027    0.000 numeric.py:464(asanyarray)
-     9076    0.008    0.000    0.026    0.000 fromnumeric.py:1291(ravel)
-     9076    0.008    0.000    0.008    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     9076    0.006    0.000    0.011    0.000 numeric.py:394(asarray)
+    10000    9.280    0.001   12.891    0.001 dbscan_cython.pyx:129(region_query)
+ 49995000    3.612    0.000    3.612    0.000 dbscan_cython.pyx:95(compute_jaccard_distance)
+     9080    2.377    0.000    2.377    0.000 {built-in method concatenate}
+      393    0.205    0.001   15.369    0.039 dbscan_cython.pyx:78(expand_cluster)
+     9076    0.021    0.000    2.444    0.000 function_base.py:3832(append)
+    18158    0.019    0.000    0.019    0.000 {built-in method array}
+     9082    0.009    0.000    0.024    0.000 numeric.py:464(asanyarray)
+     9076    0.006    0.000    0.022    0.000 fromnumeric.py:1291(ravel)
 
 \end{pythonOutput}
 \end{document}

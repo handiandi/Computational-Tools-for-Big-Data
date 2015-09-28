@@ -4,7 +4,7 @@
 #cython: boundscheck=False
 #cython: wraparound=False
 #cython: initializedcheck=False
-#cython: profile=True
+#cython: profile=False
 import pstats, cProfile
 import pickle
 import os
@@ -122,8 +122,8 @@ def compute_jaccard_distance(int a_index, int p_index):
     jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
     jaccard_distance = 1-jaccard_index
      
-    #distance_matrix[a_index, p_index] = jaccard_distance
-    #distance_matrix[p_index, a_index] = jaccard_distance
+    distance_matrix[a_index, p_index] = jaccard_distance
+    distance_matrix[p_index, a_index] = jaccard_distance
     return jaccard_distance
 
 def region_query(int p_index, float eps):
@@ -155,5 +155,5 @@ def run_profiler():
     s = pstats.Stats("Profile.prof")
     s.strip_dirs().sort_stats("tottime").print_stats()
 
-run_profiler()
-#print(timeit.timeit(run_program, number=1))
+#run_profiler()
+print(timeit.timeit(run_program, number=1))
