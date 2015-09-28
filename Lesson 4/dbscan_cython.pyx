@@ -4,7 +4,7 @@
 #cython: boundscheck=False
 #cython: wraparound=False
 #cython: initializedcheck=False
-
+#cython: profile=True
 import pstats, cProfile
 import pickle
 import os
@@ -14,12 +14,10 @@ import timeit
 import sys
 
 DTYPE = np.int
-DTYPE_FLOAT = np.float
 ctypedef np.int_t DTYPE_t
-ctypedef np.float_t DTYPE_FLOAT_t
 
     # parameters
-FILENAME = "data_100000points_100000dims.dat"
+FILENAME = "data_10000points_10000dims.dat"
 cdef float EPS = 0.15
 cdef int M = 2
 
@@ -78,14 +76,12 @@ def db_scan(float eps, int m):
             C += 1
             expand_cluster(p_index, neighbor_points, C, eps, m)
 
-def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int C, float eps, int m):  #np.ndarray[DTYPE_t, ndim=1] 
+def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int C, float eps, int m):
     cluster_indexes[p_index] = C
     cdef int i = 0
     cdef int index = 0
-    #print(len(visited_indexes))
     while i < neighbor_points.size:
         index = neighbor_points[i]
-        #print(index)
         if not visited_indexes[index]:
             visited_indexes[index] = 1
             neighbor_points_prime = region_query(index, eps)
@@ -155,16 +151,10 @@ def region_query(int p_index, float eps):
 
     return np.where(neighbor_indexes != -1)[0]
 
-#cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
+def run_profiler():
+    cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
+    s = pstats.Stats("Profile.prof")
+    s.strip_dirs().sort_stats("tottime").print_stats()
 
-#s = pstats.Stats("Profile.prof")
-#s.strip_dirs().sort_stats("tottime").print_stats()
-
-print(timeit.timeit(run_program, number=1))
-if (FILENAME == "data_100points_100dims.dat"):
-    assert (np.array([ 1,  2, -1,  3,  4, -1,  4,  4, -1,  4, -1,  2,  2,  1, -1,  1,  1,  4,
-     -1,  1,  2,  1,  1,  4, -1, -1,  2,  2,  1,  4,  4,  4,  4,  1, -1, -1,
-      2,  1, -1,  4,  1, -1,  2,  1,  1,  4,  4,  4,  4,  1,  2,  4,  2,  4,
-    -1,  1,  4, -1,  3, -1, -1,  1, -1, -1,  4, -1,  2,  2,  3,  5,  1, -1,
-      1,  4, -1,  2,  2,  4, -1, -1,  1,  4, -1, -1,  5,  2,  2,  1, -1,  1,
-     -1,  1, -1,  1, -1,  2,  1, -1,  2,  2,]) == cluster_indexes).all()
+run_profiler()
+#print(timeit.timeit(run_program, number=1))

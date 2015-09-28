@@ -188,7 +188,7 @@ We get the following root:
 \textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}
 \pythonexternal{"../Lesson 3/exercise3-4.py"}
 
-%By just using a BoW representation of the request_text, we can predict the accuracy by doing a sum(logistic.predict(X_test) == y_test)/len(y_test), we can also use the score method, we get the following score: SKAL INDSÆTTES
+%By just using a BoW representation of the request_text, we can predict the accuracy by doing a sum(logistic.predict(X_test) == y_test)/len(y_test) or we can use the logistic regression score method, we get the following score:
 
 \begin{pythonOutput}
 0.683168316832
@@ -220,21 +220,21 @@ and time taken with 500 executions for the cython function is 0.0366\\
 Thus we get a speedup of 27.74x, not too shabby
 \section{Exercise 4.1}
 \textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}
-We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances as soon as we computed them to avoid unnecessary calls to the jaccard distance method.
-The memoization of distances will not work for the 100000x100000 dataset due to memory allocation, thus the execution for that one is without memoization.
+We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
+The memoization of distances will not work for the 100000x100000 dataset due memory size constraints, thus the execution for that one is without memoization.
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
 \pythonexternal{"../Lesson 4/dbscan_cython.pyx"}
 \begin{table}[]
 \centering
-\caption{Performance table}
+\caption{Performance table for DBSCAN}
 \label{my-label}
 \begin{tabular}{llll}
-\textbf{Dimensions}                          & \textbf{Time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
+\textbf{Dimensions}                          & \textbf{time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
 10x10                                        & 0.0005862309990334325    & 4                           & 4                                            \\
 100x100                                      & 0.003060722003283445     & 6                           & 30                                           \\
 1000x1000                                    & 0.09427501499885693      & 9                           & 289                                          \\
 10000x10000                                  & 10.893330368002353       & 394                         & 2847                                         \\
-100000x100000\footnote{without memoization of distances} &                          &                             &                                             
+100000x100000 (without distance memoization) & 4475.570929656002        & 1692                        & 28470                                       
 \end{tabular}
 \end{table}
 
