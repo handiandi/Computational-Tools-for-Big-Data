@@ -51,7 +51,8 @@ def run_program():
     db_scan(EPS, M)
 
     print(np.array(cluster_indexes))
-    print(np.unique(cluster_indexes).size)
+    print("Number of clusters: {0}".format(np.unique(cluster_indexes).size))
+    print("Number of points in the largest cluster: {0}".format(np.max(np.unique(cluster_indexes, return_counts=True)[1])))
 
 def db_scan(float eps, int m):
     cdef int p_index, C = 0
