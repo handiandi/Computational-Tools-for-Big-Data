@@ -19,7 +19,7 @@ ctypedef np.float_t DTYPE_FLOAT_t
 
     # parameters
 FILENAME = "data_100points_100dims.dat"
-cdef float EPS = 0.3
+cdef float EPS = 0.3 
 cdef int M = 2
 
 file_handler = open(os.path.join("data",FILENAME),"rb")
@@ -68,32 +68,21 @@ def db_scan(float eps, int m):
             C += 1
             expand_cluster(p_index, neighbor_points, C, eps, m)
 
-def expand_cluster(int p_index, int [:] neighbor_points, int C, float eps, int m):  #np.ndarray[DTYPE_t, ndim=1] 
+def expand_cluster(int p_index, np.ndarray[DTYPE_t, ndim=1] neighbor_points, int C, float eps, int m):  #np.ndarray[DTYPE_t, ndim=1] 
     cluster_indexes[p_index] = C
     cdef int i = 0
-    cdef int y = 0
     cdef int index = 0
-    cdef int length = 0
-    cdef int [:] neighbor_points_temp_view
-    while i < len(neighbor_points):
+    #print(len(visited_indexes))
+    while i < neighbor_points.size:
         index = neighbor_points[i]
+        #print(index)
         if not visited_indexes[index]:
             visited_indexes[index] = 1
             neighbor_points_prime = region_query(index, eps)
             # check if smaller than m-1 since we dont return P
-            if len(neighbor_points_prime) >= m-1:
-                length = len(neighbor_points) + len(neighbor_points_prime)
-                neighbor_points_temp = np.empty(length, dtype=np.dtype("i"))
-                neighbor_points_temp_view = neighbor_points_temp
-                
-                for x in range(0,length):
-                    if x<len(neighbor_points):
-                        neighbor_points_temp_view[x] =  neighbor_points[x]
-                    else:
-                        neighbor_points_temp_view[x] =  neighbor_points_prime[y]
-                        y+=1
-                    
-                neighbor_points = neighbor_points_temp_view
+            if neighbor_points_prime.size >= m-1:
+                neighbor_points = np.append(neighbor_points, neighbor_points_prime)
+
         if cluster_indexes[index] == 0:
             cluster_indexes[index] = C
         i += 1
@@ -136,15 +125,11 @@ def region_query(int p_index, float eps):
     """ compute distance for every row other than X(index)
         if distance < eps, keep neighbour as index
     """
-    #cdef np.ndarray[DTYPE_t, ndim=1] neighbor_indexes = np.empty(num_rows, dtype=DTYPE)
-    
-    for x in range(0,num_rows):
-        neighbor_indexes_view[x] = -1
+    cdef np.ndarray[DTYPE_t, ndim=1] neighbor_indexes = np.empty(num_rows, dtype=DTYPE)
+    neighbor_indexes.fill(-1)
 
-    #neighbor_indexes.fill(-1)
     cdef int i = 0
     cdef float distance = 0.0
-    cdef int count_one = 0
 
     for i in range(0, num_rows):
         if (i == p_index):
@@ -156,20 +141,9 @@ def region_query(int p_index, float eps):
         else:
             distance = compute_jaccard_distance(i, p_index)
         if distance <= eps:
-            neighbor_indexes_view[i] = 1
-            count_one +=1
+            neighbor_indexes[i] = 1
 
-    no_minus_onces = (num_rows-count_one)
-    neighbor_indexes_real = np.empty((no_minus_onces), dtype=np.dtype("i"))
-    cdef int [:] neighbor_indexes_real_view = neighbor_indexes_real
-
-    cdef int j = 0
-    for x in range(0,num_rows):
-        if neighbor_indexes_view[x] != -1:
-            neighbor_indexes_real_view[j] = neighbor_indexes_view[x]
-            j += 1
-
-    return neighbor_indexes_real_view #np.where(neighbor_indexes != -1)[0]
+    return np.where(neighbor_indexes != -1)[0]
 
 cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
 
