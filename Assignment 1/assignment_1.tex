@@ -64,7 +64,7 @@ showstringspaces=false
 \lstinputlisting[#1]{#2}}}
 
 \title{Assignment 1\\02807 Computational Tools for Big Data}
-\author{Anonymous Authors}
+\author{S \& A}
 \date{28th September 2015}
 \usepackage[cm]{fullpage}
 \begin{document}
@@ -72,7 +72,7 @@ showstringspaces=false
 \maketitle
 \newpage
 \section{Exercise 1.1}
-\textbf{Write a command that finds the 10 most popular words in a file.}
+\textbf{Write a command that finds the 10 most popular words in a file.}\\
 \lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-1.sh"}
 
 A file containing five paragraphs of lorem ipsum\footnote{http://pastebin.com/SMZMZzA7} will thus return:
@@ -89,7 +89,7 @@ A file containing five paragraphs of lorem ipsum\footnote{http://pastebin.com/SM
       6 tincidunt
 \end{pythonOutput}
 \section{Exercise 1.2}
-\textbf{Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.}
+\textbf{Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.}\\
 \lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-2.sh"}
 Running it on the cars.txt file produces the following:
 \begin{pythonOutput}
@@ -106,7 +106,7 @@ ford    bronco  83      25      9525
 
 
 \section{Exercise 1.3}
-\textbf{Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).}
+\textbf{Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).}\\
 \lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-3.sh"}
 Executing the script and pipe it to head, gives:
 \begin{pythonOutput}
@@ -122,12 +122,57 @@ affections
 ages
 \end{pythonOutput}
 \section{Exercise 1.4}
-\textbf{Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).}
+\textbf{Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).}\\
+We create the keypair for authentication and connect to the Amazon EC2 instance using the command:
+\begin{pythonOutput}
+ssh -i keyname.pem ubuntu@instance-ip
+\end{pythonOutput}
+we then create files using:
+\begin{pythonOutput}
+touch file1 file2
+\end{pythonOutput}
+we install git using:
+\begin{pythonOutput}
+sudo apt-get install git
+\end{pythonOutput}
 \section{Exercise 1.5}
-\textbf{Create a few files locally on your computer. Create a new repository on Github and push your files to this repository. Log on to a t2.micro instance on Amazon EC2 and clone your repository there. Make some changes to the files, push them again and pull the changes on your local machine.}
+\textbf{Create a few files locally on your computer. Create a new repository on Github and push your files to this repository. Log on to a t2.micro instance on Amazon EC2 and clone your repository there. Make some changes to the files, push them again and pull the changes on your local machine.}\\
 
+\textbf{Local machine:}\\
+We create a Github Repository and can create a test file like this:
+\begin{pythonOutput}
+echo "test file" > test.txt
+\end{pythonOutput}
+We then add, commit and push it to the repository
+\begin{pythonOutput}
+git add test.txt
+git commit -m "test file added"
+git push
+\end{pythonOutput}
+
+\textbf{EC2 machine:}\\
+We logon to our Amazon EC2 instance like in the previous exercise and clone the repository using:
+\begin{pythonOutput}
+git clone repositoryname
+\end{pythonOutput}
+we can make some changes to the file using echo:
+\begin{pythonOutput}
+echo "changes to test file" > test.txt
+\end{pythonOutput}
+we can then use git again to commit and push it, we commit with the -a flag to automatically stage files that have been modified
+
+\begin{pythonOutput}
+git commit -a -m "new changes to test file"
+git push
+\end{pythonOutput}
+
+\textbf{Local machine:}\\
+We can then pull the changes:
+\begin{pythonOutput}
+git pull
+\end{pythonOutput}
 \section{Exercise 2.1}
-\textbf{Write a script with two methods. The first method should read in a matrix like the one here and return a list of lists. The second method should do the inverse, namely take, as input, a list of lists and save it in a file with same format as the initial file. The first method should take the file name as a parameter. The second method should take two arguments, the list of lists, and a filename of where to save the output.}
+\textbf{Write a script with two methods. The first method should read in a matrix like the one here and return a list of lists. The second method should do the inverse, namely take, as input, a list of lists and save it in a file with same format as the initial file. The first method should take the file name as a parameter. The second method should take two arguments, the list of lists, and a filename of where to save the output.}\\
 \pythonexternal{"../Lesson 2/exercise2-1.py"}
 We can first load an array from a file with the following content:
 \begin{pythonOutput}
@@ -156,7 +201,7 @@ Write a script that takes an integer N, and outputs all bit-strings of length N 
 \end{pythonOutput}
 \section{Exercise 2.3}
 
-\textbf{Write a script that takes this file (from this Kaggle competition), extracts the request\_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).}
+\textbf{Write a script that takes this file (from this Kaggle competition), extracts the request\_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).}\\
 
 There should be one row pr. text. The matrix should be N x M where N is the number of texts and M is the number of distinct words in all the texts.
 
@@ -263,7 +308,7 @@ Rocky Horror Picture Show, The (1975)                1.260177
 \end{pythonOutput}
 
 \section{Exercise 3.4}
-\textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}
+\textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}\\
 \pythonexternal{"../Lesson 3/exercise3-4.py"}
 
 By just using a BoW representation of the request\_text, we can predict the accuracy by doing a sum(logistic.predict(X\_test) == y\_test)/len(y\_test) or we can use the logistic regression score method, we get the following score:
@@ -279,7 +324,7 @@ If we add number of posts at retrieval, which might very well be correlated with
 so 77.72\% an increase of 9.41\% by adding that extra feature.
 \section{Exercise 3.5}
 
-\textbf{Write a simple Python function for computing the sum $\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots$ with 10,000 terms (this should be around 1.644), 500 times in a row (to make the execution time measurable). Now compile the code with Cython and see how much speedup you can achieve by this.}
+\textbf{Write a simple Python function for computing the sum $\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots$ with 10,000 terms (this should be around 1.644), 500 times in a row (to make the execution time measurable). Now compile the code with Cython and see how much speedup you can achieve by this.}\\
 We run the script on a Intel i5 2500K processor,
 First we create a python version of the function:
 \pythonexternal{"../Lesson 3/exercise3_5_python.py"}
