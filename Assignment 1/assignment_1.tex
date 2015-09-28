@@ -217,6 +217,8 @@ we then get the following output:
 \begin{pythonOutput}
 [1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0]
 [0, 0, 1, 0, 2, 1, 1, 2, 1, 1, 1]
+We can see the first text is missing 6 words from the list of uniques, this corresponds to "to, be, or, not, the, question".
+Similarly we see the second text is missing 3 words, this corresponds to the words "this, a, test".
 \end{pythonOutput}
 \section{Exercise 3.1}
 \textbf{Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.}\\
@@ -378,8 +380,4 @@ We think it's possible to further optimize the code by converting the numpy code
      9076    0.006    0.000    0.022    0.000 fromnumeric.py:1291(ravel)
 
 \end{pythonOutput}
-
-
-
-
 \end{document}
