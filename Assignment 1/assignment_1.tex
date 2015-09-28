@@ -314,6 +314,24 @@ The memoization of distances will not work for the 100000x100000 dataset due mem
 100000x100000 (without distance memoization) & 4475.570929656002        & 1692                        & 28470                                       
 \end{tabular}
 \end{table}
+We tried to run the cprofiler to find hotspots in our code, and the result is the following using the dataset of 10,000 entries.
+We think it's possible to further optimize the code by converting the numpy code of the region_query and expand_cluster functions to cython.
+\begin{pythonOutput}
+        100073275 function calls (100073271 primitive calls) in 27.602 seconds
 
+   Ordered by: internal time
 
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    10000   17.566    0.002   24.895    0.002 dbscan_cython.pyx:130(region_query)
+ 99990000    7.329    0.000    7.329    0.000 dbscan_cython.pyx:96(compute_jaccard_distance)
+     9080    2.404    0.000    2.404    0.000 {built-in method concatenate}
+      393    0.221    0.001   25.551    0.065 dbscan_cython.pyx:79(expand_cluster)
+     9076    0.027    0.000    2.484    0.000 function_base.py:3832(append)
+    18158    0.021    0.000    0.021    0.000 {built-in method array}
+     9082    0.011    0.000    0.027    0.000 numeric.py:464(asanyarray)
+     9076    0.008    0.000    0.026    0.000 fromnumeric.py:1291(ravel)
+     9076    0.008    0.000    0.008    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     9076    0.006    0.000    0.011    0.000 numeric.py:394(asarray)
+
+\end{pythonOutput}
 \end{document}

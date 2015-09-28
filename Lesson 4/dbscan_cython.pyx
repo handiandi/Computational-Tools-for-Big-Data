@@ -11,7 +11,6 @@ import os
 import numpy as np
 cimport numpy as np
 import timeit
-import sys
 
 DTYPE = np.int
 ctypedef np.int_t DTYPE_t
@@ -39,9 +38,9 @@ neighbor_indexes = np.empty((num_rows), dtype=np.dtype("i"))
 cdef int [:] neighbor_indexes_view = neighbor_indexes
 
 
-#distance_matrix_np = np.empty((num_rows,num_cols), dtype=np.dtype("double"))
-#distance_matrix_np.fill(-1)
-#cdef double [:,:] distance_matrix = distance_matrix_np
+distance_matrix_np = np.empty((num_rows,num_cols), dtype=np.dtype("double"))
+distance_matrix_np.fill(-1)
+cdef double [:,:] distance_matrix = distance_matrix_np
 
 cdef int [:] visited_indexes = np.zeros(num_rows, dtype=np.dtype("i"))
 cdef int [:] cluster_indexes = np.zeros(num_rows, dtype=np.dtype("i"))
@@ -140,12 +139,12 @@ def region_query(int p_index, float eps):
     for i in range(0, num_rows):
         if (i == p_index):
             continue
-        #if (distance_matrix[p_index, i] != -1):
-        #    distance = distance_matrix[p_index, i]
-        #elif (distance_matrix[i, p_index] != -1):
-        #    distance = distance_matrix[i, p_index]
-        #else:
-        distance = compute_jaccard_distance(i, p_index)
+        if (distance_matrix[p_index, i] != -1):
+            distance = distance_matrix[p_index, i]
+        elif (distance_matrix[i, p_index] != -1):
+            distance = distance_matrix[i, p_index]
+        else:
+            distance = compute_jaccard_distance(i, p_index)
         if distance <= eps:
             neighbor_indexes[i] = 1
 
