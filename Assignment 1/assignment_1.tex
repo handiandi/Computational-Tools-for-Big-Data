@@ -159,11 +159,25 @@ we then get the following output:
 \section{Exercise 3.1}
 \textbf{Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.}
 \pythonexternal{"../Lesson 3/exercise3-1.py"}
-
+\begin{pythonOutput}
+The answer is [-5.09090909  1.18181818  2.24242424]
+\end{pythonOutput}
 \section{Exercise 3.2}
 \textbf{Write a script that reads in this list of points (x,y), fits/interpolates them with a polynomial of degree 3. Solve for the (real) roots of the polynomial numerically using Scipy’s optimization functions (not the root function in Numpy).}
 \pythonexternal{"../Lesson 3/exercise3-2.py"}
+We can see that the interpolation fits in \Cref{fig:interpolation_plot}.
 
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{"../Lesson 3/interpolation_plot"}
+\caption{With a Figure caption}
+\label{fig:interpolation_plot}
+\end{figure}
+
+We get the following root:
+\begin{pythonOutput}
+[-1.2114903]
+\end{pythonOutput}
 \section{Exercise 3.3}
 \textbf{Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html}
 \pythonexternal{"../Lesson 3/exercise3-3.py"}
@@ -172,14 +186,33 @@ we then get the following output:
 \textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}
 \pythonexternal{"../Lesson 3/exercise3-4.py"}
 
+%By just using a BoW representation of the request_text, we can predict the accuracy by doing a sum(logistic.predict(X_test) == y_test)/len(y_test), we can also use the score method, we get the following score: SKAL INDSÆTTES
+
+\begin{pythonOutput}
+0.683168316832
+\end{pythonOutput}
+which is 68.31\% predicted correctly
+If we add number of posts at retrieval we get the following score:
+\begin{pythonOutput}
+0.777227722772
+\end{pythonOutput}
+so 77.72\% an increase of 9.41\%
 \section{Exercise 3.5}
 
 \textbf{Write a simple Python function for computing the sum $\frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots$ with 10,000 terms (this should be around 1.644), 500 times in a row (to make the execution time measurable). Now compile the code with Cython and see how much speedup you can achieve by this.}
+We run the script on a Intel i5 2500K processor,
 First we create a python version of the function:
 \pythonexternal{"../Lesson 3/exercise3_5_python.py"}
-time taken with 500 executions is ~1.108 seconds on an i5 2500k
+\begin{pythonOutput}
+1.017233310994925
+\end{pythonOutput}
+Thus time taken with 500 executions is 1.0172 seconds
 \pythonexternal{"../Lesson 3/exercise3_5_cython.pyx"}
-
+\begin{pythonOutput}
+0.03667000599671155
+\end{pythonOutput}
+and time taken with 500 executions for the cython function is 0.0366
+Thus we get a speedup of 27.74x, not too shabby
 \section{Exercise 4.1}
 \textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
