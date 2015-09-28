@@ -37,62 +37,62 @@
 \maketitle
 
 \section{Exercise 1.1}
-Write a command that finds the 10 most popular words in a file.
+\textbf{Write a command that finds the 10 most popular words in a file.}
 \lstinputlisting[language=bash]{"../Lesson 1/exercise1-1.sh"}
 
 \section{Exercise 1.2}
-Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.
+\textbf{Put this data (https://www.dropbox.com/s/d5c4x905w4jelbu/cars.txt?dl=0) into a file and write a command that removes all rows where the price is more than 10,000\$.}
 \lstinputlisting[language=bash]{"../Lesson 1/exercise1-2.sh"}
 
 \section{Exercise 1.3}
-Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).
+\textbf{Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).}
 \lstinputlisting[language=bash]{"../Lesson 1/exercise1-3.sh"}
 
 
 \section{Exercise 1.4}
-Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).
+\textbf{Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).}
 \section{Exercise 1.5}
-Create a few files locally on your computer. Create a new repository on Github and push your files to this repository. Log on to a t2.micro instance on Amazon EC2 and clone your repository there. Make some changes to the files, push them again and pull the changes on your local machine.
+\textbf{Create a few files locally on your computer. Create a new repository on Github and push your files to this repository. Log on to a t2.micro instance on Amazon EC2 and clone your repository there. Make some changes to the files, push them again and pull the changes on your local machine.}
 
 \section{Exercise 2.1}
-Write a script with two methods. The first method should read in a matrix like the one here and return a list of lists. The second method should do the inverse, namely take, as input, a list of lists and save it in a file with same format as the initial file. The first method should take the file name as a parameter. The second method should take two arguments, the list of lists, and a filename of where to save the output.
+\textbf{Write a script with two methods. The first method should read in a matrix like the one here and return a list of lists. The second method should do the inverse, namely take, as input, a list of lists and save it in a file with same format as the initial file. The first method should take the file name as a parameter. The second method should take two arguments, the list of lists, and a filename of where to save the output.}
 \lstinputlisting[style=python]{"../Lesson 2/exercise2-1.py"}
 
 \section{Exercise 2.2}
-Write a script that takes an integer N, and outputs all bit-strings of length N as lists. For example: 3 -> [0,0,0], [0,0,1],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]. As a sanity check, remember that there are 2^N such lists. Do not use the bin-function in Python.
+\textbf{Write a script that takes an integer N, and outputs all bit-strings of length N as lists. For example: 3 -> [0,0,0], [0,0,1],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]. As a sanity check, remember that there are 2^N such lists. Do not use the bin-function in Python.}
 \lstinputlisting[style=python]{"../Lesson 2/exercise2-2.py"}
 
 \section{Exercise 2.3}
-Write a script that takes the file from the Kaggle competition, extracts the request_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).
+\textbf{Write a script that takes the file from the Kaggle competition, extracts the request_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).
 
-There should be one row pr. text. The matrix should be N x M where N is the number of texts and M is the number of distinct words in all the texts.
+There should be one row pr. text. The matrix should be N x M where N is the number of texts and M is the number of distinct words in all the texts.}
 \lstinputlisting[style=python]{"../Lesson 2/exercise2-3.py"}
 
 \section{Exercise 3.1}
-Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.
+\textbf{Write a script which reads a matrix from a file like this one and solves the linear matrix equation Ax=b where b is the last column of the input-matrix and A is the other columns. It is okay to use the solve()-function from numpy.linalg.}
 \lstinputlisting[style=python]{"../Lesson 3/exercise3-1.py"}
 
 \section{Exercise 3.2}
-Write a script that reads in this list of points (x,y), fits/interpolates them with a polynomial of degree 3. Solve for the (real) roots of the polynomial numerically using Scipy’s optimization functions (not the root function in Numpy).
+\textbf{Write a script that reads in this list of points (x,y), fits/interpolates them with a polynomial of degree 3. Solve for the (real) roots of the polynomial numerically using Scipy’s optimization functions (not the root function in Numpy).}
 \lstinputlisting[style=python]{"../Lesson 3/exercise3-2.py"}
 
 \section{Exercise 3.3}
-Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html
+\textbf{Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html}
 \lstinputlisting[style=python]{"../Lesson 3/exercise3-3.py"}
 
 \section{Exercise 3.4}
-Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester_received_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data.
+\textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester_received_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data.}
 
 How good is your classifier? Discuss the performance of the classifier.
 \lstinputlisting[style=python]{"../Lesson 3/exercise3-4.py"}
 
 \section{Exercise 3.5}
-Write a simple Python function for computing the sum \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots with 10,000 terms (this should be around 1.644), 500 times in a row (to make the execution time measurable). Now compile the code with Cython and see how much speedup you can achieve by this.
+\textbf{Write a simple Python function for computing the sum \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots with 10,000 terms (this should be around 1.644), 500 times in a row (to make the execution time measurable). Now compile the code with Cython and see how much speedup you can achieve by this.}
 \lstinputlisting[style=python]{"../Lesson 3/exercise3_5_python.py"}
 \lstinputlisting[style=python]{"../Lesson 3/exercise3_5_cython.pyx"}
 
 \section{Exercise 4.1}
-Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.
+\textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}
 \lstinputlisting[style=python]{"../Lesson 4/run_dbscan_cython.py"}
 \lstinputlisting[style=python]{"../Lesson 4/dbscan_cython.pyx"}
 
