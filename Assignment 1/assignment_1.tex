@@ -340,7 +340,7 @@ Next we create a cython version, we use two files for this, one importing pyximp
 0.03667000599671155
 \end{pythonOutput}
 and time taken with 500 executions for the cython function is 0.0366\\
-Thus we get a speedup of 27.74x, not too shabby
+Thus we get a speedup of 27.74x.
 \section{Exercise 4.1}
 \textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}\\
 We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance\_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
