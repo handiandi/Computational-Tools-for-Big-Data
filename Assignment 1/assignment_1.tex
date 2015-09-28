@@ -108,7 +108,19 @@ ford    bronco  83      25      9525
 \section{Exercise 1.3}
 \textbf{Using this file (https://www.dropbox.com/s/85fbd4l8s52f7to/dict?dl=0) as a dictionary, write a simple spellchecker that takes input from stdin or a file and outputs a list of words not in the dictionary. One solution gets 721 misspelled words in this Shakespeare file (https://www.dropbox.com/s/bnku7grfycm8ii6/shakespeare.txt?dl=0).}
 \lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-3.sh"}
-
+Executing the script and pipe it to head, gives:
+\begin{pythonOutput}
+abused
+abuses
+accoutrements
+acres
+actions
+acts
+adam
+affairs
+affections
+ages
+\end{pythonOutput}
 \section{Exercise 1.4}
 \textbf{Launch a t2.micro instance on Amazon EC2. Log onto the instance, create some files and install some software (for example git).}
 \section{Exercise 1.5}
@@ -138,7 +150,10 @@ For the saving part we define a proof-of-concept array we can save to a file and
 \section{Exercise 2.2}
 Write a script that takes an integer N, and outputs all bit-strings of length N as lists.
 \pythonexternal{"../Lesson 2/exercise2-2.py"}
-
+\begin{pythonOutput}
+./exercise2-1.py 3
+[[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1]]
+\end{pythonOutput}
 \section{Exercise 2.3}
 
 \textbf{Write a script that takes this file (from this Kaggle competition), extracts the request\_text field from each dictionary in the list, and construct a bag of words representation of the string (string to count-list).}
@@ -183,6 +198,68 @@ We get the following root:
 \section{Exercise 3.3}
 \textbf{Do the first two exercises (Todo’s) at the bottom of http://byumcl.bitbucket.org/bootcamp2013/labs/pandas.html}
 \pythonexternal{"../Lesson 3/exercise3-3.py"}
+\begin{pythonOutput}
+Loading data. Please wait...
+
+Movies with the most number of ratings
+American Beauty (1999)                                   3428
+Star Wars: Episode IV - A New Hope (1977)                2991
+Star Wars: Episode V - The Empire Strikes Back (1980)    2990
+Star Wars: Episode VI - Return of the Jedi (1983)        2883
+Jurassic Park (1993)                                     2672
+Name: rating, dtype: int64
+
+
+The 3 movies with the highest number average rating for females
+Close Shave, A (1995)                                           4.644444
+Wrong Trousers, The (1993)                                      4.588235
+Sunset Blvd. (a.k.a. Sunset Boulevard) (1950)                   4.572650
+Name: rating, dtype: float64
+
+
+The 3 movies with the highest number average rating for Males
+Godfather, The (1972)                                           4.583333
+Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)    4.576628
+Shawshank Redemption, The (1994)                                4.560625
+Name: rating, dtype: float64
+
+
+The 10 movies men liked much more than women
+Good, The Bad and The Ugly, The (1966)          0.726351
+Kentucky Fried Movie, The (1977)                0.676359
+Dumb & Dumber (1994)                            0.638608
+Longest Day, The (1962)                         0.619682
+Cable Guy, The (1996)                           0.613787
+Evil Dead II (Dead By Dawn) (1987)              0.611985
+Hidden, The (1987)                              0.607167
+Rocky III (1982)                                0.581801
+Caddyshack (1980)                               0.573602
+For a Few Dollars More (1965)                   0.544704
+Name: rating, dtype: float64
+
+
+The 10 movies women liked much more than men
+Dirty Dancing (1987)                           -0.830782
+Jumpin' Jack Flash (1986)                      -0.676359
+Grease (1978)                                  -0.608224
+Little Women (1994)                            -0.548849
+Steel Magnolias (1989)                         -0.535777
+Anastasia (1997)                               -0.518391
+Rocky Horror Picture Show, The (1975)          -0.512885
+Color Purple, The (1985)                       -0.498851
+Age of Innocence, The (1993)                   -0.487561
+Free Willy (1993)                              -0.482573
+Name: rating, dtype: float64
+
+
+Movies with the highest rating standard deviation
+Dumb & Dumber (1994)                                 1.321333
+Blair Witch Project, The (1999)                      1.316368
+Natural Born Killers (1994)                          1.307198
+Tank Girl (1995)                                     1.277695
+Rocky Horror Picture Show, The (1975)                1.260177
+
+\end{pythonOutput}
 
 \section{Exercise 3.4}
 \textbf{Last week you read in a dataset for this Kaggle competition and created a bag-of-words representation on the review strings. Train a logistic regression classifier for the competition using your bag-of-words features (and possibly some of the others) to predict the variable “requester\_received\_pizza”. For this exercise, you might want to work a little bit more on your code from last week. Use 90\% of the data as training data and 10\% as test data. How good is your classifier? Discuss the performance of the classifier.}
