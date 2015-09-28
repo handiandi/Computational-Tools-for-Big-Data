@@ -347,22 +347,23 @@ Thus we get a speedup of 27.74x.
 \textbf{Implement the DBSCAN clustering algorithm to work with Jaccard-distance as its metric. It should be able to handle sparse data.}\\
 We implemented the DBSCAN algorithm using a combination of Numpy and Cython. We used memoization for the distances and thus store them in distance\_matrix as soon as we compute them to avoid unnecessary calls to the jaccard distance method.
 The memoization of distances will not work for the 100000x100000 dataset due memory size constraints, thus the execution for that one is without memoization.
+The performance of the DBSCAN script can be found in Table \ref{performance-dbscan}
 \pythonexternal{"../Lesson 4/run_dbscan_cython.py"}
 \pythonexternal{"../Lesson 4/dbscan_cython.pyx"}
 \begin{table}[ht]
 \centering
 \caption{Performance and result table for DBSCAN}
-\label{my-label}
+\label{performance-dbscan}
 \begin{tabular}{llll}
-\textbf{Dimensions}                          & \textbf{time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
-10x10                                        & 0.0005862309990334325    & 4                           & 4                                            \\
-100x100                                      & 0.003060722003283445     & 6                           & 30                                           \\
-1000x1000                                    & 0.09427501499885693      & 9                           & 289                                          \\
-10000x10000                                  & 10.893330368002353       & 394                         & 2847                                         \\
-100000x100000 \footnote{without distance memoization} & 4475.570929656002        & 1692                        & 28470                                       
+\textbf{Dimensions}                          & \textbf{Time in seconds} & \textbf{Number of clusters} & \textbf{Number of points in largest cluster} \\
+10                                      & 0.0005862309990334325    & 4                           & 4                                            \\
+100                                     & 0.003060722003283445     & 6                           & 30                                           \\
+1000                                  & 0.09427501499885693      & 9                           & 289                                          \\
+10000                                 & 10.893330368002353       & 394                         & 2847                                         \\
+100000 (without memoization) & 4475.570929656002        & 1692                        & 28470                                       
 \end{tabular}
 \end{table}
-We tried to run the cprofiler to find hotspots in our code, and the result is the following using the dataset of 10,000 entries.
+We continuously used the cprofiler to find hotspots in our code, and the final result can be seen below using the dataset of 10,000 entries.
 We think it's possible to further optimize the code by converting the numpy code of the region\_query and expand\_cluster functions to cython.
 \begin{pythonOutput}
         50078275 function calls (50078271 primitive calls) in 15.543 seconds
