@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
-#cython: profile=True
+#cython: boundscheck=False
+#cython: wraparound=False
+#cython: initializedcheck=False
 
 import pstats, cProfile
 import pickle
@@ -18,8 +19,8 @@ ctypedef np.int_t DTYPE_t
 ctypedef np.float_t DTYPE_FLOAT_t
 
     # parameters
-FILENAME = "data_100points_100dims.dat"
-cdef float EPS = 0.3 
+FILENAME = "data_100000points_100000dims.dat"
+cdef float EPS = 0.15
 cdef int M = 2
 
 file_handler = open(os.path.join("data",FILENAME),"rb")
@@ -40,9 +41,9 @@ neighbor_indexes = np.empty((num_rows), dtype=np.dtype("i"))
 cdef int [:] neighbor_indexes_view = neighbor_indexes
 
 
-distance_matrix_np = np.empty((num_rows,num_cols), dtype=np.dtype("double"))
-distance_matrix_np.fill(-1)
-cdef double [:,:] distance_matrix = distance_matrix_np
+#distance_matrix_np = np.empty((num_rows,num_cols), dtype=np.dtype("double"))
+#distance_matrix_np.fill(-1)
+#cdef double [:,:] distance_matrix = distance_matrix_np
 
 cdef int [:] visited_indexes = np.zeros(num_rows, dtype=np.dtype("i"))
 cdef int [:] cluster_indexes = np.zeros(num_rows, dtype=np.dtype("i"))
@@ -118,8 +119,8 @@ def compute_jaccard_distance(int a_index, int p_index):
     jaccard_index = (M_11)/ float((M_01_and_M_10 + M_11))
     jaccard_distance = 1-jaccard_index
      
-    distance_matrix[a_index, p_index] = jaccard_distance
-    distance_matrix[p_index, a_index] = jaccard_distance
+    #distance_matrix[a_index, p_index] = jaccard_distance
+    #distance_matrix[p_index, a_index] = jaccard_distance
     return jaccard_distance
 
 def region_query(int p_index, float eps):
@@ -135,23 +136,23 @@ def region_query(int p_index, float eps):
     for i in range(0, num_rows):
         if (i == p_index):
             continue
-        if (distance_matrix[p_index, i] != -1):
-            distance = distance_matrix[p_index, i]
-        elif (distance_matrix[i, p_index] != -1):
-            distance = distance_matrix[i, p_index]
-        else:
-            distance = compute_jaccard_distance(i, p_index)
+        #if (distance_matrix[p_index, i] != -1):
+        #    distance = distance_matrix[p_index, i]
+        #elif (distance_matrix[i, p_index] != -1):
+        #    distance = distance_matrix[i, p_index]
+        #else:
+        distance = compute_jaccard_distance(i, p_index)
         if distance <= eps:
             neighbor_indexes[i] = 1
 
     return np.where(neighbor_indexes != -1)[0]
 
-cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
+#cProfile.runctx("run_program()", globals(), locals(), "Profile.prof")
 
-s = pstats.Stats("Profile.prof")
-s.strip_dirs().sort_stats("tottime").print_stats()
+#s = pstats.Stats("Profile.prof")
+#s.strip_dirs().sort_stats("tottime").print_stats()
 
-#print(timeit.timeit(run_program, number=1))
+print(timeit.timeit(run_program, number=1))
 if (FILENAME == "data_100points_100dims.dat"):
     assert (np.array([ 1,  2, -1,  3,  4, -1,  4,  4, -1,  4, -1,  2,  2,  1, -1,  1,  1,  4,
      -1,  1,  2,  1,  1,  4, -1, -1,  2,  2,  1,  4,  4,  4,  4,  1, -1, -1,
