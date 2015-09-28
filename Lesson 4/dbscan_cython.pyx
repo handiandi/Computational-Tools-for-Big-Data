@@ -53,7 +53,15 @@ def run_program():
 
     print(np.array(cluster_indexes))
     print("Number of clusters: {0}".format(np.unique(cluster_indexes).size))
-    print("Number of points in the largest cluster: {0}".format(np.max(np.unique(cluster_indexes, return_counts=True)[1])))
+    clusters_and_points = np.unique(cluster_indexes, return_counts=True)
+    clusters = clusters_and_points[0]
+    no_points = clusters_and_points[1]
+    index = np.argmax(no_points)
+    if clusters[index] == -1:
+        no_points = np.delete(no_points, index)
+    
+    print("Number of points in the largest cluster (excl. noise cluster): {0}".format(np.max(no_points)))
+
 
 def db_scan(float eps, int m):
     cdef int p_index, C = 0
