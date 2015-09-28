@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{cleveref}
+
+\usepackage{listings}
+\usepackage{color}
+
+\lstdefinestyle{python}{%
+    language=python,
+    breaklines=true,
+    tabsize=4,
+    basicstyle=\ttfamily\small,
+    otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
+    def, print, exec, break, continue, return},
+    emphstyle=\color{black}\bfseries,
+    emph={[2]True, False, None, self},
+    emphstyle=[2]\color{key},
+    emph={[3]from, import, as},
+    emphstyle=[3]\color{blue},
+    morecomment=[s]{"""}{"""},
+    commentstyle=\color{gray}\slshape,
+    rulesepcolor=\color{blue},#1
+}
+
+\title{Assignment 1\\02807 Computational Tools for Big Data}
+\author{Anonymous Authors}
+\date{28th September 2015}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1.1}
+Write a command that finds the 10 most popular words in a file.
+\lstinputlisting[language=bash]{"../Lesson 1/exercise1-1.sh"}
+
+\section{Exercise 1.2}
+\lstinputlisting[language=bash]{"../Lesson 1/exercise1-2.sh"}
+
+\section{Exercise 1.3}
+\lstinputlisting[language=bash]{"../Lesson 1/exercise1-3.sh"}
+
+
+\section{Exercise 1.4}
+\section{Exercise 1.5}
+
+\section{Exercise 2.1}
+And you can even put Python code in here!
+
+\lstinputlisting[style=python]{"../Lesson 2/exercise2-1.py"}
+
+\section{Exercise 2.2}
+\lstinputlisting[style=python]{"../Lesson 2/exercise2-2.py"}
+
+\section{Exercise 2.3}
+\lstinputlisting[style=python]{"../Lesson 2/exercise2-3.py"}
+
+\section{Exercise 3.1}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3-1.py"}
+\section{Exercise 3.2}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3-2.py"}
+\section{Exercise 3.3}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3-3.py"}
+\section{Exercise 3.4}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3-4.py"}
+\section{Exercise 3.5}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3_5_python.py"}
+\lstinputlisting[style=python]{"../Lesson 3/exercise3_5_cython.pyx"}
+\section{Exercise 4.1}
+\lstinputlisting[style=python]{"../Lesson 4/run_dbscan_cython.py"}
+\lstinputlisting[style=python]{"../Lesson 4/dbscan_cython.pyx"}
+
+\end{document}
