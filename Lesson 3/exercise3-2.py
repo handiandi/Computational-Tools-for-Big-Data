@@ -18,7 +18,7 @@ xnew = np.linspace(-20, 19)
 # plot data and function for x points
 plt.plot(x_array, y_array, 'o', xnew, f(xnew), '-')
 plt.legend(['data', 'interpolation'], loc='best')
-plt.show()
+#plt.show()
 
 
 # finding roots

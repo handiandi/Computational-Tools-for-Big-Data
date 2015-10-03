@@ -16,8 +16,8 @@ DTYPE = np.int
 ctypedef np.int_t DTYPE_t
 
     # parameters
-FILENAME = "data_10000points_10000dims.dat"
-cdef float EPS = 0.15
+FILENAME = "data_100points_100dims.dat"
+cdef float EPS = 0.30
 cdef int M = 2
 
 file_handler = open(os.path.join("data",FILENAME),"rb")
