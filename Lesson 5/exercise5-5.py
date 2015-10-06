@@ -13,20 +13,16 @@ build a string for use with the IN keyword specifying all the customer id's whos
 con = sqlite3.connect("northwind.db")
 con.text_factory = lambda x: str(x, 'latin1')
 cur = con.cursor()
-cur.execute("""SELECT DISTINCT Orders.CustomerID from Orders
-			   INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
-			   INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
-			   INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
-			   WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID""")
-# produce a list of values instead of a list of single-tuples
-customer_ids = [customer_id[0] for customer_id in cur.fetchall()]
-placeholder = "?"
-placeholders = ",".join(placeholder*len(customer_ids))
 
 cur.execute(""" SELECT DISTINCT Products.ProductName from Products
 				INNER JOIN 'Order Details' on Products.ProductID = 'Order Details'.ProductID
 				INNER JOIN Orders on 'Order Details'.OrderID = Orders.OrderID
-				INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID WHERE Customers.CustomerID IN (%s)""" % placeholders, customer_ids)
+				INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID WHERE Customers.CustomerID IN 
+					(SELECT DISTINCT Orders.CustomerID from Orders
+				    INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
+				    INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
+				    INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
+				    WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID)""")
 products = [product[0] for product in cur.fetchall()]
 print("Sqlite: {} different products have been purchased by Uncle Bob's Organic Dried Pears Customers\nThese are:".format(len(products)))
 print("\n".join(products))

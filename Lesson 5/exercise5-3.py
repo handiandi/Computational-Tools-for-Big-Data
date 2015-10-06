@@ -8,9 +8,18 @@ Exercise 5.3
 Sqlite version of exercise:
 """
 con = sqlite3.connect("northwind.db")
-con.text_factory = lambda x: str(x, 'latin1')
+con.text_factory = lambda x: str(x, 'latin1') #Fixes encoding issues with queries
 cur = con.cursor()
-cur.execute("SELECT Orders.CustomerID, Orders.OrderID, Products.ProductName from Orders INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  WHERE Orders.CustomerID = 'ALFKI'")
+cur.execute("""SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders 
+	INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
+	INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID 
+	WHERE cID = 'ALFKI' AND orID in 
+		(Select Orders.OrderID as orID from Orders 
+			INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
+			INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID 
+			WHERE Orders.CustomerID = 'ALFKI'
+			GROUP BY orID HAVING COUNT(orID)>1)""")
+
 orders = cur.fetchall()
 for order in orders:
 	print(order)
