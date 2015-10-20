@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{cleveref}
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+
+\definecolor{output_background}{rgb}{0.4, 0.4, 0.4}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{purple}{rgb}{0.6, 0.1, 0.9}
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=python,
+breaklines=true,
+basicstyle=\ttfamily\small,
+otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},             % Add keywords here
+keywordstyle=\color{blue},
+emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
+    def, print, exec, break, continue, return},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{purple},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+stringstyle=\color{red},
+frame=tb,
+showstringspaces=false,
+morecomment=[s]{"""}{"""},
+commentstyle=\color{gray},
+rulesepcolor=\color{blue},
+title=\lstname
+}}
+
+% Python style for output highlighting
+\newcommand\pythonoutputstyle{\lstset{
+backgroundcolor=\color{output_background},
+basicstyle=\ttm\small\color{white},
+showstringspaces=false
+}}
+
+
+\lstnewenvironment{pythonOutput}[1][]
+{
+\pythonoutputstyle
+\lstset{#1}
+}
+{}
+
+% Python for inline
+\newcommand\pythonoutput[1]{{\pythonoutputstyle\lstinline!#1!}}
+
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+\title{Assignment 2\\02807 Computational Tools for Big Data}
+\author{S \& A}
+\date{26th October 2015}
+\usepackage[cm]{fullpage}
+\begin{document}
+
+\maketitle
+\newpage
+%-------------- Week 5 ---------------------
+\section{Exercise 5.1}
+\textbf{Short recap of the exercise}\\
+\textit{Description text}\\
+
+\textbf{Overview over code flow}
+\begin{enumerate}
+  \item First we fetch the \ldots
+  \item Then we\ldots
+  \item We output \ldots
+\end{enumerate}
+
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\textbf{Output}
+\begin{pythonOutput}
+./exercise2-1.py 3
+[[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1]]
+\end{pythonOutput}
+\textbf{Detailed explaination of code and discussion}
+
+
+\section{Exercise 5.2}
+\textbf{Exercise text}
+
+\section{Exercise 5.3}
+\textbf{Exercise text}
+\section{Exercise 5.4}
+\textbf{Exercise text}
+\section{Exercise 5.5}
+\textbf{Exercise text}
+\section{Exercise 5.6}
+\textbf{Exercise text}
+\section{Exercise 5.7}
+\textbf{Exercise text}
+
+
+%-------------- Week 6 ---------------------
+\section{Exercise 6.1}
+\textbf{Exercise text}
+%\lstinputlisting[language=bash,breaklines=true, basicstyle=\ttfamily\small, frame=tb, title=\lstname]{"../Lesson 1/exercise1-1.sh"}
+
+
+\section{Exercise 6.2}
+\textbf{Exercise text}
+
+\section{Exercise 6.3}
+\textbf{Exercise text}
+\section{Exercise 6.4}
+\textbf{Exercise text}
+\section{Exercise 6.5}
+\textbf{Exercise text}
+\section{Exercise 6.6}
+\textbf{Exercise text}
+\section{Exercise 6.7}
+\textbf{Exercise text}
+
+
+%-------------- Week 7 ---------------------
+\section{Exercise 7.1}
+\textbf{Exercise text}
+\section{Exercise 7.2}
+\textbf{Exercise text}
+
+
+\end{document}
