@@ -1,0 +1,1 @@
+MATCH (customer)-[:PURCHASED]-(orders)-[:ORDERS]-(products : Product) where products.productID = '7' RETURN count(customer),customer
