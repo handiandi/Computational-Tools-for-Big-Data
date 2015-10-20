@@ -1,5 +1,7 @@
 \documentclass{article}
+
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
 \usepackage{amsmath,amssymb,graphicx}
 \usepackage{cleveref}
 
@@ -7,6 +9,10 @@
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
 \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+\DeclareUnicodeCharacter{00D6}{Ö}
+\DeclareUnicodeCharacter{00DC}{Ü}
+\DeclareUnicodeCharacter{00E4}{ä}
+\DeclareUnicodeCharacter{00E4}{ä}
 
 % Custom colors
 \usepackage{color}
@@ -43,7 +49,50 @@ title=\lstname
 \newcommand\pythonoutputstyle{\lstset{
 backgroundcolor=\color{output_background},
 basicstyle=\ttm\small\color{white},
-showstringspaces=false
+showstringspaces=false,
+inputencoding=utf8,
+extendedchars=true,
+literate=%
+    {á}{{\'a}}1
+    {č}{{\v{c}}}1
+    {ď}{{\v{d}}}1
+    {é}{{\'e}}1
+    {ě}{{\v{e}}}1
+    {í}{{\'i}}1
+    {ň}{{\v{n}}}1
+    {ó}{{\'o}}1
+    {ř}{{\v{r}}}1
+    {š}{{\v{s}}}1
+    {ť}{{\v{t}}}1
+    {ú}{{\'u}}1
+    {ů}{{\r{u}}}1
+    {ý}{{\'y}}1
+    {ž}{{\v{z}}}1
+    {Á}{{\'A}}1
+    {Č}{{\v{C}}}1
+    {Ď}{{\v{D}}}1
+    {É}{{\'E}}1
+    {Ě}{{\v{E}}}1
+    {Í}{{\'I}}1
+    {Ň}{{\v{N}}}1
+    {Ó}{{\'O}}1
+    {Ř}{{\v{R}}}1
+    {Š}{{\v{S}}}1
+    {Ť}{{\v{T}}}1
+    {Ú}{{\'U}}1
+    {Ů}{{\r{U}}}1
+    {Ý}{{\'Y}}1
+    {Ž}{{\v{Z}}}1
+    {Ö}{{\"{O}}}1
+    {ö}{{\"{o}}}1
+    {Ü}{{\"{U}}}1
+    {ü}{{\"{u}}}1   
+    {ß}{{\ss}}1
+    {ä}{{\"{a}}}1
+    {é}{{\'{e}}}1
+    {ô}{{\^{o}}}1
+    {â}{{\^{a}}}1
+    {è}{{\`{e}}}1
 }}
 
 
@@ -74,29 +123,61 @@ showstringspaces=false
 %-------------- Week 5 ---------------------
 \section{Exercise 5.1}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Establish connection to the Northwind database in Python with Sqlite (use the sqlite3 module) and MongoDB. Document the connection by making some simple queries.}\\
 
 \textbf{Overview over code flow}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item We import the needed modules for Sqlite and MongoDB
+  \item Then we create two queries for Sqlite and print the results
+  \item Last, we do the same with MongoDB: create two queries and print the results\\
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-1.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
-Output
+sqlite query:
+customers:
+ [('ALFKI', 'Alfreds Futterkiste', 'Maria Anders', 'Sales Representative', 'Obere Str. 57', 
+ 'Berlin', None, '12209', 'Germany', '030-0074321', '030-0076545')]
+Orders: 
+ (10643, 'ALFKI', 6, '1997-08-25 00:00:00.000', '1997-09-22 00:00:00.000', 
+ '1997-09-02 00:00:00.000', 1, 29.46, 'Alfreds Futterkiste', 'Obere Str. 57', 
+ 'Berlin', None, '12209', 'Germany')
+
+
+
+mongodb query:
+customers:
+ {'CustomerID': 'ALFKI', 'ContactTitle': 'Sales Representative', 
+ 'CompanyName': 'Alfreds Futterkiste', 'City': 'Berlin', 'Fax': '030-0076545', 
+ 'Region': 'NULL', 'ContactName': 'Maria Anders', 'Phone': '030-0074321', 
+ '_id': ObjectId('56139e109348cd1026b33f5b'), 'Address': 'Obere Str. 57', 
+ 'Country': 'Germany', 'PostalCode': 12209}
+
+Orders: 
+ {'CustomerID': 'ALFKI', 'EmployeeID': 6, 'ShipName': 'Alfreds Futterkiste', 
+ 'OrderID': 10643, 'ShippedDate': '1997-09-02 00:00:00.000', 'Freight': 29.46, 
+ 'ShipVia': 1, 'ShipCity': 'Berlin', 'ShipAddress': 'Obere Str. 57', 
+ '_id': ObjectId('56139e119348cd1026b35561'), 'ShipCountry': 'Germany', 
+ 'OrderDate': '1997-08-25 00:00:00.000', 'ShipRegion': 'NULL', 'ShipPostalCode': 12209, 
+ 'RequiredDate': '1997-09-22 00:00:00.000'}
+
 \end{pythonOutput}
+
+~\\
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+We first try connecting and querying the sqlite database by querying all customers as well as orders for a specific customer. We then print out the result. 
+We do it all in a try-except, so it can handle errors like "database not found" or "table not found" without  currupting the db. This is usually only nessecary when insert or updating data. We have it by principle. \\
+\\*
+We can see by the output, that our queries works, since it gets some reasonable results. 
 
 
 \section{Exercise 5.2}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Query for, and return, all orders made by ALFKI and the products they contain}\\
 
 \textbf{Overview over code flow}\\
 
@@ -107,37 +188,105 @@ Bla bla bla
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-2.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
-Output
+sqlite part:
+('ALFKI', 10643, 'Rössle Sauerkraut')
+('ALFKI', 10643, 'Chartreuse verte')
+('ALFKI', 10643, 'Spegesild')
+('ALFKI', 10692, 'Vegie-spread')
+('ALFKI', 10702, 'Aniseed Syrup')
+('ALFKI', 10702, 'Lakkalikööri')
+('ALFKI', 10835, 'Raclette Courdavault')
+('ALFKI', 10835, 'Original Frankfurter grüne Soße')
+('ALFKI', 10952, "Grandma's Boysenberry Spread")
+('ALFKI', 10952, 'Rössle Sauerkraut')
+('ALFKI', 11011, 'Escargots de Bourgogne')
+('ALFKI', 11011, 'Flotemysost')
+
+MongoDB part:
+ALFKI 10643 Rössle Sauerkraut
+ALFKI 10643 Chartreuse verte
+ALFKI 10643 Spegesild
+ALFKI 10692 Vegie-spread
+ALFKI 10702 Aniseed Syrup
+ALFKI 10702 Lakkalikööri
+ALFKI 10835 Raclette Courdavault
+ALFKI 10835 Original Frankfurter grüne Soße
+ALFKI 10952 Grandma's Boysenberry Spread
+ALFKI 10952 Rössle Sauerkraut
+ALFKI 11011 Escargots de Bourgogne
+ALFKI 11011 Flotemysost
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\underline{For sqlite part:}~\\
+First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
+Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
+So we join Orders and Order Details on OrderID, and Order Details and Products on ProductID, and then we only need the orders with ALFKI as customer. We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
+
+~\\
+\underline{For MongoDB part:}~\\
+MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
 
 \section{Exercise 5.3}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Get all orders (with products) made by ALFKI that contain at least 2 product types}\\
 
 \textbf{Overview over code flow}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item First we create the sqlite part, with a single query which contains a sub-select. We prints the result 
+  \item Then we create the MongoDB part with loops, and printing the results. 
 \end{enumerate}
 
 \textbf{Code}\\
 %\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
 \textbf{Output}
 \begin{pythonOutput}
-Output
+Sqlite part:
+('ALFKI', 10643, 'Rössle Sauerkraut')
+('ALFKI', 10643, 'Chartreuse verte')
+('ALFKI', 10643, 'Spegesild')
+('ALFKI', 10702, 'Aniseed Syrup')
+('ALFKI', 10702, 'Lakkalikööri')
+('ALFKI', 10835, 'Raclette Courdavault')
+('ALFKI', 10835, 'Original Frankfurter grüne Soße')
+('ALFKI', 10952, "Grandma's Boysenberry Spread")
+('ALFKI', 10952, 'Rössle Sauerkraut')
+('ALFKI', 11011, 'Escargots de Bourgogne')
+('ALFKI', 11011, 'Flotemysost')
+
+MongoDB part:
+ALFKI 10643 Rössle Sauerkraut
+ALFKI 10643 Chartreuse verte
+ALFKI 10643 Spegesild
+ALFKI 10702 Aniseed Syrup
+ALFKI 10702 Lakkalikööri
+ALFKI 10835 Raclette Courdavault
+ALFKI 10835 Original Frankfurter grüne Soße
+ALFKI 10952 Grandma's Boysenberry Spread
+ALFKI 10952 Rössle Sauerkraut
+ALFKI 11011 Escargots de Bourgogne
+ALFKI 11011 Flotemysost
+
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\underline{For sqlite part:}~\\
+The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieve ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
+The outer-select, select then CustomerID, OrderID and ProductName based on those OrderID's which the inner-selects returns. 
+
+~\\
+\underline{For MongoDB part:}~\\
+The solution looks very similar to the latter, except for the if-statement where the count are greater than 1. 
+
+~\\
+For verifying the result, we can see that the 10692 from the previous exercise are NOT in this solution. 10692 has only 1 products name which we can see in the previous exercise. 
+
 \section{Exercise 5.4}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Determine how many and who ordered “Uncle Bob’s Organic Dried Pears” (productID 7).}\\
 
 \textbf{Overview over code flow}\\
 
@@ -148,16 +297,72 @@ Bla bla bla
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-4.py"}
 \textbf{Output}
 \begin{pythonOutput}
-Output
+Sqlite: 20 distinct people ordered Uncle Bob's Organic Dried Pears
+ They are:
+(2, 'Laurence Lebihan')
+(1, 'Elizabeth Lincoln')
+(2, 'Victoria Ashworth')
+(2, 'Ann Devon')
+(1, 'Roland Mendel')
+(1, 'Martine Rancé')
+(1, 'Maria Larsson')
+(1, 'André Fonseca')
+(1, 'Daniel Tonini')
+(1, 'Carlos González')
+(1, 'Yvonne Moncada')
+(2, 'Henriette Pfalzheim')
+(2, 'Horst Kloss')
+(3, 'Paula Wilson')
+(2, 'Maurizio Moroni')
+(1, 'Jonas Bergulfsen')
+(1, 'Jose Pavarotti')
+(1, 'Art Braunschweiger')
+(1, 'Palle Ibsen')
+(2, 'Mary Saveley')
+
+MongoDB: 20 distinct people ordered Uncle Bobo's Organic Dried Pears
+ They are:
+(2, 'Laurence Lebihan')
+(2, 'Ann Devon')
+(1, 'Maria Larsson')
+(2, 'Victoria Ashworth')
+(2, 'Henriette Pfalzheim')
+(1, 'Elizabeth Lincoln')
+(2, 'Mary Saveley')
+(1, 'Carlos González')
+(1, 'Yvonne Moncada')
+(1, 'Jonas Bergulfsen')
+(1, 'Daniel Tonini')
+(1, 'Jose Pavarotti')
+(1, 'Palle Ibsen')
+(2, 'Horst Kloss')
+(1, 'André Fonseca')
+(1, 'Art Braunschweiger')
+(2, 'Maurizio Moroni')
+(1, 'Martine Rancé')
+(1, 'Roland Mendel')
+(3, 'Paula Wilson')
+
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\underline{For sqlite part:}~\\
+We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
+We join customers on orders, orders on order details and order details on products
+We filter by ProductID which needs to be 7 and group by CustomerID to get distinct Customers
+
+~\\
+\underline{For MongoDB part:}~\\
+In the MongoDB version we start with order details which contain the Pears Product ID
+We iterate over their respective orders and the orders respective customers
+We can then build a list of distinct customers which have ordered the Pears and also how many times they have ordered them 
+
+
 \section{Exercise 5.5}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
 
 \textbf{Overview over code flow}\\
 
@@ -168,13 +373,186 @@ Bla bla bla
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-5.py"}
 \textbf{Output}
 \begin{pythonOutput}
-Output
+Sqlite: 76 different products have been purchased by Uncle Bob's Organic Dried Pears Customers
+These are:
+Gustaf's Knäckebröd
+Ravioli Angelo
+Louisiana Fiery Hot Pepper Sauce
+Chang
+Chef Anton's Gumbo Mix
+Mascarpone Fabioli
+Jack's New England Clam Chowder
+Tarte au sucre
+Outback Lager
+Uncle Bob's Organic Dried Pears
+Gnocchi di nonna Alice
+Pavlova
+Guaraná Fantástica
+Nord-Ost Matjeshering
+Longlife Tofu
+Geitost
+Sir Rodney's Marmalade
+Gorgonzola Telino
+Mozzarella di Giovanni
+Ikura
+Boston Crab Meat
+Lakkalikööri
+Genen Shouyu
+Teatime Chocolate Biscuits
+Camembert Pierrot
+Chai
+Perth Pasties
+Steeleye Stout
+Tourtière
+Scottish Longbreads
+Aniseed Syrup
+Wimmers gute Semmelknödel
+Alice Mutton
+Ipoh Coffee
+Rhönbräu Klosterbier
+Queso Cabrales
+Gudbrandsdalsost
+Inlagd Sill
+Escargots de Bourgogne
+Spegesild
+Raclette Courdavault
+Vegie-spread
+Côte de Blaye
+Gumbär Gummibärchen
+Filo Mix
+Carnarvon Tigers
+Northwoods Cranberry Sauce
+Singaporean Hokkien Fried Mee
+Gula Malacca
+Chartreuse verte
+NuNuCa Nuß-Nougat-Creme
+Manjimup Dried Apples
+Flotemysost
+Sasquatch Ale
+Original Frankfurter grüne Soße
+Sir Rodney's Scones
+Rössle Sauerkraut
+Thüringer Rostbratwurst
+Pâté chinois
+Tofu
+Maxilaku
+Tunnbröd
+Chocolade
+Gravad lax
+Zaanse koeken
+Sirop d'érable
+Louisiana Hot Spiced Okra
+Rogede sild
+Valkoinen suklaa
+Konbu
+Chef Anton's Cajun Seasoning
+Mishi Kobe Niku
+Schoggi Schokolade
+Röd Kaviar
+Queso Manchego La Pastora
+Grandma's Boysenberry Spread
+
+
+MongoDB: 76 different products have been purchased by Uncle Bob's Organic Dried Pears Customers
+These are:
+Outback Lager
+Mishi Kobe Niku
+Steeleye Stout
+Zaanse koeken
+Konbu
+Tofu
+Teatime Chocolate Biscuits
+Singaporean Hokkien Fried Mee
+Jack's New England Clam Chowder
+Raclette Courdavault
+Filo Mix
+Ravioli Angelo
+Boston Crab Meat
+Côte de Blaye
+Thüringer Rostbratwurst
+Perth Pasties
+Rössle Sauerkraut
+Gnocchi di nonna Alice
+Rhönbräu Klosterbier
+Pâté chinois
+Lakkalikööri
+Uncle Bob's Organic Dried Pears
+Rogede sild
+Longlife Tofu
+Genen Shouyu
+Alice Mutton
+Geitost
+Guaraná Fantástica
+Tourtière
+Sasquatch Ale
+Inlagd Sill
+Schoggi Schokolade
+Sir Rodney's Scones
+Maxilaku
+Valkoinen suklaa
+Mascarpone Fabioli
+Gorgonzola Telino
+Mozzarella di Giovanni
+Ikura
+Chang
+Vegie-spread
+Camembert Pierrot
+Sirop d'érable
+Louisiana Fiery Hot Pepper Sauce
+Wimmers gute Semmelknödel
+Chocolade
+Original Frankfurter grüne Soße
+Manjimup Dried Apples
+Gula Malacca
+Queso Cabrales
+Chartreuse verte
+Gumbär Gummibärchen
+Carnarvon Tigers
+Flotemysost
+Sir Rodney's Marmalade
+Gravad lax
+Northwoods Cranberry Sauce
+Scottish Longbreads
+Chef Anton's Cajun Seasoning
+Chai
+Escargots de Bourgogne
+Queso Manchego La Pastora
+Chef Anton's Gumbo Mix
+NuNuCa Nuß-Nougat-Creme
+Tunnbröd
+Gudbrandsdalsost
+Spegesild
+Tarte au sucre
+Röd Kaviar
+Grandma's Boysenberry Spread
+Ipoh Coffee
+Nord-Ost Matjeshering
+Aniseed Syrup
+Louisiana Hot Spiced Okra
+Pavlova
+Gustaf's Knäckebröd
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\underline{For sqlite part:}~\\
+We first find the distinct customer ids of the people who've purchased Pears using the DISTINCT and procede just like in the former exercise.
+Next we find all the orders orders of the customers by joining with orders, then order details joining with order details and products joining with products.
+We then find the distinct products by joining the beforementioned tables again and
+build a string for use with the IN keyword specifying all the customer id's whose products we are interested in.
+
+~\\
+\underline{For MongoDB part:}~\\
+We first find the customers who purchased pears like in the last exercise
+Next we find all the Orders and Order Details and their corresponding Products
+We can then convert the list to a set to find the unique products and how many there is
+
+
+
+
+
+
 \section{Exercise 5.6}
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
@@ -194,7 +572,10 @@ Bla bla bla
 Output
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\underline{For sqlite part:}~\\
+
+
+
 \section{Exercise 5.7}
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\

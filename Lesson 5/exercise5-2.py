@@ -9,6 +9,7 @@ import pymongo
   So we join Orders and Order Details on OrderID, and Order Details and Products on ProductID, and then we only need the orders with ALFKI as customer.
   We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
 """
+print("sqlite part:")
 try:
 	con = sqlite3.connect("northwind.db")
 	con.text_factory = lambda x: str(x, 'latin1')
@@ -26,9 +27,9 @@ finally:
 """ MongoDB version of exercise:
 The MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
 """
+print("\nMongoDB part:")
 client = pymongo.MongoClient('localhost', 27017)
 db = client["Northwind"]
-#print(db.collection_names())
 order_collection = db["orders"]
 order_details_collection = db["order-details"]
 products_collection = db["products"]

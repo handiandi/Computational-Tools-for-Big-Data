@@ -10,12 +10,12 @@ try:
 	con = sqlite3.connect("northwind.db")
 	con.text_factory = lambda x: str(x, 'latin1')
 	cur = con.cursor()
-	cur.execute("SELECT * from Customers LIMIT 1")
+	cur.execute("SELECT * from customers LIMIT 1")
 	first_customer = cur.fetchall()
-	print(first_customer)
+	print("customers:\n {}".format(first_customer))
 	cur.execute("SELECT * from Orders where Orders.CustomerID = 'ALFKI' ")
 	order = cur.fetchone()
-	print(order)
+	print("Orders: \n {}".format(order))
 
 except sqlite3.Error as e:
 	print("Error {}".format(e.args[0]))
@@ -30,7 +30,7 @@ client = pymongo.MongoClient('localhost', 27017)
 db = client["Northwind"]
 customer_collection = db["customers"]
 first_customer = customer_collection.find_one()
-print(first_customer)
+print("customers:\n {}".format(first_customer))
 order_collection = db["orders"]
 order = order_collection.find_one({"CustomerID":"ALFKI"})
-print(order)
+print("Orders: \n {}".format(order))

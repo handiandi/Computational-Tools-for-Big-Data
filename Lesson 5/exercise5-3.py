@@ -3,17 +3,18 @@
 import sqlite3
 import pymongo
 """
-FIXTHIS: sqlite version
+
 Exercise 5.3
 Sqlite version of exercise:
 """
+print("Sqlite part:")
 con = sqlite3.connect("northwind.db")
 con.text_factory = lambda x: str(x, 'latin1') #Fixes encoding issues with queries
 cur = con.cursor()
 cur.execute("""SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders 
 	INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
 	INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID 
-	WHERE cID = 'ALFKI' AND orID in 
+	WHERE orID in 
 		(Select Orders.OrderID as orID from Orders 
 			INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
 			INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID 
@@ -27,6 +28,7 @@ con.close()
 
 """ MongoDB version of exercise:
 """
+print("\nMongoDB part:")
 client = pymongo.MongoClient('localhost', 27017)
 db = client["Northwind"]
 order_collection = db["orders"]

@@ -42,7 +42,7 @@ for detail in pear_details:
 		for customer in customer_collection.find({"CustomerID":order["CustomerID"]}):
 			customer_list.append(customer["ContactName"])
 
-print("MongoDB: {} distinct people ordered Uncle Bobo's Organic Dried Pears\n They are:".format(len(set(customer_list))))
+print("\nMongoDB: {} distinct people ordered Uncle Bobo's Organic Dried Pears\n They are:".format(len(set(customer_list))))
 for customer in set(customer_list):
 	print((customer_list.count(customer), customer))
 
