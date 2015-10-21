@@ -13,24 +13,22 @@ build a string for use with the IN keyword specifying all the customer id's whos
 con = sqlite3.connect("northwind.db")
 con.text_factory = lambda x: str(x, 'latin1')
 cur = con.cursor()
-cur.execute("""SELECT DISTINCT Orders.CustomerID from Orders
-			   INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
-			   INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
-			   INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
-			   WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID""")
-# produce a list of values instead of a list of single-tuples
-customer_ids = [customer_id[0] for customer_id in cur.fetchall()]
-placeholder = "?"
-placeholders = ",".join(placeholder*len(customer_ids))
-
-cur.execute(""" SELECT count(Products.ProductName), Products.ProductName from Products
+cur.execute("""SELECT count(Products.ProductName) as No_orders, Products.ProductName from Products
 				INNER JOIN 'Order Details' on Products.ProductID = 'Order Details'.ProductID
 				INNER JOIN Orders on 'Order Details'.OrderID = Orders.OrderID
-				INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID WHERE Customers.CustomerID IN (%s) GROUP BY Products.ProductName""" % placeholders, customer_ids)
-products = cur.fetchall()
-most_purchased_product = max(products, key=lambda v: v[0])
+				INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
+				WHERE Products.ProductID != 7 AND Customers.CustomerID IN 
+					(SELECT DISTINCT Orders.CustomerID from Orders
+					INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
+					INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
+					INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
+					WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID)
+				GROUP BY Products.ProductName ORDER BY No_orders DESC""")
+# produce a list of values instead of a list of single-tuples
+result = cur.fetchall() #[customer_id[0] for customer_id in cur.fetchall()]
+result.sort(key=lambda tup: tup[0], reverse=True)  
 
-print("Sqlite: {} is most purchased with {} purchases".format(most_purchased_product[1],most_purchased_product[0]))
+print("Sqlite: {} is most purchased with {} purchases".format(result[0][1],result[0][0]))
 
 con.close()
 
@@ -56,7 +54,9 @@ products = []
 for customer in set(customer_ids_list):
 	for order in order_collection.find({"CustomerID":customer}):
 		for detail in order_details_collection.find({"OrderID":order["OrderID"]}):
-			products.append(products_collection.find_one({"ProductID":detail["ProductID"]})["ProductName"])
+			print(products_collection.find_one({'$and': [{"ProductID":{detail["ProductID"]}}, {"ProductID": {'$ne': 7}}]}))
+			#products.append(products_collection.find_one({'$and': [{"ProductID":{detail["ProductID"]}}, {"ProductID": {'$ne': 7}}]})["ProductName"])
+			#products.append(products_collection.find_one({"ProductID":detail["ProductID"]})["ProductName"])
 
 most_purchased = max(products, key=lambda v: products.count(v))
 print("MongoDB: {} is most purchased with {} purchases".format(most_purchased, products.count(most_purchased)))
