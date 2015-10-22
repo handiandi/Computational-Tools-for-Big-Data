@@ -26,7 +26,7 @@ class BloomFilter():
 		return True
 
 def extract_text(string):
-	lowered = string.lower()
+	lowered = string.lower().strip()
 	return re.split("\W+", lowered)
 
 def bloom_filter_main():
