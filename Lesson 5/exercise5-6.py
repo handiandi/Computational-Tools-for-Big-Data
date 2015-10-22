@@ -61,4 +61,3 @@ for customer in set(customer_ids_list):
 
 for item, freq in collections.Counter(products).most_common(5):
 	print("{} was bought {} times".format(item, freq))
-
