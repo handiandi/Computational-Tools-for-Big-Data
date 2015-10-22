@@ -37,14 +37,30 @@ order_details_collection = db["order-details"]
 products_collection = db["products"]
 
 ALFKI_product_names = []
+ALFKI_products = []
 
 for ALFKI_order in order_collection.find({'CustomerID': 'ALFKI'}):
     for orderID in order_details_collection.find({'OrderID':ALFKI_order["OrderID"]}):
-        for product in products_collection.find({'ProductID': orderID['ProductID']}):
-            if product['ProductName']:
-                ALFKI_product_names.append(product['ProductName'])
+        if orderID['ProductID']:
+            ALFKI_products.append(orderID['ProductID'])
+        #for product in products_collection.find({'ProductID': orderID['ProductID']}):
+            #if product['ProductName']:
+            #    ALFKI_product_names.append(product['ProductName'])
 
 
 ALFKI_product_names = set(ALFKI_product_names)
+ALFKI_products = set(ALFKI_products)
+print(ALFKI_products)
+"""
+for productID in order_details_collection.find({'ProductID': {'eq': ALFKI_products}})
+    for orders in order_collection.find({'OrderID':productID['OrderID']):
+        if orders['CustomerID']
+        pass
+    for x in order_collection.find({'$and':[]
+        pass
+    pass
+}
+
 print(len(ALFKI_product_names))
 print(ALFKI_product_names)
+"""
