@@ -14,7 +14,10 @@ try:
 	con = sqlite3.connect("northwind.db")
 	con.text_factory = lambda x: str(x, 'latin1')
 	cur = con.cursor()
-	cur.execute("SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  WHERE cID = 'ALFKI'")
+	cur.execute("""SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders 
+					INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
+					INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
+					WHERE cID = 'ALFKI'""")
 	orders = cur.fetchall()
 	for order in orders:
 		print(order)
