@@ -72,6 +72,6 @@ if __name__ == '__main__':
 	#print(timeit.timeit(non_bloom_filter_main, number=1))
 	bloom_filter_list = bloom_filter_main()
 	non_bloom_filter_list = non_bloom_filter_main()
-	print("{} words in non bloom filter set and {} in bloom filter set, thus a false positive rate of {}".format(len(set(non_bloom_filter_list)),len(set(bloom_filter_list)),1-(len(set(bloom_filter_list))/len(set(non_bloom_filter_list)))))
+	print("{} words not in dictionary (in non bloom filter set) and {} words not in dictionary (in bloom filter set), thus a false positive rate of {}".format(len(set(non_bloom_filter_list)),len(set(bloom_filter_list)),1-(len(set(bloom_filter_list))/len(set(non_bloom_filter_list)))))
 	print(set(non_bloom_filter_list)-set(bloom_filter_list))
 
