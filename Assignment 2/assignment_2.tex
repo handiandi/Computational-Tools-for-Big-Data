@@ -27,7 +27,7 @@
 language=python,
 breaklines=true,
 basicstyle=\ttfamily\small,
-otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},             % Add keywords here
+otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, \), \{, \}, :, *, !},             % Add keywords here
 keywordstyle=\color{blue},
 emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
     def, print, exec, break, continue, return},
@@ -124,16 +124,16 @@ literate=%
 \section{Exercise 5.1}
 \textbf{Short recap of the exercise}\\
 \textit{Establish connection to the Northwind database in Python with Sqlite (use the sqlite3 module) and MongoDB. Document the connection by making some simple queries.}\\
-
-\textbf{Overview over code flow}\\
+~\\
+\textbf{Overview over code flow}
 
 \begin{enumerate}
   \item We import the needed modules for Sqlite and MongoDB
   \item Then we create two queries for Sqlite and print the results
   \item Last, we do the same with MongoDB: create two queries and print the results\\
 \end{enumerate}
-
-\textbf{Code}\\
+~\\
+\textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-1.py"}
 ~\\
 \textbf{Output}
@@ -178,16 +178,16 @@ We can see by the output, that our queries works, since it gets some reasonable 
 \section{Exercise 5.2}
 \textbf{Short recap of the exercise}\\
 \textit{Query for, and return, all orders made by ALFKI and the products they contain}\\
-
-\textbf{Overview over code flow}\\
+~\\
+\textbf{Overview over code flow}
 
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
   \item We output \ldots\\
 \end{enumerate}
-
-\textbf{Code}\\
+~\\
+\textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-2.py"}
 ~\\
 \textbf{Output}
@@ -233,15 +233,15 @@ MongoDB version is sort of the same as the sqlite one, instead of joins we just 
 \section{Exercise 5.3}
 \textbf{Short recap of the exercise}\\
 \textit{Get all orders (with products) made by ALFKI that contain at least 2 product types}\\
-
-\textbf{Overview over code flow}\\
+~\\
+\textbf{Overview over code flow}
 
 \begin{enumerate}
   \item First we create the sqlite part, with a single query which contains a sub-select. We prints the result 
   \item Then we create the MongoDB part with loops, and printing the results. 
 \end{enumerate}
-
-\textbf{Code}\\
+~\\
+\textbf{Code}
 %\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
 \textbf{Output}
 \begin{pythonOutput}
@@ -287,17 +287,17 @@ For verifying the result, we can see that the 10692 from the previous exercise a
 \section{Exercise 5.4}
 \textbf{Short recap of the exercise}\\
 \textit{Determine how many and who ordered “Uncle Bob’s Organic Dried Pears” (productID 7).}\\
-
-\textbf{Overview over code flow}\\
-
+~\\
+\textbf{Overview over code flow}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
   \item We output \ldots\\
 \end{enumerate}
-
+~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 5/exercise5-4.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
 Sqlite: 20 distinct people ordered Uncle Bob's Organic Dried Pears
@@ -363,17 +363,17 @@ We can then build a list of distinct customers which have ordered the Pears and 
 \section{Exercise 5.5}
 \textbf{Short recap of the exercise}\\
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
-
-\textbf{Overview over code flow}\\
-
+~\\
+\textbf{Overview over code flow}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
   \item We output \ldots\\
 \end{enumerate}
-
-\textbf{Code}\\
+~\\
+\textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-5.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
 Sqlite: 76 different products have been purchased by Uncle Bob's Organic Dried Pears Customers
@@ -555,47 +555,78 @@ We can then convert the list to a set to find the unique products and how many t
 
 \section{Exercise 5.6}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Of those products ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”, which one has been ordered the most (by the same set of customers).}\\
+~\\
+\textbf{Overview over code flow}
+\begin{enumerate}
+  \item We first find the distinct customer ids of the people who've purchased Uncle Bob using the DISTINCT (Inner-SELECT)
+  \item We find all ProductNames and frequence of them (using count), where ProductID is not Uncle Bob and where CustomerID can be found in the result from the inner-SELECT (outer-SELECT)
+  \item Last, we sort by the frequence of ProductNames and limit the result to only 5 (also outer-SELECT)
+  \item We output the result\\
+\end{enumerate}
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 5/exercise5-6.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+Sqlite part:
+----------------
+22 times was 'Jack's New England Clam Chowder' bought
+22 times was 'Tarte au sucre' bought
+19 times was 'Camembert Pierrot' bought
+19 times was 'Raclette Courdavault' bought
+18 times was 'Chang' bought
 
-\textbf{Overview over code flow}\\
+MongoDB part:
+---------------
+22 times was 'Tarte au sucre' bought
+22 times was 'Jack's New England Clam Chowder' bought
+19 times was 'Camembert Pierrot' bought
+19 times was 'Raclette Courdavault' bought
+18 times was 'Gnocchi di nonna Alice' bought
 
+\end{pythonOutput}
+\textbf{Detailed explaination of code and discussion}\\
+\underline{For sqlite part:}\\
+bla bla\\
+~\\
+\underline{For MongoDB part:}
+~\\
+We first find the customers who purchased Uncle Bob
+Next we find all the Orders and Order Details
+Then, find their corresponding Products where ProductID is not 7 (Uncle Bob)~\\
+
+As we can see, the first 2 items of Sqlite and MondoDB result aren't in the same order. The reason is, that the both has been bought 22 times, and we don't sort the result in another way besides the frequence. \\
+The same reason can be accountet for the last item on the lists. 
+
+\section{Exercise 5.7}
+\textbf{Short recap of the exercise}\\
+\textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products (product types – 10 apples is no better than 1 apple)}\\
+~\\
+\textbf{Overview over code flow}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
   \item We output \ldots\\
 \end{enumerate}
-
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 5/exercise5-7.py"}~\\
 \textbf{Output}
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
 \textbf{Detailed explaination of code and discussion}\\
 \underline{For sqlite part:}~\\
+We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2) and (3).\\
+~\\
+(3) collects all ProductNames ordered by the customer 'ALFKI'\\
+(2) collects all customers who have ordered any of the ProductNames from (1). This is GROUP BY CustomerID and ProductName\\
+(1) selects distinct CustomerID from (2) and counts it. This is GROUP BY CustomerID, ORDER BY the count and select the first 5 records\\
 
-
-
-\section{Exercise 5.7}
-\textbf{Short recap of the exercise}\\
-\textit{Description text}\\
-
-\textbf{Overview over code flow}\\
-
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
-
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+~\\
+\underline{For MongoDB part:}~\\
 
 
 %-------------- Week 6 ---------------------
