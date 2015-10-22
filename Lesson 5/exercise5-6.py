@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sqlite3
 import pymongo
+import collections
 """
 Exercise 5.5
 Sqlite version of exercise:
@@ -54,10 +55,10 @@ products = []
 for customer in set(customer_ids_list):
 	for order in order_collection.find({"CustomerID":customer}):
 		for detail in order_details_collection.find({"OrderID":order["OrderID"]}):
-			print(products_collection.find_one({'$and': [{"ProductID":{detail["ProductID"]}}, {"ProductID": {'$ne': 7}}]}))
-			#products.append(products_collection.find_one({'$and': [{"ProductID":{detail["ProductID"]}}, {"ProductID": {'$ne': 7}}]})["ProductName"])
-			#products.append(products_collection.find_one({"ProductID":detail["ProductID"]})["ProductName"])
+			product = (products_collection.find_one({'$and': [ {"ProductID":detail["ProductID"] }, {"ProductID": {'$ne': 7}} ] }))
+			if product:
+				products.append(product["ProductName"])
 
-most_purchased = max(products, key=lambda v: products.count(v))
-print("MongoDB: {} is most purchased with {} purchases".format(most_purchased, products.count(most_purchased)))
+for item, freq in collections.Counter(products).most_common(5):
+	print("{} was bought {} times".format(item, freq))
 
