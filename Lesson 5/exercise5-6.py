@@ -67,5 +67,4 @@ for customer in set(customer_ids_list):
 				products.append(product["ProductName"])
 
 for item, freq in collections.Counter(products).most_common(5):
-	print("{} has bought {}".format(freq, item))
-
+	print("{} was bought {} times".format(item, freq))
