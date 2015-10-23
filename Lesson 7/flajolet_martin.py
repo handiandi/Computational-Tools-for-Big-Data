@@ -6,6 +6,7 @@ import re
 import statistics
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import random
 
 class FlajoletMartinCounter():
     """
@@ -59,7 +60,7 @@ if __name__ == '__main__':
         L = x
         counter_list = []
         for i in range(K*L):
-            counter_list.append(FlajoletMartinCounter(seed=i))
+            counter_list.append(FlajoletMartinCounter(seed=random.randint(-214783648, 2147483647)))
 
         for word in shakespeare_words:
             for counter in counter_list:
@@ -83,4 +84,7 @@ if __name__ == '__main__':
     plt.axhline(y=actual_number_of_words, color="blue")
     plt.legend()
     plt.show()
-    print("K and L level of 5 approximates: {} with an actual number of words being: {}".format(plot_list[4],actual_number_of_words))
+    print("actual number of unique words in shakespeare text: {}".format(actual_number_of_words))
+    for result in plot_list:
+        print("")
+    print("K and L levels approximates: {} with an actual number of words being: {}".format(plot_list,actual_number_of_words))

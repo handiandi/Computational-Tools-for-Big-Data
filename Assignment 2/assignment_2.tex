@@ -826,9 +826,16 @@ From the output we can see that using a bloom filter takes 5.115 seconds to add 
 \pythonexternal{"../Lesson 7/flajolet_martin.py"}
 \textbf{Output}
 \begin{pythonOutput}
-Output
+K and L levels approximates: [(1, 5295.342012385101), (2, 12410.95784152758), (3, 3530.228008256734), (4, 2068.49297358793), (5, 3706.7394086695704), (6, 2757.9906314505733), (7, 3025.9097213629148), (8, 4054.246228232343), (9, 3383.1351745793704), (10, 2912.4381068118055), (11, 2888.368370391873), (12, 3309.5887577406884), (13, 3156.8385073834256), (14, 3782.3871517036437), (15, 2824.1824066053873), (16, 2771.7805846078263), (17, 2725.5436828452725), (18, 2831.5370482892554), (19, 2787.0221117816322), (20, 3044.8216571214334), (21, 3404.1484365332794), (22, 2707.845347242381), (23, 3338.3677904166943), (24, 3364.7485703697), (25, 3389.0188879264647), (26, 3258.6720076216006), (27, 3039.9185626655208), (28, 3025.9097213629148), (29, 3012.8670070466956)] with an actual number of words being: 3171
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+We found the actual number of unique words to be 3171. We have tried to investigate how different levels of K and L affect the accuracy of the approximations. We have used symmetric levels of K and L as computations else would take too long. We have plotted the approximations for different levels of K and L and the actual number of elements in Figure \ref{fig:flajolet_martin_plot}.\\
+By looking at the plot we can see a huge outlier in the beginning but the approximations stabilize somewhat with levels of 5 or higher, and 13 seems to be the best with an approximation of around 3156.
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.5]{"../Lesson 7/flajolet_martin_k_levels"}
+\caption{Flajolet-Martin approximations with different K and L levels}
+\label{fig:flajolet_martin_plot}
+\end{figure}
 
 \end{document}
