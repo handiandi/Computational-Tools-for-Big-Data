@@ -18,24 +18,25 @@ We print the result using a simple loop.
 con = sqlite3.connect("northwind.db")
 con.text_factory = lambda x: str(x, 'latin1')
 cur = con.cursor()
-cur.execute("""SELECT count(Products.ProductName) as No_orders, Products.ProductName from Products
-				INNER JOIN 'Order Details' on Products.ProductID = 'Order Details'.ProductID
-				INNER JOIN Orders on 'Order Details'.OrderID = Orders.OrderID
-				INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
-				WHERE Products.ProductID != 7 AND Customers.CustomerID IN 
-					(SELECT DISTINCT Orders.CustomerID from Orders
-					INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
-					INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
-					INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
-					WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID)
-				GROUP BY Products.ProductName ORDER BY No_orders DESC LIMIT 5""")
+cur.execute(
+	"""SELECT count(Products.ProductName) as No_orders, Products.ProductName from Products
+		INNER JOIN 'Order Details' on Products.ProductID = 'Order Details'.ProductID
+		INNER JOIN Orders on 'Order Details'.OrderID = Orders.OrderID
+		INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
+		WHERE Products.ProductID != 7 AND Customers.CustomerID IN 
+			(SELECT DISTINCT Orders.CustomerID from Orders
+			INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
+			INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
+			INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
+			WHERE Products.ProductID = 7 GROUP BY Orders.CustomerID)
+		GROUP BY Products.ProductName ORDER BY No_orders DESC LIMIT 5""")
 # produce a list of values instead of a list of single-tuples
 products = cur.fetchall() 
 
 con.close()
 print("Sqlite part:\n----------------")
 for freq, item in products:
-	print("{} has bought {}".format(freq, item))
+	print("{} times was '{}' bought".format(freq, item))
 
 """ MongoDB version of exercise:
 We first find the customers who purchased Uncle Bob
@@ -67,4 +68,4 @@ for customer in set(customer_ids_list):
 				products.append(product["ProductName"])
 
 for item, freq in collections.Counter(products).most_common(5):
-	print("{} was bought {} times".format(item, freq))
+	print("{} times was '{}' bought".format(freq, item))
