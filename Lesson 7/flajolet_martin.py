@@ -45,11 +45,14 @@ class FlajoletMartinCounter():
         return (2**r_index) / 0.77351
 
 def extract_text(string):
-    lowered = string.lower()
+    lowered = string.lower().strip()
     return re.split("\W+", lowered)
 
 if __name__ == '__main__':
     plot_list = []
+    with open("shakespeare.txt") as f:
+        shakespeare_words = extract_text(f.read())
+    actual_number_of_words = len(set(shakespeare_words))
 
     for x in range(1,30):
         K = x
@@ -58,20 +61,16 @@ if __name__ == '__main__':
         for i in range(K*L):
             counter_list.append(FlajoletMartinCounter(seed=i))
 
-        with open("shakespeare.txt") as f:
-            for line in f:
-                words_on_line = extract_text(line)
-                for word in words_on_line:
-                    for counter in counter_list:
-                        counter.process(word)
+        for word in shakespeare_words:
+            for counter in counter_list:
+                counter.process(word)
     
         mean_vals = []
         for i in range(K):
             mean_vals.append(statistics.median([counter.give_estimate() for counter in counter_list[L*i:L*(i+1)]]))
 
         plot_list.append((x,statistics.mean(mean_vals)))
-    with open("shakespeare.txt") as f:
-        actual_number_of_words = len(set(extract_text(f.read())))
+
     plt.title("Flajolet Martin with different K and L values")
     plt.plot(*zip(*plot_list), color="red")
     plt.ylabel("number of elements")
@@ -84,3 +83,4 @@ if __name__ == '__main__':
     plt.axhline(y=actual_number_of_words, color="blue")
     plt.legend()
     plt.show()
+    print("K and L level of 5 approximates: {} with an actual number of words being: {}".format(plot_list[4],actual_number_of_words))

@@ -168,7 +168,7 @@ Orders:
 \end{pythonOutput}
 
 ~\\
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 We first try connecting and querying the sqlite database by querying all customers as well as orders for a specific customer. We then print out the result. 
 We do it all in a try-except, so it can handle errors like "database not found" or "table not found" without  currupting the db. This is usually only nessecary when insert or updating data. We have it by principle. \\
 \\*
@@ -220,7 +220,7 @@ ALFKI 10952 Rössle Sauerkraut
 ALFKI 11011 Escargots de Bourgogne
 ALFKI 11011 Flotemysost
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 \underline{For sqlite part:}~\\
 First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
 Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
@@ -272,7 +272,7 @@ ALFKI 11011 Escargots de Bourgogne
 ALFKI 11011 Flotemysost
 
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 \underline{For sqlite part:}~\\
 The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieve ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
 The outer-select, select then CustomerID, OrderID and ProductName based on those OrderID's which the inner-selects returns. 
@@ -347,7 +347,7 @@ MongoDB: 20 distinct people ordered Uncle Bobo's Organic Dried Pears
 (3, 'Paula Wilson')
 
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 \underline{For sqlite part:}~\\
 We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
 We join customers on orders, orders on order details and order details on products
@@ -535,7 +535,7 @@ Louisiana Hot Spiced Okra
 Pavlova
 Gustaf's Knäckebröd
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 \underline{For sqlite part:}~\\
 We first find the distinct customer ids of the people who've purchased Pears using the DISTINCT and procede just like in the former exercise.
 Next we find all the orders orders of the customers by joining with orders, then order details joining with order details and products joining with products.
@@ -571,7 +571,7 @@ We can then convert the list to a set to find the unique products and how many t
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 \underline{For sqlite part:}~\\
 
 
@@ -594,7 +594,7 @@ Output
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 
 
@@ -617,7 +617,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 
 \section{Exercise 6.2}
@@ -638,7 +638,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 
 \section{Exercise 6.3}
@@ -659,7 +659,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 \section{Exercise 6.4}
 \textbf{Short recap of the exercise}\\
@@ -679,7 +679,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 \section{Exercise 6.5}
 \textbf{Short recap of the exercise}\\
@@ -699,7 +699,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 \section{Exercise 6.6}
 \textbf{Short recap of the exercise}\\
@@ -719,7 +719,7 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 \section{Exercise 6.7}
 \textbf{Short recap of the exercise}\\
@@ -739,35 +739,52 @@ Bla bla bla
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 
 
 %-------------- Week 7 ---------------------
 \section{Exercise 7.1}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Implement a Bloom Filter as a Python class. The class should have an add method which adds a string to the filter, and a lookup method which determines if a string is “in the filter”.}\\
 
 \textbf{Overview over code flow}\\
-
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
+For creating the bloom filter class we used the algorithm found at Wikipedia\footnote{wikilink}.\\
+We used a number of bits (m) of 1 million for the bit array, and we used an estimated number of distinct entries (n) of 235887 which are the number of entries in the dictionary file.
+For finding the optimal number of hash functions we used the formula $\frac{m}{n} \cdot ln(2)$ which in our case gives us $2.938$ which we round up to next integer $3$.\\
+For finding each word in our texts we first needed to clean them. We converted the text to lower-case and split on the regex `\textbackslash W+' which gives us all words. We found we had to process the words even further as plural forms of words were present in the shakespeare text which was not the case in the dictionary thus yielding an error. To circumvent this we used a stemmer (Snowball Stemmer from the nltk library) to reduce the words to their word stem in both the dictionary and shakespeare text.\\
+We defined two functions, one utilizing our BloomFilter class and one using the naive approach, this way we can benchmark them using the timeit module.\\
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 7/bloom_filter.py"}
 \textbf{Output}
 \begin{pythonOutput}
-Output
+5.115084372999263
+85.1088753360018
+132 words not in dictionary (in non bloom filter set) and 117 words not in dictionary (in bloom filter set), thus a false positive rate of 0.11363636363636365
+words not in dictionary but reported to be:
+licenc
+ovid
+seest
+tis
+ild
+baser
+speakest
+diest
+safest
+truest
+madmen
+began
+vii
+drave
+favour
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
-Bla bla bla
+\textbf{Explanation of code and discussion}\\
+From the output we can see that using a bloom filter takes 5.115 seconds to add every dictionary word and do every lookup in the shakespeare text, and by doing it the naive way it takes 85.108 seconds, thus a speedup of ~16.638x, however we can also see the `penalty' of using a bloom filter as it reports 15 words as false positives (being in the dictionary when they are not).\\ Looking at the output of words we could probably reduce the number of words not in the dictionary even further as some of those words does exist in the dictionary just in another form, like safest and safe.
 
 \section{Exercise 7.2}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{Implement the Flajolet-Martin algorithm to determine the number of distinct words in this Shakespeare file.}\\
 
 \textbf{Overview over code flow}\\
 
@@ -778,12 +795,12 @@ Bla bla bla
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 7/flajolet_martin.py"}
 \textbf{Output}
 \begin{pythonOutput}
 Output
 \end{pythonOutput}
-\textbf{Detailed explaination of code and discussion}\\
+\textbf{Explanation of code and discussion}\\
 Bla bla bla
 
 \end{document}
