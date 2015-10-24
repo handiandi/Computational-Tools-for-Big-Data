@@ -1,1 +1,4 @@
-MATCH (customer)-[:PURCHASED]-(orders)-[:ORDERS]-(products : Product) where products.productID = '7' RETURN count(customer),customer
+MATCH (customer)--(orders)--(products : Product) 
+WITH collect(DISTINCT customer.customerID) as Customers, products
+where products.productID = '7' 
+RETURN Customers, length(Customers) as NumberOfCustomers
