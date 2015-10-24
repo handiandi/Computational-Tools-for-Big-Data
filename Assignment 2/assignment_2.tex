@@ -652,9 +652,9 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item "Selects" the customer table
+  \item "Selects" the customer node
   \item Retrieve the customers which customerID starts with 'A'
-  \item Output the returned/founded nodes \ldots\\
+  \item Output the returned/founded nodes 
 \end{enumerate}
 ~\\
 \textbf{Code}\\
@@ -667,44 +667,47 @@ By the showned output above, we can see we get four customers where one of them 
 
 \section{Exercise 6.2}
 \textbf{Short recap of the exercise}\\
-\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return all the orders made by ALFKI and the products they contain.}\\
-
+\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return all the orders made by ALFKI and the products they contain.}
+~\\
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the customer, Order and products nodes \ldots
+  \item \ldots where customerID is 'ALFKI' 
+  \item Output the returned/founded nodes 
 \end{enumerate}
-
+~\\
 \textbf{Code}\\
-\pythonexternal{"../Lesson 6/exercise6-1-query.txt"}~\\
+\pythonexternal{"../Lesson 6/exercise6-2-query.txt"}~\\
 \textbf{Output}~\\
-\includegraphics[center]{"../Lesson 6/6_1_graph"}~\\
+\includegraphics[center]{"../Lesson 6/6_2_graph"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+We can see from the output graph, that we get a result which is quite similar to the result from week 5. In this result it is way better to see how it is connected. ~\\
+Besides giving the edges "names" we have also given the nodes names, from a menu in Graphstory.com
 
 \section{Exercise 6.3}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return orders made by ALFKI that contain at least 2 products. Also return the products.}~\\
 
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the Order and Products nodes where CustomerID is 'ALFKI' in Order
+  \item Then we use the 'collect' keyword, to put products in a list and then we count the products  \ldots
+  \item \ldots and return the nodes, where the count is greater than 1
+  \item Last we output the returned/found nodes of Order and Products\\
 \end{enumerate}
-
+~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+\pythonexternal{"../Lesson 6/exercise6-3-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_3_graph"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+In this exercise, we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result. 
+
+
 \section{Exercise 6.4}
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
@@ -716,13 +719,12 @@ Bla bla bla
   \item Then we\ldots
   \item We output \ldots\\
 \end{enumerate}
-
+~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+\pythonexternal{"../Lesson 6/exercise6-4-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_4_graph"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
 Bla bla bla
 \section{Exercise 6.5}
