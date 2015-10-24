@@ -62,4 +62,6 @@ for order in order_collection.find():
         if order_detail["ProductID"] in ALFKI_products and order["CustomerID"] != "ALFKI":
             customer_product_dict.setdefault(order["CustomerID"],[]).append(order_detail["ProductID"])
 
-print(sorted([(customer,len(set(products))) for (customer,products) in customer_product_dict.items()], key=lambda x: x[1], reverse=True)[:5])
+most_bought_customers = sorted([(customer,len(set(products))) for (customer,products) in customer_product_dict.items()], key=lambda x: x[1], reverse=True)[:5]
+for customer,count in most_bought_customers:
+    print("{} products was bought by {}".format(count, customer))
