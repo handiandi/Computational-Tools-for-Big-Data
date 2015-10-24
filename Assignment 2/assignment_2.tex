@@ -5,6 +5,8 @@
 \usepackage{amsmath,amssymb,graphicx}
 \usepackage{cleveref}
 \usepackage{url}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
@@ -645,28 +647,27 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 %-------------- Week 6 ---------------------
 \section{Exercise 6.1}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{We should make Graphstory.com/neo4j work with the northwind database and show that it works}\\
 
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the customer table
+  \item Retrieve the customers which customerID starts with 'A'
+  \item Output the returned/founded nodes \ldots\\
 \end{enumerate}
-
+~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+\pythonexternal{"../Lesson 6/exercise6-1-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_1_graph"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+By the showned output above, we can see we get four customers where one of them is the famous 'ALFKI', thus we assume our Graphstory.com/neo4j setup works. 
 
 \section{Exercise 6.2}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return all the orders made by ALFKI and the products they contain.}\\
 
 \textbf{Overview}\\
 
@@ -677,11 +678,10 @@ Bla bla bla
 \end{enumerate}
 
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+\pythonexternal{"../Lesson 6/exercise6-1-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_1_graph"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
 Bla bla bla
 
