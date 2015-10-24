@@ -4,7 +4,7 @@
 \usepackage[T1]{fontenc} 
 \usepackage{amsmath,amssymb,graphicx}
 \usepackage{cleveref}
-
+\usepackage{url}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
@@ -777,7 +777,7 @@ Bla bla bla
 \textit{Implement a Bloom Filter as a Python class. The class should have an add method which adds a string to the filter, and a lookup method which determines if a string is “in the filter”.}\\
 
 \textbf{Overview over code flow}\\
-For creating the bloom filter class we used the algorithm found at Wikipedia\footnote{wikilink}.\\
+For creating the bloom filter class we used the algorithm found at Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Bloom_filter#Algorithm_description}}.\\
 We used a number of bits (m) of 1 million for the bit array, and we used an estimated number of distinct entries (n) of 235887 which are the number of entries in the dictionary file.
 For finding the optimal number of hash functions we used the formula $\frac{m}{n} \cdot ln(2)$ which in our case gives us $2.938$ which we round up to next integer $3$.\\
 For finding each word in our texts we first needed to clean them. We converted the text to lower-case and split on the regex `\textbackslash W+' which gives us all words. We found we had to process the words even further as plural forms of words were present in the shakespeare text which was not the case in the dictionary thus yielding an error. To circumvent this we used a stemmer (Snowball Stemmer from the nltk library) to reduce the words to their word stem in both the dictionary and shakespeare text.\\
