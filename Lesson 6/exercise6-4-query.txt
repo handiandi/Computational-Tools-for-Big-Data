@@ -1,4 +1,4 @@
-MATCH (customer)--(orders)--(products : Product) 
-WITH collect(DISTINCT customer.customerID) as Customers, products
+MATCH (orders)--(products : Product) 
+WITH collect(DISTINCT orders.customerID) as Customers, products
 where products.productID = '7' 
 RETURN Customers, length(Customers) as NumberOfCustomers
