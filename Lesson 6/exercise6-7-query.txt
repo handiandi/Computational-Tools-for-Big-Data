@@ -1,5 +1,5 @@
 MATCH (o: Order {customerID : 'ALFKI'})--(products)
-with collect(products.productID) as alfki_products
+WITH collect(products.productID) as alfki_products
 MATCH (o: Order)--(p: Product)
 WHERE  p.productID in alfki_products and o.customerID <> "ALFKI"
 WITH distinct o.customerID as orders, collect(distinct p) as prods
