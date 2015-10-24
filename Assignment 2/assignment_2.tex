@@ -654,7 +654,7 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 \begin{enumerate}
   \item "Selects" the customer node
   \item Retrieve the customers which customerID starts with 'A'
-  \item Output the returned/founded nodes 
+  \item Last we return the nodes that was found
 \end{enumerate}
 ~\\
 \textbf{Code}\\
@@ -674,7 +674,7 @@ By the showned output above, we can see we get four customers where one of them 
 \begin{enumerate}
   \item "Selects" the customer, Order and products nodes \ldots
   \item \ldots where customerID is 'ALFKI' 
-  \item Output the returned/founded nodes 
+  \item Last we return the nodes that was found
 \end{enumerate}
 ~\\
 \textbf{Code}\\
@@ -696,7 +696,7 @@ Besides giving the edges "names" we have also given the nodes names, from a menu
   \item "Selects" the Order and Products nodes where CustomerID is 'ALFKI' in Order
   \item Then we use the 'collect' keyword, to put products in a list and then we count the products  \ldots
   \item \ldots and return the nodes, where the count is greater than 1
-  \item Last we output the returned/found nodes of Order and Products\\
+  \item Last we return the nodes that was found of Order and Products\\
 \end{enumerate}
 ~\\
 \textbf{Code}\\
@@ -710,81 +710,94 @@ In this exercise, we have omitted the Customer node, as we can use the Order nod
 
 \section{Exercise 6.4}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
-
-\textbf{Overview}\\
+\textit{Determine how many and who has ordered “Uncle Bob’s Organic Dried Pears” (productID 7)}\\
+~\\
+\textbf{Overview}
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the Order and Products nodes
+  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID in a list   
+  \item We filter based on productID equal '7'
+  \item Last we return the list of customerID and the length of the list
 \end{enumerate}
 ~\\
-\textbf{Code}\\
+\textbf{Code}
 \pythonexternal{"../Lesson 6/exercise6-4-query.txt"}~\\
 \textbf{Output}~\\
-\includegraphics[center]{"../Lesson 6/6_4_graph"}~\\
+\includegraphics[center]{"../Lesson 6/6_4_rowGrid"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+Also here we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result.
+The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
+~\\
+We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
 \section{Exercise 6.5}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
-
+\textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
+~\\ 
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+   \item "Selects" the Customer, Order and Products nodes
+  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID from customer in a list   
+  \item We filter based on productID equal '7'
+  \item We then "Select" Products and Order, take DISTINCT ProductNames, orders and the list of customerID's \ldots
+  \item \ldots where customerID in orders is in the list of customerID's
+  \item Last we return the list of ProductNames and the length of that list\\
 \end{enumerate}
-
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 6/exercise6-5-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_5_rowGrid"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
+~\\
+We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+
 \section{Exercise 6.6}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
-
-\textbf{Overview}\\
-
+\textit{Of those products ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”, which one has been ordered the most (by the same set of customers)}\\
+~\\
+\textbf{Overview}
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the Customer, Order and Products nodes
+  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID from customer in a list   
+  \item We filter based on productID equal '7'
+  \item We then "Select" Products and Order, take DISTINCT ProductNames, orders and the list of customerID's and Products\ldots
+  \item \ldots where customerID in orders is in the list of customerID's AND where productID is not '7'
+  \item Last we return the number of ProductNames (using count) and the ProductNames themselves, Ordered by the count\\
 \end{enumerate}
-
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 6/exercise6-6-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_6_rowGrid"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
+The count keyword, count the number of the specified item, thus we find the number of times, the product have been bought. ~\\ 
+~\\
+We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+
 \section{Exercise 6.7}
 \textbf{Short recap of the exercise}\\
-\textit{Description text}\\
+\textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products.}~\\
 
-\textbf{Overview}\\
-
+\textbf{Overview}
 \begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
+  \item "Selects" the Order and Products nodes where customerID in Order is equal to 'ALFKI'
+  \item Then we use the 'collect' keyword, to put all productID which 'ALFKI' has bought in a list   
+  \item We the "Select" Order an Products where productID is in 'ALFKI's list of bought productID AND customerID is not 'ALFKI'
+  \item We take the DISTINCT customerID and a list of Products
+  \item Last we return the customerID's and the number of Products, Ordered by the number of Products\\
 \end{enumerate}
-
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
-\textbf{Output}
-\begin{pythonOutput}
-Output
-\end{pythonOutput}
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 6/exercise6-7-query.txt"}~\\
+\textbf{Output}~\\
+\includegraphics[center]{"../Lesson 6/6_7_rowGrid"}~\\
+~\\
 \textbf{Explanation of code and discussion}\\
 Bla bla bla
 
