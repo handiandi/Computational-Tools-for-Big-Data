@@ -1,0 +1,4 @@
+MATCH (o: Order {customerID : 'ALFKI'})-[:ORDERS]-(p: Product)
+WITH o, COUNT(p) AS cp, collect(p) as pros
+WHERE cp>1
+RETURN o, cp, pros
