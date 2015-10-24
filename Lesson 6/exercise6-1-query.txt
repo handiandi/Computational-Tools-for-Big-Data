@@ -1,0 +1,2 @@
+MATCH (n:Customer)
+RETURN n.customerID
