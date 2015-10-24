@@ -718,7 +718,7 @@ In this exercise, we have omitted the Customer node, as we can use the Order nod
   \item "Selects" the Order and Products nodes
   \item Then we use the 'collect' keyword, to put (DISTINCT) customerID in a list   
   \item We filter based on productID equal '7'
-  \item Last we return the list of customerID and the length of the list
+  \item Last we return the list of customerID and the length of the list (the number of customerID's)
 \end{enumerate}
 ~\\
 \textbf{Code}
@@ -731,6 +731,7 @@ Also here we have omitted the Customer node, as we can use the Order node's 'cus
 The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
 ~\\
 We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+
 \section{Exercise 6.5}
 \textbf{Short recap of the exercise}\\
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
@@ -743,7 +744,7 @@ We chose to show the result as a table and not a graph (like the latter exercise
   \item We filter based on productID equal '7'
   \item We then "Select" Products and Order, take DISTINCT ProductNames, orders and the list of customerID's \ldots
   \item \ldots where customerID in orders is in the list of customerID's
-  \item Last we return the list of ProductNames and the length of that list\\
+  \item Last we return the list of ProductNames and the length of that list (the number of ProductNames)\\
 \end{enumerate}
 ~\\
 \textbf{Code}
@@ -782,8 +783,8 @@ We chose to show the result as a table and not a graph (like the latter exercise
 
 \section{Exercise 6.7}
 \textbf{Short recap of the exercise}\\
-\textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products.}~\\
-
+\textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products}\\
+~\\
 \textbf{Overview}
 \begin{enumerate}
   \item "Selects" the Order and Products nodes where customerID in Order is equal to 'ALFKI'
@@ -799,8 +800,9 @@ We chose to show the result as a table and not a graph (like the latter exercise
 \includegraphics[center]{"../Lesson 6/6_7_rowGrid"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-Bla bla bla
-
+In this exercise, we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result. 
+~\\
+We can see of the result that the customer with ID 'RATTC' has bought 9 of the same products as 'ALFKI' has bought. Thus 'RATTC' is the customer, which has bought most of the same products as 'ALFKI'. 
 
 %-------------- Week 7 ---------------------
 \section{Exercise 7.1}
