@@ -1,1 +1,1 @@
-$MATCH (n: Customer {customerID : 'ALFKI'})-[:PURCHASED]-(orders)-[:ORDERS]-(products) RETURN n,orders,products
+MATCH (n: Customer {customerID : 'ALFKI'})-[:PURCHASED]-(orders)-[:ORDERS]-(products) RETURN n,orders,products

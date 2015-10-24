@@ -125,7 +125,7 @@ literate=%
 \textbf{Short recap of the exercise}\\
 \textit{Establish connection to the Northwind database in Python with Sqlite (use the sqlite3 module) and MongoDB. Document the connection by making some simple queries.}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 
 \begin{enumerate}
   \item We import the needed modules for Sqlite and MongoDB
@@ -179,7 +179,7 @@ We can see by the output, that our queries works, since it gets some reasonable 
 \textbf{Short recap of the exercise}\\
 \textit{Query for, and return, all orders made by ALFKI and the products they contain}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -234,7 +234,7 @@ MongoDB version is sort of the same as the sqlite one, instead of joins we just 
 \textbf{Short recap of the exercise}\\
 \textit{Get all orders (with products) made by ALFKI that contain at least 2 product types}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 
 \begin{enumerate}
   \item First we create the sqlite part, with a single query which contains a sub-select. We prints the result 
@@ -288,7 +288,7 @@ For verifying the result, we can see that the 10692 from the previous exercise a
 \textbf{Short recap of the exercise}\\
 \textit{Determine how many and who ordered “Uncle Bob’s Organic Dried Pears” (productID 7).}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
@@ -364,7 +364,7 @@ We can then build a list of distinct customers which have ordered the Pears and 
 \textbf{Short recap of the exercise}\\
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
@@ -553,7 +553,7 @@ We can then convert the list to a set to find the unique products and how many t
 \textbf{Short recap of the exercise}\\
 \textit{Of those products ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”, which one has been ordered the most (by the same set of customers).}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 \begin{enumerate}
   \item We first find the distinct customer ids of the people who've purchased Uncle Bob using the DISTINCT (Inner-SELECT)
   \item We find all ProductNames and frequence of them (using count), where ProductID is not Uncle Bob and where CustomerID can be found in the result from the inner-SELECT (outer-SELECT)
@@ -600,7 +600,7 @@ The same reason can be accountet for the last item on the lists.
 \textbf{Short recap of the exercise}\\
 \textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products (product types – 10 apples is no better than 1 apple)}\\
 ~\\
-\textbf{Overview over code flow}
+\textbf{Overview}
 \begin{enumerate}
   \item First we fetch the \ldots
   \item Then we\ldots
@@ -631,7 +631,7 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -652,7 +652,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -673,7 +673,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -693,7 +693,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -713,7 +713,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -733,7 +733,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -753,7 +753,7 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Description text}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 
 \begin{enumerate}
   \item First we fetch the \ldots
@@ -776,11 +776,13 @@ Bla bla bla
 \textbf{Short recap of the exercise}\\
 \textit{Implement a Bloom Filter as a Python class. The class should have an add method which adds a string to the filter, and a lookup method which determines if a string is “in the filter”.}\\
 
-\textbf{Overview over code flow}\\
+\textbf{Overview}\\
 For creating the bloom filter class we used the algorithm found at Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Bloom_filter#Algorithm_description}}.\\
-We used a number of bits (m) of 1 million for the bit array, and we used an estimated number of distinct entries (n) of 235887 which are the number of entries in the dictionary file.
-For finding the optimal number of hash functions we used the formula $\frac{m}{n} \cdot ln(2)$ which in our case gives us $2.938$ which we round up to next integer $3$.\\
-For finding each word in our texts we first needed to clean them. We converted the text to lower-case and split on the regex `\textbackslash W+' which gives us all words. We found we had to process the words even further as plural forms of words were present in the shakespeare text which was not the case in the dictionary thus yielding an error. To circumvent this we used a stemmer (Snowball Stemmer from the nltk library) to reduce the words to their word stem in both the dictionary and shakespeare text.\\
+We used a number of bits (m) of 1 million for the bit array, and an estimated number of distinct entries (n) of 235887 which are the number of entries in the dictionary file.
+For finding the optimal number of hash functions we used the formula $\frac{m}{n} \cdot ln(2)$ which in our case gives us $2.938$ which we round up to next integer $3$.\\\\
+In the add method we feed the element to each of our hash functions and set the indexes returned by them in our bitarray.\\\\
+In the lookup method we check whether an element is present in our bloom filter by feeding the element to each of our hash functions. We use the indexes returned from the hash functions and get the bits at their positions in the bit array, if any of the bits at the indexes are 0, we know the element is not present in our bloom filter. If all the bits are 1 either the element is present or it is a false positive caused by collisions.\\\\
+For finding each word in our texts we first needed to clean them. We converted the text to lower-case and split on the regex `\textbackslash W+' which gives us all words. We found we had to process the words even further as plural forms of words were present in the shakespeare text which was not the case in the dictionary thus yielding an error. To circumvent this we used a stemmer (Snowball Stemmer\footnote{\url{http://www.nltk.org/_modules/nltk/stem/snowball.html}}) to reduce the words to their word stem in both the dictionary and shakespeare text.\\
 We defined two functions, one utilizing our BloomFilter class and one using the naive approach, this way we can benchmark them using the timeit module.\\
 
 \textbf{Code}\\
@@ -814,19 +816,54 @@ From the output we can see that using a bloom filter takes 5.115 seconds to add 
 \textbf{Short recap of the exercise}\\
 \textit{Implement the Flajolet-Martin algorithm to determine the number of distinct words in this Shakespeare file.}\\
 
-\textbf{Overview over code flow}\\
-We have implemented the Flajolet-Martin algorithm using the algorithm at \footnote{\url{https://en.wikipedia.org/wiki/Flajolet%E2%80%93Martin_algorithm#The_algorithm}}.
+\textbf{Overview}\\
+We have implemented the Flajolet-Martin algorithm using the algorithm found at Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Flajolet-Martin_algorithm#The_algorithm}}.\\\\
+The process method finds the index to set by calling the trailing\_zeroes and hash with the new entry.\\\\
+The give\_estimate method finds the smallest index where the bitarray is 0 and estimates the cardinality with the correction factor $0.77351$.\\\\
+The trailing\_zeroes method corresponds to the p function which outputs the position of the least significant 1-bit.\\\\
 
+The class containing the algorithm takes a seed which is used in the hash function, this way we can use a different hash for each class created if we want to.
+We run the algorithm several times to improve accuracy also described on Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Flajolet-Martin_algorithm#Improving_accuracy}}, we create $K \cdot L$ instances of our class each with a random hash function and process each shakespeare word on every instance. Then for each $K$ we take the median of the $L$ estimates and lastly take the mean of each K median estimates.
 
 \textbf{Code}\\
 \pythonexternal{"../Lesson 7/flajolet_martin.py"}
 \textbf{Output}
 \begin{pythonOutput}
-K and L levels approximates: [(1, 5295.342012385101), (2, 12410.95784152758), (3, 3530.228008256734), (4, 2068.49297358793), (5, 3706.7394086695704), (6, 2757.9906314505733), (7, 3025.9097213629148), (8, 4054.246228232343), (9, 3383.1351745793704), (10, 2912.4381068118055), (11, 2888.368370391873), (12, 3309.5887577406884), (13, 3156.8385073834256), (14, 3782.3871517036437), (15, 2824.1824066053873), (16, 2771.7805846078263), (17, 2725.5436828452725), (18, 2831.5370482892554), (19, 2787.0221117816322), (20, 3044.8216571214334), (21, 3404.1484365332794), (22, 2707.845347242381), (23, 3338.3677904166943), (24, 3364.7485703697), (25, 3389.0188879264647), (26, 3258.6720076216006), (27, 3039.9185626655208), (28, 3025.9097213629148), (29, 3012.8670070466956)] with an actual number of words being: 3171
+K and L levels approximates:
+[(1, 5295.342012385101),
+(2, 12410.95784152758),
+(3, 3530.228008256734),
+(4, 2068.49297358793),
+(5, 3706.7394086695704),
+(6, 2757.9906314505733),
+(7, 3025.9097213629148),
+(8, 4054.246228232343),
+(9, 3383.1351745793704),
+(10, 2912.4381068118055),
+(11, 2888.368370391873),
+(12, 3309.5887577406884),
+(13, 3156.8385073834256),
+(14, 3782.3871517036437),
+(15, 2824.1824066053873),
+(16, 2771.7805846078263),
+(17, 2725.5436828452725),
+(18, 2831.5370482892554),
+(19, 2787.0221117816322),
+(20, 3044.8216571214334),
+(21, 3404.1484365332794),
+(22, 2707.845347242381),
+(23, 3338.3677904166943),
+(24, 3364.7485703697),
+(25, 3389.0188879264647),
+(26, 3258.6720076216006),
+(27, 3039.9185626655208),
+(28, 3025.9097213629148),
+(29, 3012.8670070466956)]
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-We found the actual number of unique words to be 3171. We have tried to investigate how different levels of K and L affect the accuracy of the approximations. We have used symmetric levels of K and L as computations else would take too long. We have plotted the approximations for different levels of K and L and the actual number of elements in Figure \ref{fig:flajolet_martin_plot}.\\
-By looking at the plot we can see a huge outlier in the beginning but the approximations stabilize somewhat with levels of 5 or higher, and 13 seems to be the best with an approximation of around 3156.
+We found the actual number of unique words to be 3171. We have tried to investigate how different levels of K and L affect the accuracy of the approximations. We have plotted the approximations for different levels of K and L (1-29) and the actual number of elements in Figure \ref{fig:flajolet_martin_plot}.\\
+We have used symmetric levels of K and L as computations else would take too long. 
+By looking at the plot we can see a huge outlier in the beginning but the approximations stabilize somewhat at higher levels, and 13 seems to be the best with an approximation of around 3156 ($13$ groups of $13$ approximations, thus $13^2=169$ hash functions).
 \begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.5]{"../Lesson 7/flajolet_martin_k_levels"}
