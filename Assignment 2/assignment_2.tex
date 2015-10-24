@@ -611,10 +611,26 @@ The same reason can be accountet for the last item on the lists.
 \pythonexternal{"../Lesson 5/exercise5-7.py"}~\\
 \textbf{Output}
 \begin{pythonOutput}
-Output
+Sqlite part:
+----------------
+9 products was bought by RATTC
+8 products was bought by HUNGO
+7 products was bought by BERGS
+7 products was bought by ERNSH
+7 products was bought by FOLKO
+
+MongoDB part:
+---------------
+9 products was bought by RATTC
+8 products was bought by HUNGO
+7 products was bought by BERGS
+7 products was bought by VAFFE
+7 products was bought by FOLKO
 \end{pythonOutput}
 
 \textbf{Explanation of code and discussion}\\
+We decided to show the top 5 of customers who bought most of the same products as ALFKI. 
+If there is any descrepancies between the sqlite and MongoDB output it's because seven people bought seven of the same items as ALFKI and we only include two of them in our top 5.
 \underline{For sqlite part:}~\\
 We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2) and (3).\\
 ~\\
