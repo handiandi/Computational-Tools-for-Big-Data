@@ -4,7 +4,7 @@
 \usepackage[T1]{fontenc} 
 \usepackage{amsmath,amssymb,graphicx}
 \usepackage{cleveref}
-
+\usepackage{url}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
@@ -815,12 +815,8 @@ From the output we can see that using a bloom filter takes 5.115 seconds to add 
 \textit{Implement the Flajolet-Martin algorithm to determine the number of distinct words in this Shakespeare file.}\\
 
 \textbf{Overview over code flow}\\
+We have implemented the Flajolet-Martin algorithm using the algorithm at \footnote{\url{https://en.wikipedia.org/wiki/Flajolet%E2%80%93Martin_algorithm#The_algorithm}}.
 
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
 
 \textbf{Code}\\
 \pythonexternal{"../Lesson 7/flajolet_martin.py"}

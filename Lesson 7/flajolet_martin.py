@@ -22,7 +22,7 @@ class FlajoletMartinCounter():
     def trailing_zeroes(self, num):
         """Counts the number of trailing 0 bits in num."""
         if num == 0:
-            return 32 # Assumes 32 bit integer inputs!
+            return self.integer_bits # Assumes 32 bit integer inputs!
         p = 0
         while (num >> p) & 1 == 0:
             p += 1
