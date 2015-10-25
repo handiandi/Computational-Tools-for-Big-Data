@@ -1,7 +1,7 @@
-MATCH (customer)--(orders)--(products : Product) 
-WITH collect(DISTINCT customer.customerID) as Cus, products
+MATCH (orders)--(products) 
+WITH collect(DISTINCT orders.customerID) as pears_customers, products
 where products.productID = '7' 
 MATCH (Product)--(orders)
-WITH DISTINCT Product.productName as pros, orders, Cus
-WHERE orders.customerID IN Cus 
-RETURN collect(DISTINCT pros) as Products, length(collect(distinct pros)) as NumberOfProducts
+WITH DISTINCT Product.productName as distinct_products, orders, pears_customers
+WHERE orders.customerID IN pears_customers
+RETURN collect(DISTINCT distinct_products) as Products, length(collect(distinct distinct_products)) as NumberOfProducts

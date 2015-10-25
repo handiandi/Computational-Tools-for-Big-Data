@@ -1,8 +1,8 @@
-MATCH (customer)--(orders)--(products : Product) 
-WITH collect(DISTINCT customer.customerID) as Cus, products
+MATCH (orders)--(products) 
+WITH collect(DISTINCT orders.customerID) as pear_customers, products
 where products.productID = '7' 
 MATCH (Product)--(orders)
-WITH DISTINCT Product.productName as pros, orders, Cus, Product
-WHERE orders.customerID IN Cus AND Product.productID <> '7'
-RETURN count(pros) as Count, pros as Products
+WITH DISTINCT Product.productName as DistinctProducts, orders, pear_customers, Product
+WHERE orders.customerID IN pear_customers AND Product.productID <> '7'
+RETURN count(DistinctProducts) as Count, DistinctProducts
 ORDER BY Count DESC
