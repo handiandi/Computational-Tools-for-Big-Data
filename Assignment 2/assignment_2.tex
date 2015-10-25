@@ -672,9 +672,9 @@ By the showned output above, we can see we get four customers where one of them 
 \textbf{Overview}\\
 
 \begin{enumerate}
-  \item "Selects" the customer, Order and products nodes \ldots
+  \item "Selects" the customer, Order and products nodes (nodes which have edge names ORDERS and PURCHASED) \ldots
   \item \ldots where customerID is 'ALFKI' 
-  \item Last we return the nodes that was found
+  \item Lastly we return the nodes that was found
 \end{enumerate}
 ~\\
 \textbf{Code}\\
@@ -683,8 +683,7 @@ By the showned output above, we can see we get four customers where one of them 
 \includegraphics[center]{"../Lesson 6/6_2_graph"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-We can see from the output graph, that we get a result which is quite similar to the result from week 5. In this result it is way better to see how it is connected. ~\\
-Besides giving the edges "names" we have also given the nodes names, from a menu in Graphstory.com
+We can see from the output graph, that we get a result which is quite similar to the result from week 5. This way is better for visualizing the results and to see how it is connected. ~\\
 
 \section{Exercise 6.3}
 \textbf{Short recap of the exercise}\\
@@ -730,7 +729,7 @@ In this exercise, we have omitted the Customer node, as we can use the Order nod
 Also here we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result.
 The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
 ~\\
-We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+We chose to show the result as a table and not a graph, as the exercise states we should only determine how many and who have bought the items.
 
 \section{Exercise 6.5}
 \textbf{Short recap of the exercise}\\
@@ -755,7 +754,7 @@ We chose to show the result as a table and not a graph (like the latter exercise
 \textbf{Explanation of code and discussion}\\
 The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
 ~\\
-We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+We chose to show the result as a table and not a graph, as the exercise states we should only determine how many and which different products have been ordered.
 
 \section{Exercise 6.6}
 \textbf{Short recap of the exercise}\\
@@ -779,7 +778,7 @@ We chose to show the result as a table and not a graph (like the latter exercise
 \textbf{Explanation of code and discussion}\\
 The count keyword, count the number of the specified item, thus we find the number of times, the product have been bought. ~\\ 
 ~\\
-We chose to show the result as a table and not a graph (like the latter exercises), as we didn't see the benefit of a graph in this exercise. There is no connection between the customers which is importent for the exercise. 
+We chose to show the result as a table and not a graph because the question is which item have been ordered the most and thus not relational. 
 
 \section{Exercise 6.7}
 \textbf{Short recap of the exercise}\\
