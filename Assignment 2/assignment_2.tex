@@ -19,7 +19,7 @@
 % Custom colors
 \usepackage{color}
 
-\definecolor{output_background}{rgb}{0.4, 0.4, 0.4}
+\definecolor{output_background}{rgb}{0.2, 0.2, 0.2}
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 \definecolor{purple}{rgb}{0.6, 0.1, 0.9}
 \usepackage{listings}
@@ -50,6 +50,7 @@ title=\lstname
 % Python style for output highlighting
 \newcommand\pythonoutputstyle{\lstset{
 backgroundcolor=\color{output_background},
+rulecolor=\color{output_background},
 basicstyle=\ttm\small\color{white},
 showstringspaces=false,
 inputencoding=utf8,
@@ -166,7 +167,7 @@ Orders:
 
 \end{pythonOutput}
 We can see that the sqlite query results in a list of a single tuple by using fetchall method with LIMIT and in just a tuple by using the fetchone method which makes sense.
-In comparison the Mongodb query returns a dictionary by using find_one.
+In comparison the Mongodb query returns a dictionary by using find\_one.
 ~\\
 
 \section{Exercise 5.2}
@@ -218,7 +219,6 @@ ALFKI 10952 Rössle Sauerkraut
 ALFKI 11011 Escargots de Bourgogne
 ALFKI 11011 Flotemysost
 \end{pythonOutput}
-\\
 From the output we can see he has ordered 6 orders with 12 products in them.
 \section{Exercise 5.3}
 \textbf{Short recap of the exercise}\\
@@ -232,13 +232,11 @@ The outer-select, select then CustomerID, OrderID and ProductName based on those
 ~\\
 \underline{For MongoDB part:}~\\
 The solution looks very similar to the latter, except for the if-statement where the count are greater than 1. 
-
 ~\\
 For verifying the result, we can see that the 10692 from the previous exercise are NOT in this solution. 10692 has only 1 products name which we can see in the previous exercise. 
-
 ~\\
 \textbf{Code}
-\pythonexternal{"../Lesson 5/exercise5-3.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-3.py"}
 \textbf{Output}
 \begin{pythonOutput}
 Sqlite part:
@@ -357,7 +355,6 @@ build a string for use with the IN keyword specifying all the customer id's whos
 We first find the customers who purchased pears like in the last exercise
 Next we find all the Orders and Order Details and their corresponding Products
 We can then convert the list to a set to find the unique products and how many there is
-
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-5.py"}
@@ -528,13 +525,10 @@ Gustaf's Knäckebröd
 \textbf{Short recap of the exercise}\\
 \textit{Of those products ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”, which one has been ordered the most (by the same set of customers).}\\
 ~\\
-\textbf{Overview}
-\begin{enumerate}
-  \item We first find the distinct customer ids of the people who've purchased Uncle Bob using the DISTINCT (Inner-SELECT)
-  \item We find all ProductNames and frequence of them (using count), where ProductID is not Uncle Bob and where CustomerID can be found in the result from the inner-SELECT (outer-SELECT)
-  \item Last, we sort by the frequence of ProductNames and limit the result to only 5 (also outer-SELECT)
-  \item We output the result\\
-\end{enumerate}
+\textbf{Overview}\\
+We first find the distinct customer ids of the people who've purchased Uncle Bob using the DISTINCT (Inner-SELECT).\\
+We then find all ProductNames and frequence of them (using count), where ProductID is not Uncle Bob and where CustomerID can be found in the result from the inner-SELECT (outer-SELECT).\\
+Lastly, we sort by the frequence of ProductNames and limit the result to only 5 (also outer-SELECT).\\
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-6.py"}
@@ -558,29 +552,24 @@ MongoDB part:
 18 times was 'Gnocchi di nonna Alice' bought
 
 \end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
-\underline{For sqlite part:}\\
-bla bla\\
-~\\
-\underline{For MongoDB part:}
-~\\
-We first find the customers who purchased Uncle Bob
-Next we find all the Orders and Order Details
-Then, find their corresponding Products where ProductID is not 7 (Uncle Bob)~\\
-
-As we can see, the first 2 items of Sqlite and MondoDB result aren't in the same order. The reason is, that the both has been bought 22 times, and we don't sort the result in another way besides the frequence. \\
-The same reason can be accountet for the last item on the lists. 
+From the output we find that the product ordered the most by the customers is split between "Jack's New England Clam Chowder" and "Tarte au sucre".\\
+In the case of people having the same number of purchases, the result is unordered as can be seen from the output (first two outputs and last output). \\
 
 \section{Exercise 5.7}
 \textbf{Short recap of the exercise}\\
 \textit{The customer with customerID ALFKI has bought a series of products. Determine which other customers have bought most of the same products (product types – 10 apples is no better than 1 apple)}\\
 ~\\
-\textbf{Overview}
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
+\textbf{Overview}\\
+\underline{For sqlite part:}~\\
+We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2) and (3).\\
+~\\
+(3) collects all ProductNames ordered by the customer 'ALFKI'\\
+(2) collects all customers who have ordered any of the ProductNames from (1). This is GROUP BY CustomerID and ProductName\\
+(1) selects distinct CustomerID from (2) and counts it. This is GROUP BY CustomerID, ORDER BY the count and select the first 5 records\\
+
+~\\
+\underline{For MongoDB part:}~\\
+
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-7.py"}~\\
@@ -606,16 +595,6 @@ MongoDB part:
 \textbf{Explanation of code and discussion}\\
 We decided to show the top 5 of customers who bought most of the same products as ALFKI. 
 If there is any descrepancies between the sqlite and MongoDB output it's because seven people bought seven of the same items as ALFKI and we only include two of them in our top 5.
-\underline{For sqlite part:}~\\
-We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2) and (3).\\
-~\\
-(3) collects all ProductNames ordered by the customer 'ALFKI'\\
-(2) collects all customers who have ordered any of the ProductNames from (1). This is GROUP BY CustomerID and ProductName\\
-(1) selects distinct CustomerID from (2) and counts it. This is GROUP BY CustomerID, ORDER BY the count and select the first 5 records\\
-
-~\\
-\underline{For MongoDB part:}~\\
-
 
 \section{SQL vs. NoSQL}
 After have fiddlering around with the exercises, we think the main issue with these two sysems, is when we have data with relations. At this, SQL show its strength. With NoSQL (MongoDB in this case), we have to loop through many collections, before we end up with the wanted result - which is tedious. 
