@@ -569,7 +569,9 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 
 ~\\
 \underline{For MongoDB part:}~\\
-
+We iterate over orders and order details and save the distinct orders details made by 'ALFKI'.\\
+We then iterate over the orders which does not belong to 'ALFKI' and next the order details with an and clause wanting the order details of the specified orders and where the order details ProductID is in the distinct products ordered by 'ALFKI'.\\
+We save the result in a dictionary with key CustomerID and value as a list of ProductIDs for a given customer and create a new list with number of products and customer.
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-7.py"}~\\
