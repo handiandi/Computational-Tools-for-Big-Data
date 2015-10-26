@@ -50,16 +50,18 @@ ALFKI_products = []
 
 for ALFKI_order in order_collection.find({'CustomerID': 'ALFKI'}):
     for orderID in order_details_collection.find({'OrderID':ALFKI_order["OrderID"]}):
-        if orderID['ProductID']:
             ALFKI_products.append(orderID['ProductID'])
 
-ALFKI_products = set(ALFKI_products)
+ALFKI_products = list(set(ALFKI_products))
 
 customer_product_dict = {}
 
-for order in order_collection.find():
-    for order_detail in order_details_collection.find({"OrderID":order["OrderID"]}):
-        if order_detail["ProductID"] in ALFKI_products and order["CustomerID"] != "ALFKI":
+for order in order_collection.find({"CustomerID":{"$ne":"ALFKI"}}):
+    for order_detail in order_details_collection.find({
+                                                        "$and":[
+                                                             {"OrderID":order["OrderID"]},
+                                                             {"ProductID":{"$in":ALFKI_products}} 
+                                                             ]}):
             customer_product_dict.setdefault(order["CustomerID"],[]).append(order_detail["ProductID"])
 
 most_bought_customers = sorted([(customer,len(set(products))) for (customer,products) in customer_product_dict.items()], key=lambda x: x[1], reverse=True)[:5]
