@@ -32,8 +32,8 @@ cur.execute(
 		GROUP BY Products.ProductName ORDER BY No_orders DESC LIMIT 5""")
 # produce a list of values instead of a list of single-tuples
 products = cur.fetchall() 
-
 con.close()
+
 print("Sqlite part:\n----------------")
 for freq, item in products:
 	print("{} times was '{}' bought".format(freq, item))

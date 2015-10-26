@@ -10,23 +10,18 @@ import pymongo
   We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
 """
 print("sqlite part:")
-try:
-	con = sqlite3.connect("northwind.db")
-	con.text_factory = lambda x: str(x, 'latin1')
-	cur = con.cursor()
-	cur.execute("""SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders 
+con = sqlite3.connect("northwind.db")
+con.text_factory = lambda x: str(x, 'latin1')
+cur = con.cursor()
+cur.execute("""SELECT Orders.CustomerID as cID, Orders.OrderID as orID, Products.ProductName as pName from Orders 
 					INNER JOIN 'Order Details' on orID = 'Order Details'.OrderID 
 					INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
 					WHERE cID = 'ALFKI'""")
-	orders = cur.fetchall()
-	for order in orders:
-		print(order)
+orders = cur.fetchall()
+for order in orders:
+	print(order)
+con.close()
 
-except sqlite3.Error as e:
-	print("Error {}".format(e.args[0]))
-finally:
-	if con:
-		con.close()
 """ MongoDB version of exercise:
 The MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
 """

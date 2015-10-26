@@ -6,22 +6,19 @@ import pymongo
 # first we try connecting and querying the sqlite database
 # we can try to query all customers as well as orders for a specific customer
 print("sqlite query:")
-try:
-	con = sqlite3.connect("northwind.db")
-	con.text_factory = lambda x: str(x, 'latin1')
-	cur = con.cursor()
-	cur.execute("SELECT * from customers LIMIT 1")
-	first_customer = cur.fetchall()
-	print("customers:\n {}".format(first_customer))
-	cur.execute("SELECT * from Orders where Orders.CustomerID = 'ALFKI' ")
-	order = cur.fetchone()
-	print("Orders: \n {}".format(order))
 
-except sqlite3.Error as e:
-	print("Error {}".format(e.args[0]))
-finally:
-	if con:
-		con.close()
+con = sqlite3.connect("northwind.db")
+con.text_factory = lambda x: str(x, 'latin1')
+cur = con.cursor()
+cur.execute("SELECT * from customers LIMIT 1")
+first_customer = cur.fetchall()
+print("customers:\n {}".format(first_customer))
+cur.execute("SELECT * from Orders where Orders.CustomerID = 'ALFKI' ")
+order = cur.fetchone()
+print("Orders: \n {}".format(order))
+if con:
+	con.close()
+
 print("\n\n")
 
 # next we try the same thing on the mongodb

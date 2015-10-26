@@ -128,12 +128,9 @@ literate=%
 \textit{Establish connection to the Northwind database in Python with Sqlite (use the sqlite3 module) and MongoDB. Document the connection by making some simple queries.}\\
 ~\\
 \textbf{Overview}
-
-\begin{enumerate}
-  \item We import the needed modules for Sqlite and MongoDB
-  \item Then we create two queries for Sqlite and print the results
-  \item Last, we do the same with MongoDB: create two queries and print the results\\
-\end{enumerate}
+We connect to the sqlite database and get one customer and one order of where CustomerID is "ALFKI" in different ways by using either the LIMIT keyword of SQL or the fetchone() method of the sqlite cursor, We then print out the result.
+We have omitted the try-except clauses in this and the following assignments as we feel they detract from the readability and are unnecessary for these assignments, in a normal setting these should of course be in place.\\
+\\*
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-1.py"}
@@ -168,26 +165,25 @@ Orders:
  'RequiredDate': '1997-09-22 00:00:00.000'}
 
 \end{pythonOutput}
-
+We can see that the sqlite query results in a list of a single tuple by using fetchall method with LIMIT and in just a tuple by using the fetchone method which makes sense.
+In comparison the Mongodb query returns a dictionary by using find_one.
 ~\\
-\textbf{Explanation of code and discussion}\\
-We first try connecting and querying the sqlite database by querying all customers as well as orders for a specific customer. We then print out the result. 
-We do it all in a try-except, so it can handle errors like "database not found" or "table not found" without  currupting the db. This is usually only nessecary when insert or updating data. We have it by principle. \\
-\\*
-We can see by the output, that our queries works, since it gets some reasonable results. 
-
 
 \section{Exercise 5.2}
 \textbf{Short recap of the exercise}\\
 \textit{Query for, and return, all orders made by ALFKI and the products they contain}\\
 ~\\
-\textbf{Overview}
+\textbf{Overview}\\
 
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
+\underline{For sqlite part:}~\\
+First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
+Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
+So we join Orders and Order Details on OrderID, and Order Details and Products on ProductID, and then we only need the orders with ALFKI as customer. We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
+
+~\\
+\underline{For MongoDB part:}~\\
+MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
+
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-2.py"}
@@ -222,29 +218,27 @@ ALFKI 10952 Rössle Sauerkraut
 ALFKI 11011 Escargots de Bourgogne
 ALFKI 11011 Flotemysost
 \end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
-\underline{For sqlite part:}~\\
-First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
-Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
-So we join Orders and Order Details on OrderID, and Order Details and Products on ProductID, and then we only need the orders with ALFKI as customer. We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
-
-~\\
-\underline{For MongoDB part:}~\\
-MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
-
+\\
+From the output we can see he has ordered 6 orders with 12 products in them.
 \section{Exercise 5.3}
 \textbf{Short recap of the exercise}\\
 \textit{Get all orders (with products) made by ALFKI that contain at least 2 product types}\\
 ~\\
-\textbf{Overview}
+\textbf{Overview}\\
+\underline{For sqlite part:}~\\
+The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieve ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
+The outer-select, select then CustomerID, OrderID and ProductName based on those OrderID's which the inner-selects returns. 
 
-\begin{enumerate}
-  \item First we create the sqlite part, with a single query which contains a sub-select. We prints the result 
-  \item Then we create the MongoDB part with loops, and printing the results. 
-\end{enumerate}
+~\\
+\underline{For MongoDB part:}~\\
+The solution looks very similar to the latter, except for the if-statement where the count are greater than 1. 
+
+~\\
+For verifying the result, we can see that the 10692 from the previous exercise are NOT in this solution. 10692 has only 1 products name which we can see in the previous exercise. 
+
 ~\\
 \textbf{Code}
-%\pythonexternal{"../Lesson 2/exercise2-2.py"}\\
+\pythonexternal{"../Lesson 5/exercise5-3.py"}\\
 \textbf{Output}
 \begin{pythonOutput}
 Sqlite part:
@@ -275,27 +269,23 @@ ALFKI 11011 Flotemysost
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-\underline{For sqlite part:}~\\
-The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieve ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
-The outer-select, select then CustomerID, OrderID and ProductName based on those OrderID's which the inner-selects returns. 
-
-~\\
-\underline{For MongoDB part:}~\\
-The solution looks very similar to the latter, except for the if-statement where the count are greater than 1. 
-
-~\\
-For verifying the result, we can see that the 10692 from the previous exercise are NOT in this solution. 10692 has only 1 products name which we can see in the previous exercise. 
 
 \section{Exercise 5.4}
 \textbf{Short recap of the exercise}\\
 \textit{Determine how many and who ordered “Uncle Bob’s Organic Dried Pears” (productID 7).}\\
 ~\\
-\textbf{Overview}
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
+\textbf{Overview}\\
+\underline{For sqlite part:}~\\
+We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
+We join customers on orders, orders on order details and order details on products
+We filter by ProductID which needs to be 7 and group by CustomerID to get distinct Customers
+
+~\\
+\underline{For MongoDB part:}~\\
+In the MongoDB version we start with order details which contain the Pears Product ID
+We iterate over their respective orders and the orders respective customers
+We can then build a list of distinct customers which have ordered the Pears and also how many times they have ordered them 
+
 ~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 5/exercise5-4.py"}
@@ -349,29 +339,25 @@ MongoDB: 20 distinct people ordered Uncle Bobo's Organic Dried Pears
 (3, 'Paula Wilson')
 
 \end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
-\underline{For sqlite part:}~\\
-We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
-We join customers on orders, orders on order details and order details on products
-We filter by ProductID which needs to be 7 and group by CustomerID to get distinct Customers
-
-~\\
-\underline{For MongoDB part:}~\\
-In the MongoDB version we start with order details which contain the Pears Product ID
-We iterate over their respective orders and the orders respective customers
-We can then build a list of distinct customers which have ordered the Pears and also how many times they have ordered them 
 
 
 \section{Exercise 5.5}
 \textbf{Short recap of the exercise}\\
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
 ~\\
-\textbf{Overview}
-\begin{enumerate}
-  \item First we fetch the \ldots
-  \item Then we\ldots
-  \item We output \ldots\\
-\end{enumerate}
+\textbf{Overview}\\
+\underline{For sqlite part:}~\\
+We first find the distinct customer ids of the people who've purchased Pears using the DISTINCT and procede just like in the former exercise.
+Next we find all the orders orders of the customers by joining with orders, then order details joining with order details and products joining with products.
+We then find the distinct products by joining the beforementioned tables again and
+build a string for use with the IN keyword specifying all the customer id's whose products we are interested in.
+
+~\\
+\underline{For MongoDB part:}~\\
+We first find the customers who purchased pears like in the last exercise
+Next we find all the Orders and Order Details and their corresponding Products
+We can then convert the list to a set to find the unique products and how many there is
+
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-5.py"}
@@ -537,19 +523,6 @@ Louisiana Hot Spiced Okra
 Pavlova
 Gustaf's Knäckebröd
 \end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
-\underline{For sqlite part:}~\\
-We first find the distinct customer ids of the people who've purchased Pears using the DISTINCT and procede just like in the former exercise.
-Next we find all the orders orders of the customers by joining with orders, then order details joining with order details and products joining with products.
-We then find the distinct products by joining the beforementioned tables again and
-build a string for use with the IN keyword specifying all the customer id's whose products we are interested in.
-
-~\\
-\underline{For MongoDB part:}~\\
-We first find the customers who purchased pears like in the last exercise
-Next we find all the Orders and Order Details and their corresponding Products
-We can then convert the list to a set to find the unique products and how many there is
-
 
 \section{Exercise 5.6}
 \textbf{Short recap of the exercise}\\
@@ -705,7 +678,6 @@ We can see from the output graph, that we get a result which is quite similar to
 ~\\
 \textbf{Explanation of code and discussion}\\
 In this exercise, we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result. 
-
 
 \section{Exercise 6.4}
 \textbf{Short recap of the exercise}\\

@@ -30,8 +30,8 @@ cur.execute("""SELECT DISTINCT outerSelect.cID, count(outerSelect.cID) as no_cID
                 GROUP BY outerSelect.cID ORDER BY no_cID DESC LIMIT 5""")
 
 customers = cur.fetchall() 
-
 con.close()
+
 print("Sqlite part:\n----------------")
 for cust, freq in customers:
     print("{} products was bought by {}".format(freq, cust))
