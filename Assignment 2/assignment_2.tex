@@ -176,13 +176,13 @@ In comparison the Mongodb query returns a dictionary by using find\_one.
 ~\\
 \textbf{Overview}\\
 
-\underline{For sqlite part:}~\\
+\underline{Sqlite part:}~\\
 First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
 Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
 So we join Orders and Order Details on OrderID, and Order Details and Products on ProductID, and then we only need the orders with ALFKI as customer. We then specify the attributes which are interesting, for example CustomerID to ensure ALFKI is Customer, the OrderID and the different Product Names in the order.
 
 ~\\
-\underline{For MongoDB part:}~\\
+\underline{MongoDB part:}~\\
 MongoDB version is sort of the same as the sqlite one, instead of joins we just iterate over queries of each collection with our chosen criteria 
 
 ~\\
@@ -225,15 +225,13 @@ From the output we can see he has ordered 6 orders with 12 products in them.
 \textit{Get all orders (with products) made by ALFKI that contain at least 2 product types}\\
 ~\\
 \textbf{Overview}\\
-\underline{For sqlite part:}~\\
-The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieve ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
+\underline{Sqlite part:}~\\
+The solution looks very similar to the latter, except for the sub/"inner" select statement. This select retrieves ALL the order ID from Orders, which have a count greater than 1 and CustomerID is 'ALFKI'. ~\\
 The outer-select, select then CustomerID, OrderID and ProductName based on those OrderID's which the inner-selects returns. 
 
 ~\\
-\underline{For MongoDB part:}~\\
+\underline{MongoDB part:}~\\
 The solution looks very similar to the latter, except for the if-statement where the count are greater than 1. 
-~\\
-For verifying the result, we can see that the 10692 from the previous exercise are NOT in this solution. 10692 has only 1 products name which we can see in the previous exercise. 
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-3.py"}
@@ -266,20 +264,20 @@ ALFKI 11011 Escargots de Bourgogne
 ALFKI 11011 Flotemysost
 
 \end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
+For verifying the result, we can see that the order with ID 10692 from the previous exercise are NOT in this solution. Order 10692 contains only one product which we can see in the previous exercise. 
 
 \section{Exercise 5.4}
 \textbf{Short recap of the exercise}\\
 \textit{Determine how many and who ordered “Uncle Bob’s Organic Dried Pears” (productID 7).}\\
 ~\\
 \textbf{Overview}\\
-\underline{For sqlite part:}~\\
+\underline{Sqlite part:}~\\
 We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
 We join customers on orders, orders on order details and order details on products
 We filter by ProductID which needs to be 7 and group by CustomerID to get distinct Customers
 
 ~\\
-\underline{For MongoDB part:}~\\
+\underline{MongoDB part:}~\\
 In the MongoDB version we start with order details which contain the Pears Product ID
 We iterate over their respective orders and the orders respective customers
 We can then build a list of distinct customers which have ordered the Pears and also how many times they have ordered them 
@@ -344,17 +342,17 @@ MongoDB: 20 distinct people ordered Uncle Bobo's Organic Dried Pears
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
 ~\\
 \textbf{Overview}\\
-\underline{For sqlite part:}~\\
+\underline{Sqlite part:}~\\
 We first find the distinct customer ids of the people who've purchased Pears using the DISTINCT and procede just like in the former exercise.
 Next we find all the orders orders of the customers by joining with orders, then order details joining with order details and products joining with products.
 We then find the distinct products by joining the beforementioned tables again and
 build a string for use with the IN keyword specifying all the customer id's whose products we are interested in.
 
 ~\\
-\underline{For MongoDB part:}~\\
-We first find the customers who purchased pears like in the last exercise
-Next we find all the Orders and Order Details and their corresponding Products
-We can then convert the list to a set to find the unique products and how many there is
+\underline{MongoDB part:}~\\
+We first find the customers who purchased pears like in the last exercise,
+next we find all the Orders and Order Details and their corresponding products.
+Then we can convert the list to a set to find the unique products and how many there is.\\
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-5.py"}
@@ -526,9 +524,13 @@ Gustaf's Knäckebröd
 \textit{Of those products ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”, which one has been ordered the most (by the same set of customers).}\\
 ~\\
 \textbf{Overview}\\
+\underline{Sqlite part:}~\\
 We first find the distinct customer ids of the people who've purchased Uncle Bob using the DISTINCT (Inner-SELECT).\\
 We then find all ProductNames and frequence of them (using count), where ProductID is not Uncle Bob and where CustomerID can be found in the result from the inner-SELECT (outer-SELECT).\\
 Lastly, we sort by the frequence of ProductNames and limit the result to only 5 (also outer-SELECT).\\
+\underline{MongoDB part:}~\\
+We go through order details and find those where ProductID is 7, then we find the corresponding orders and their CustomerIDs.
+Next we go through the unique CustomerIDs and order details and then products which does not have ProductID and add them to a list.
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-6.py"}
@@ -537,19 +539,19 @@ Lastly, we sort by the frequence of ProductNames and limit the result to only 5 
 \begin{pythonOutput}
 Sqlite part:
 ----------------
-22 times was 'Jack's New England Clam Chowder' bought
-22 times was 'Tarte au sucre' bought
-19 times was 'Camembert Pierrot' bought
-19 times was 'Raclette Courdavault' bought
-18 times was 'Chang' bought
+Jack's New England Clam Chowder was bought 22 times
+Tarte au sucre was bought 22 times
+Camembert Pierrot was bought 19 times
+Raclette Courdavault was bought 19 times
+Chang was bought 18 times
 
 MongoDB part:
 ---------------
-22 times was 'Tarte au sucre' bought
-22 times was 'Jack's New England Clam Chowder' bought
-19 times was 'Camembert Pierrot' bought
-19 times was 'Raclette Courdavault' bought
-18 times was 'Gnocchi di nonna Alice' bought
+Tarte au sucre was bought 22 times
+Jack's New England Clam Chowder was bought 22 times
+Camembert Pierrot was bought 19 times
+Raclette Courdavault was bought 19 times
+Gnocchi di nonna Alice was bought 18 times
 
 \end{pythonOutput}
 From the output we find that the product ordered the most by the customers is split between "Jack's New England Clam Chowder" and "Tarte au sucre".\\
@@ -571,7 +573,7 @@ We have 3 SELECT clauses. Numbered from first/outer to last/most inner: (1), (2)
 \underline{For MongoDB part:}~\\
 We iterate over orders and order details and save the distinct orders details made by 'ALFKI'.\\
 We then iterate over the orders which does not belong to 'ALFKI' and next the order details with an and clause wanting the order details of the specified orders and where the order details ProductID is in the distinct products ordered by 'ALFKI'.\\
-We save the result in a dictionary with key CustomerID and value as a list of ProductIDs for a given customer and create a new list with number of products and customer.
+We save the result in a dictionary with key CustomerID and value as a list of ProductIDs for a given customer and create a new list with number of products and customer.\\
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 5/exercise5-7.py"}~\\
@@ -621,7 +623,7 @@ After have fiddlering around with the exercises, we think the main issue with th
 \includegraphics[center]{"../Lesson 6/6_1_graph"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-By the showned output above, we can see we get four customers where one of them is the famous 'ALFKI', thus we assume our Graphstory.com/neo4j setup works. 
+From the output above, we can see we get four customers where one of them is the famous 'ALFKI', thus we assume our Graphstory.com/neo4j setup works. 
 
 \section{Exercise 6.2}
 \textbf{Short recap of the exercise}\\
@@ -651,7 +653,7 @@ We can see from the output graph, that we get a result which is quite similar to
 
 \begin{enumerate}
   \item "Selects" the Order and Products nodes where CustomerID is 'ALFKI' in Order
-  \item Then we use the 'collect' keyword, to put products in a list and then we count the products  \ldots
+  \item Then we use the 'collect' function, to put products in a list and then we count the products  \ldots
   \item \ldots and return the nodes, where the count is greater than 1
   \item Last we return the nodes that was found of Order and Products\\
 \end{enumerate}
@@ -672,7 +674,7 @@ In this exercise, we have omitted the Customer node, as we can use the Order nod
 
 \begin{enumerate}
   \item "Selects" the Order and Products nodes
-  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID in a list   
+  \item Then we use the 'collect' function, to put (DISTINCT) customerID in a list   
   \item We filter based on productID equal '7'
   \item Last we return the list of customerID and the length of the list (the number of customerID's)
 \end{enumerate}
@@ -684,7 +686,7 @@ In this exercise, we have omitted the Customer node, as we can use the Order nod
 ~\\
 \textbf{Explanation of code and discussion}\\
 Also here we have omitted the Customer node, as we can use the Order node's 'customerID' attribute to find the result.
-The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
+The length function gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
 ~\\
 We chose to show the result as a table and not a graph, as the exercise states we should only determine how many and who have bought the items.
 
@@ -696,7 +698,7 @@ We chose to show the result as a table and not a graph, as the exercise states w
 
 \begin{enumerate}
    \item "Selects" the Order and Products nodes
-  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID from customer in a list   
+  \item Then we use the 'collect' function, to put (DISTINCT) customerID from customer in a list   
   \item We filter based on productID equal '7'
   \item We then "Select" Products and Order, take DISTINCT ProductNames, orders and the list of customerID's \ldots
   \item \ldots where customerID in orders is in the list of customerID's
@@ -709,7 +711,7 @@ We chose to show the result as a table and not a graph, as the exercise states w
 \includegraphics[center]{"../Lesson 6/6_5_rowGrid"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-The length keyword gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
+The length function gives us the length of the list with the customerID's, thus we find the number of customers. The list shows the customer ID's in no specific order. ~\\ 
 ~\\
 We chose to show the result as a table and not a graph, as the exercise states we should only determine how many and which different products have been ordered.
 
@@ -720,7 +722,7 @@ We chose to show the result as a table and not a graph, as the exercise states w
 \textbf{Overview}
 \begin{enumerate}
   \item "Selects" the Order and Products nodes
-  \item Then we use the 'collect' keyword, to put (DISTINCT) customerID from customer in a list   
+  \item Then we use the 'collect' function, to put (DISTINCT) customerID from customer in a list   
   \item We filter based on productID equal '7'
   \item We then "Select" Products and Order, take DISTINCT ProductNames, orders and the list of customerID's and Products\ldots
   \item \ldots where customerID in orders is in the list of customerID's AND where productID is not '7'
@@ -733,7 +735,7 @@ We chose to show the result as a table and not a graph, as the exercise states w
 \includegraphics[center]{"../Lesson 6/6_6_rowGrid"}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
-The count keyword, count the number of the specified item, thus we find the number of times, the product have been bought. ~\\ 
+The count function, count the number of the specified item, thus we find the number of times, the product have been bought. ~\\ 
 ~\\
 We chose to show the result as a table and not a graph because the question is which item have been ordered the most and thus not relational. 
 
@@ -744,7 +746,7 @@ We chose to show the result as a table and not a graph because the question is w
 \textbf{Overview}
 \begin{enumerate}
   \item "Selects" the Order and Products nodes where customerID in Order is equal to 'ALFKI'
-  \item Then we use the 'collect' keyword, to put all productID which 'ALFKI' has bought in a list   
+  \item Then we use the 'collect' function, to put all productID which 'ALFKI' has bought in a list   
   \item We the "Select" Order an Products where productID is in 'ALFKI's list of bought productID AND customerID is not 'ALFKI'
   \item We take the DISTINCT customerID and a list of Products
   \item Last we return the customerID's and the number of Products, Ordered by the number of Products\\

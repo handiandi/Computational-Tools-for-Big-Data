@@ -36,7 +36,7 @@ con.close()
 
 print("Sqlite part:\n----------------")
 for freq, item in products:
-	print("{} times was '{}' bought".format(freq, item))
+	print("{} was bought {} times".format(item, freq))
 
 """ MongoDB version of exercise:
 We first find the customers who purchased Uncle Bob
@@ -68,4 +68,4 @@ for customer in set(customer_ids_list):
 				products.append(product["ProductName"])
 
 for item, freq in collections.Counter(products).most_common(5):
-	print("{} times was '{}' bought".format(freq, item))
+	print("{} was bought {} times".format(item, freq))
