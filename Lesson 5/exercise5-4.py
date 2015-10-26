@@ -5,14 +5,14 @@ import pymongo
 """
 Exercise 5.4
 Sqlite version of exercise:
-We can select count of customerID on orders to get how many times each customer ordered a certain product and their ContactName
+We can select count of CustomerID on orders to get how many times each customer ordered a certain product and their CustomerID
 We join customers on orders, orders on order details and order details on products
 We filter by ProductID which needs to be 7 and group by CustomerID to get distinct Customers
 """
 con = sqlite3.connect("northwind.db")
 con.text_factory = lambda x: str(x, 'latin1')
 cur = con.cursor()
-cur.execute("""SELECT Count(Orders.CustomerID), Customers.ContactName from Orders
+cur.execute("""SELECT Count(Orders.CustomerID), Customers.CustomerID from Orders
 			   INNER JOIN Customers on Orders.CustomerID = Customers.CustomerID 
 			   INNER JOIN 'Order Details' on Orders.OrderID = 'Order Details'.OrderID 
 			   INNER JOIN Products on 'Order Details'.ProductID = Products.ProductID  
@@ -39,10 +39,9 @@ customer_list = []
 pear_details = order_details_collection.find({"ProductID":7})
 for detail in pear_details:
 	for order in order_collection.find({"OrderID": detail["OrderID"]}):
-		for customer in customer_collection.find({"CustomerID":order["CustomerID"]}):
-			customer_list.append(customer["ContactName"])
+		for customer in customer_collection.find({"CustomerID":order["CustomerID"]}).distinct("CustomerID"):
+			customer_list.append(customer)
 
 print("\nMongoDB: {} distinct people ordered Uncle Bobo's Organic Dried Pears\n They are:".format(len(set(customer_list))))
-for customer in set(customer_list):
+for customer in customer_list:
 	print((customer_list.count(customer), customer))
-

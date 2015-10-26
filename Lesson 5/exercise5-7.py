@@ -49,10 +49,7 @@ products_collection = db["products"]
 ALFKI_products = []
 
 for ALFKI_order in order_collection.find({'CustomerID': 'ALFKI'}):
-    for orderID in order_details_collection.find({'OrderID':ALFKI_order["OrderID"]}):
-            ALFKI_products.append(orderID['ProductID'])
-
-ALFKI_products = list(set(ALFKI_products))
+    ALFKI_products.extend(order_details_collection.find({'OrderID':ALFKI_order["OrderID"]}).distinct("ProductID"))
 
 customer_product_dict = {}
 
