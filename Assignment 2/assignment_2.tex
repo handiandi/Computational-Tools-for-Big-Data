@@ -175,7 +175,6 @@ In comparison the Mongodb query returns a dictionary by using find\_one.
 \textit{Query for, and return, all orders made by ALFKI and the products they contain}\\
 ~\\
 \textbf{Overview}\\
-
 \underline{Sqlite part:}~\\
 First we need to join 3 tables which are of importance to us: Orders which contain single orders for a Customer,
 Order Details which ties an Order together with a Product and also contains quantity, price and discount, lastly we need the Products table to get the Product Name.
@@ -595,22 +594,21 @@ MongoDB part:
 7 products was bought by VAFFE
 7 products was bought by FOLKO
 \end{pythonOutput}
-
+~\\
 \textbf{Explanation of code and discussion}\\
 We decided to show the top 5 of customers who bought most of the same products as ALFKI. 
 If there is any descrepancies between the sqlite and MongoDB output it's because seven people bought seven of the same items as ALFKI and we only include two of them in our top 5.
 
 \section{SQL vs. NoSQL}
-After have fiddlering around with the exercises, we think the main issue with these two sysems, is when we have data with relations. At this, SQL show its strength. With NoSQL (MongoDB in this case), we have to loop through many collections, before we end up with the wanted result - which is tedious. 
+After having worked through the exercises, we think it is an issue that the MongoDB exercises uses data put into them that is relational in the same way as the data in the sqlite database. Using MongoDB and the particular dataset, we have to loop through many collections which is tedious, perhaps the data in the MongoDB database could have been structured in a way which makes it easier to process it.
 
 
 %-------------- Week 6 ---------------------
 \section{Exercise 6.1}
 \textbf{Short recap of the exercise}\\
 \textit{We should make Graphstory.com/neo4j work with the northwind database and show that it works}\\
-
-\textbf{Overview}\\
-
+~\\
+\textbf{Overview}
 \begin{enumerate}
   \item "Selects" the customer node
   \item Retrieve the customers which customerID starts with 'A'
@@ -627,10 +625,9 @@ From the output above, we can see we get four customers where one of them is the
 
 \section{Exercise 6.2}
 \textbf{Short recap of the exercise}\\
-\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return all the orders made by ALFKI and the products they contain.}
+\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return all the orders made by ALFKI and the products they contain.}\\
 ~\\
-\textbf{Overview}\\
-
+\textbf{Overview}
 \begin{enumerate}
   \item "Selects" the customer, Order and products nodes (nodes which have edge names ORDERS and PURCHASED) \ldots
   \item \ldots where customerID is 'ALFKI' 
@@ -647,10 +644,9 @@ We can see from the output graph, that we get a result which is quite similar to
 
 \section{Exercise 6.3}
 \textbf{Short recap of the exercise}\\
-\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return orders made by ALFKI that contain at least 2 products. Also return the products.}~\\
-
-\textbf{Overview}\\
-
+\textit{The customer with customerID ALFKI has made a number of orders containing some products. Return orders made by ALFKI that contain at least 2 products. Also return the products.}\\
+~\\
+\textbf{Overview}
 \begin{enumerate}
   \item "Selects" the Order and Products nodes where CustomerID is 'ALFKI' in Order
   \item Then we use the 'collect' function, to put products in a list and then we count the products  \ldots
@@ -694,8 +690,7 @@ We chose to show the result as a table and not a graph, as the exercise states w
 \textbf{Short recap of the exercise}\\
 \textit{How many different and which products have been ordered by customers who have also ordered “Uncle Bob’s Organic Dried Pears”?}\\
 ~\\ 
-\textbf{Overview}\\
-
+\textbf{Overview}
 \begin{enumerate}
    \item "Selects" the Order and Products nodes
   \item Then we use the 'collect' function, to put (DISTINCT) customerID from customer in a list   
@@ -766,7 +761,7 @@ We can see of the result that the customer with ID 'RATTC' has bought 9 of the s
 \section{Exercise 7.1}
 \textbf{Short recap of the exercise}\\
 \textit{Implement a Bloom Filter as a Python class. The class should have an add method which adds a string to the filter, and a lookup method which determines if a string is “in the filter”.}\\
-
+~\\
 \textbf{Overview}\\
 For creating the bloom filter class we used the algorithm found at Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Bloom_filter#Algorithm_description}}.\\
 We used a number of bits (m) of 1 million for the bit array, and an estimated number of distinct entries (n) of 235887 which are the number of entries in the dictionary file.
@@ -775,9 +770,10 @@ In the add method we feed the element to each of our hash functions and set the 
 In the lookup method we check whether an element is present in our bloom filter by feeding the element to each of our hash functions. We use the indexes returned from the hash functions and get the bits at their positions in the bit array, if any of the bits at the indexes are 0, we know the element is not present in our bloom filter. If all the bits are 1 either the element is present or it is a false positive caused by collisions.\\\\
 For finding each word in our texts we first needed to clean them. We converted the text to lower-case and split on the regex `\textbackslash W+' which gives us all words. We found we had to process the words even further as plural forms of words were present in the shakespeare text which was not the case in the dictionary thus yielding an error. To circumvent this we used a stemmer (Snowball Stemmer\footnote{\url{http://www.nltk.org/_modules/nltk/stem/snowball.html}}) to reduce the words to their word stem in both the dictionary and shakespeare text.\\
 We defined two functions, one utilizing our BloomFilter class and one using the naive approach, this way we can benchmark them using the timeit module.\\
-
+~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 7/bloom_filter.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
 5.115084372999263
@@ -806,18 +802,19 @@ From the output we can see that using a bloom filter takes 5.115 seconds to add 
 \section{Exercise 7.2}
 \textbf{Short recap of the exercise}\\
 \textit{Implement the Flajolet-Martin algorithm to determine the number of distinct words in this Shakespeare file.}\\
-
+~\\
 \textbf{Overview}\\
 We have implemented the Flajolet-Martin algorithm using the algorithm found at Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Flajolet-Martin_algorithm#The_algorithm}}.\\\\
 The process method finds the index to set by calling the trailing\_zeroes and hash with the new entry.\\\\
 The give\_estimate method finds the smallest index where the bitarray is 0 and estimates the cardinality with the correction factor $0.77351$.\\\\
-The trailing\_zeroes method corresponds to the p function which outputs the position of the least significant 1-bit.\\\\
-
+The trailing\_zeroes method corresponds to the p function which outputs the position of the least significant 1-bit.\\
+~\\
 The class containing the algorithm takes a seed which is used in the hash function, this way we can use a different hash for each class created if we want to.
-We run the algorithm several times to improve accuracy also described on Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Flajolet-Martin_algorithm#Improving_accuracy}}, we create $K \cdot L$ instances of our class each with a random hash function and process each shakespeare word on every instance. Then for each $K$ we take the median of the $L$ estimates and lastly take the mean of each K median estimates.
-
+We run the algorithm several times to improve accuracy also described on Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Flajolet-Martin_algorithm#Improving_accuracy}}, we create $K \cdot L$ instances of our class each with a random hash function and process each shakespeare word on every instance. Then for each $K$ we take the median of the $L$ estimates and lastly take the mean of each K median estimates.\\
+~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 7/flajolet_martin.py"}
+~\\
 \textbf{Output}
 \begin{pythonOutput}
 K and L levels approximates:
