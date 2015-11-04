@@ -1,0 +1,277 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{cleveref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+\DeclareUnicodeCharacter{00D6}{Ö}
+\DeclareUnicodeCharacter{00DC}{Ü}
+\DeclareUnicodeCharacter{00E4}{ä}
+\DeclareUnicodeCharacter{00E4}{ä}
+
+% Custom colors
+\usepackage{color}
+
+\definecolor{output_background}{rgb}{0.2, 0.2, 0.2}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{purple}{rgb}{0.6, 0.1, 0.9}
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=python,
+breaklines=true,
+basicstyle=\ttfamily\small,
+otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, \), \{, \}, :, *, !},             % Add keywords here
+keywordstyle=\color{blue},
+emph={class, pass, in, for, while, if, is, elif, else, not, and, or, OR
+    def, print, exec, break, continue, return},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{purple},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+stringstyle=\color{red},
+frame=tb,
+showstringspaces=false,
+morecomment=[s]{"""}{"""},
+commentstyle=\color{gray},
+rulesepcolor=\color{blue},
+title=\lstname
+}}
+
+% Python style for output highlighting
+\newcommand\pythonoutputstyle{\lstset{
+backgroundcolor=\color{output_background},
+rulecolor=\color{output_background},
+basicstyle=\ttm\small\color{white},
+showstringspaces=false,
+inputencoding=utf8,
+extendedchars=true,
+literate=%
+    {á}{{\'a}}1
+    {č}{{\v{c}}}1
+    {ď}{{\v{d}}}1
+    {é}{{\'e}}1
+    {ě}{{\v{e}}}1
+    {í}{{\'i}}1
+    {ň}{{\v{n}}}1
+    {ó}{{\'o}}1
+    {ř}{{\v{r}}}1
+    {š}{{\v{s}}}1
+    {ť}{{\v{t}}}1
+    {ú}{{\'u}}1
+    {ů}{{\r{u}}}1
+    {ý}{{\'y}}1
+    {ž}{{\v{z}}}1
+    {Á}{{\'A}}1
+    {Č}{{\v{C}}}1
+    {Ď}{{\v{D}}}1
+    {É}{{\'E}}1
+    {Ě}{{\v{E}}}1
+    {Í}{{\'I}}1
+    {Ň}{{\v{N}}}1
+    {Ó}{{\'O}}1
+    {Ř}{{\v{R}}}1
+    {Š}{{\v{S}}}1
+    {Ť}{{\v{T}}}1
+    {Ú}{{\'U}}1
+    {Ů}{{\r{U}}}1
+    {Ý}{{\'Y}}1
+    {Ž}{{\v{Z}}}1
+    {Ö}{{\"{O}}}1
+    {ö}{{\"{o}}}1
+    {Ü}{{\"{U}}}1
+    {ü}{{\"{u}}}1   
+    {ß}{{\ss}}1
+    {ä}{{\"{a}}}1
+    {é}{{\'{e}}}1
+    {ô}{{\^{o}}}1
+    {â}{{\^{a}}}1
+    {è}{{\`{e}}}1
+}}
+
+
+\lstnewenvironment{pythonOutput}[1][]
+{
+\pythonoutputstyle
+\lstset{#1}
+}
+{}
+
+% Python for inline
+\newcommand\pythonoutput[1]{{\pythonoutputstyle\lstinline!#1!}}
+
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+\title{Assignment 3\\02807 Computational Tools for Big Data}
+\author{S \& A}
+\date{26th October 2015}
+\usepackage[cm]{fullpage}
+\begin{document}
+
+\maketitle
+\newpage
+%-------------- Week 5 ---------------------
+\section{Exercise 8.1}
+\textbf{Short recap of the exercise}\\
+\textit{Define and implement a MapReduce job to count the occurrences of each word in a text file. Document that it works with a small example.}\\
+~\\
+\textbf{Overview}
+We \\
+\\*
+~\\
+\textbf{Code}
+\pythonexternal{"../Lesson 8/exercise-8-1.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+
+
+\end{pythonOutput}
+We 
+~\\
+
+\section{Exercise 8.2}
+\textbf{Short recap of the exercise}\\
+\textit{Define and implement a MapReduce job that determines if a graph has an Euler tour (all vertices have even degree) where you can assume that the graph you get is connected.
+It is fine if you split the file into 5 different files. You do not need to keep the node and edge counts in the top of the file.}\\
+~\\
+\textbf{Overview}\\
+
+
+
+~\\
+\textbf{Code}
+%\pythonexternal{"../Lesson 5/exercise5-2.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+
+\end{pythonOutput}
+
+
+\section{Exercise 8.3}
+\textbf{Short recap of the exercise}\\
+\textit{Implement the MapReduce job from the lecture which finds common friends.}\\
+~\\
+\textbf{Overview}\\
+
+~\\
+\textbf{Code}
+%\pythonexternal{"../Lesson 5/exercise5-3.py"}
+\textbf{Output}
+\begin{pythonOutput}
+
+
+\end{pythonOutput}
+
+
+\section{Exercise 8.4}
+\textbf{Short recap of the exercise}\\
+\textit{Make a MapReduce job which counts the number of triangles in a graph.}\\
+~\\
+\textbf{Overview}\\
+
+
+~\\
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 5/exercise5-4.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+
+\end{pythonOutput}
+
+
+
+%-------------- Week 9 ---------------------
+\section{Exercise 9.1}
+\textbf{Short recap of the exercise}\\
+\textit{Write a Spark job to count the occurrences of each word in a text file. Document that it works with a small example}\\
+~\\
+\textbf{Overview}
+~\\
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 6/exercise6-1-query.txt"}~\\
+\textbf{Output}~\\
+~\\
+\textbf{Explanation of code and discussion}\\
+
+\section{Exercise 9.2}
+\textbf{Short recap of the exercise}\\
+\textit{Write a Spark job that determines if a graph has an Euler tour (all vertices have even degree) where you can assume that the graph you get is connected.~\\
+It is fine if you split the file into 5 different files. You do not need to keep the node and edge counts in the top of the file.}\\
+~\\
+\textbf{Overview}
+
+~\\
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 6/exercise6-2-query.txt"}~\\
+\textbf{Output}~\\
+
+~\\
+\textbf{Explanation of code and discussion}\\
+ ~\\
+
+\section{Exercise 9.3}
+\textbf{Short recap of the exercise}\\
+\textit{Compute the following things using Spark:
+\begin{enumerate}
+    \item What are the 10 networks I observed the most, and how many times were they observed? Note: the bssid is unique for every network, the name (ssid) of the network is not necessarily unique.
+    \item What are the 10 most common wifi names? (ssid)
+    \item What are the 10 longest wifi names? (again, ssid)
+\end{enumerate}}
+\textbf{Overview}
+\textbf{Code}
+%\pythonexternal{"../Lesson 6/exercise6-3-query.txt"}~\\
+\textbf{Output}
+\textbf{Explanation of code and discussion}
+
+
+
+%-------------- Week 10 ---------------------
+\section{Exercise 10.1}
+\textbf{Short recap of the exercise}
+\textit{}
+\textbf{Overview}
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 7/bloom_filter.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+
+\end{pythonOutput}
+\textbf{Explanation of code and discussion}\\
+
+
+\section{Exercise 10.2}
+\textbf{Short recap of the exercise}\\
+\textit{}\\
+~\\
+\textbf{Overview}\\
+
+~\\
+\textbf{Code}\\
+%\pythonexternal{"../Lesson 7/flajolet_martin.py"}
+~\\
+\textbf{Output}
+\begin{pythonOutput}
+
+\end{pythonOutput}
+\textbf{Explanation of code and discussion}\\
+
+
+
+\end{document}
