@@ -1,0 +1,14 @@
+What is Deep Learning?
+-----------------------
+
+Deep Learning (DL) is a subset/branch of Machine Learning (ML) (where ML is subset of AI, which is which is algorithms that improve themselves over time)
+
+DL is used as any other ML techniques;  to learn from data, and predict an outcome based on the trained model. DL is based on Artificial Neural Networks (ANN - an ML technique) but the differ between ANN and DL is, that DL trains multi-layered ANN's (1). This have some benefits: 
+	- Better classification/prediction, because the multi-layered technique
+	- Better use on Big Data
+
+The reason for the latter statement is, an ANN dont use much data compared to other techniques and when you have huge dataset, this is priceless. The data DL uses is still huge though! 
+
+Conclusion: DL is a sort of rebirth of ANN which can be used effectively on Big Data
+
+Sources: https://www.quora.com/What-is-the-difference-between-deep-learning-and-machine-learning-1
