@@ -42,7 +42,7 @@ if __name__ == '__main__':
 	# create minhashed representation with a number of permutations
 	X_mod = create_minhashed_matrix(X, NUMBER_OF_PERMUTATIONS)
 
-	# create a dictionary of bucket_id (tupled minhash representation) -> list of indexes
+	# create a dictionary of: tupled minhash representation -> list of indexes
 	bucket_dict = create_bucket_dict(X_mod)
 
 	for key, indexes in bucket_dict.items():
