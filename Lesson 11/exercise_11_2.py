@@ -25,17 +25,23 @@ def create_minhashed_matrix(X, permutations):
 			X_mod[index,i] = np.where(current == 1)[0][0]
 	return X_mod
 
+def create_bow(articles):
+	vectorizer = CountVectorizer(tokenizer=exercise_11_1.tokenizer, binary=True)
+	X = vectorizer.fit_transform([article["body"] for article in articles]).toarray()
+	ŕeturn X
+
 if __name__ == '__main__':
+	NUMBER_OF_PERMUTATIONS = 6
+
 	# get 100 articles
 	articles = exercise_11_1.preprocess_texts()[:100]
 
 	# create binary bag of words matrix with the tokenizer we defined in exercise 11-1
-	vectorizer = CountVectorizer(tokenizer=exercise_11_1.tokenizer, binary=True)
-	X = vectorizer.fit_transform([article["body"] for article in articles]).toarray()
+	X = create_bow(articles)
 
-	NUMBER_OF_PERMUTATIONS = 6
 	X_mod = create_minhashed_matrix(X, NUMBER_OF_PERMUTATIONS)
 
 	bucket_dict = create_bucket_dict(X_mod)
+
 	for key, indexes in bucket_dict.items():
 		print(len(indexes))
