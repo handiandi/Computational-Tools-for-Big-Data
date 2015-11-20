@@ -308,7 +308,8 @@ Following is a summarization of the comments in the file.
 'jeg' has an occurrences of 1
 \end{pythonOutput}
 ~\\
-\textbf{Explanation of code and discussion}\\
+\textbf{Explanation of output and discussion}\\
+We can see that the output is identical with exercise 8.1, and since we have validated the result i 8.1, this result is also correct. 
 
 \section{Exercise 9.2}
 \textbf{Short recap of the exercise}\\
@@ -317,26 +318,36 @@ It is fine if you split the file into 5 different files. You do not need to keep
 ~\\
 \textbf{Overview}
 As in the exercise in Week 8, we have splittet the file into 5 different files. ~\\
-We have created a python function 'haseulertour' which take a filename string as argument. \\
+We have created a python function 'has\_euler\_tour' which take a filename string as argument. \\
 ~\\
 The following is a step-by-step explaination of the code (primarily the function). 
 \begin{enumerate}
   \item Loading in the file
-  \item Creating a pair of integer values in the form (fromnode , tonode), by splitting on whitespace
-  \item Creating a list of pairs in the form [(fromnode , tonode), (tonode , fromnode)]
+  \item Creating a pair of integer values in the form (from\_node , to\_node), by splitting on whitespace
+  \item Creating a list of pairs in the form [(from\_node , to\_node), (to\_node , from\_node)]
   \item Creating a pair for each node in position 1 of the pairs in the list. The new pair has the form (node, count) where count is the occurrence of the node, set to 1
   \item We use reduceByKey to summerize the values
   \item filter-function find those whos values are not even
   \item If the count of result from filter-function is 0, return true, else return false 
   \item Print out the result\\
 \end{enumerate}
+What the code actually does, is to count the edges for each node. When we create the list of opposite pairs (step 3), we account for both to and from edges, which mean we can simply count the occurences of the node in positon 1 (step 4). ~\\
+From this we can decide whether it has Euler tour. 
 ~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 9/exercise-9-2.py"}~\\
 \textbf{Output}~\\
-
+\begin{pythonOutput}
+Has Euler Tour: True
+Has Euler Tour: False
+Has Euler Tour: True
+Has Euler Tour: True
+Has Euler Tour: False
+\end{pythonOutput}
 ~\\
-\textbf{Explanation of code and discussion}\\
+\textbf{Explanation of output and discussion}\\
+We can see that the output is identical with exercise 8.2, so we assume this result is correct. 
+
  ~\\
 
 \section{Exercise 9.3}
@@ -348,9 +359,62 @@ The following is a step-by-step explaination of the code (primarily the function
     \item What are the 10 longest wifi names? (again, ssid)
 \end{enumerate}}
 \textbf{Overview}
+We have made one single file with the code for all three tasks. We wille explain the task, and in the two others, we will explain the differences ffrom task 1. ~\\
+Note: The outputs is spread out on three output instead of one single. ~\\
+
+~\\
+\textbf{What are the 10 networks I observed the most, and how many times were they observed?}~\\
+After loading the file, we extract bssid from it by converting it to a dict usin the eval() function. Make a pair (bssid, count) where count is sat to 1. Then we count them with reduceByKey and print out top 10 in descending order (by count). ~\\
+
+ \textbf{What are the 10 most common wifi names? (ssid)}~\\
+We extract distinctive pairs between ssid and bssid to count the ssid, but not for the same router/access point!
+From these, we create a pair of ssid and count (ssid, count) where count is sat to 1. ~\\
+Then we count them with reduceByKey and print out top 10 in descending order (by count).~\\
+
+ \textbf{What are the 10 longest wifi names? (again, ssid)}~\\
+ We do the same as the latter task, and choose the distinctive ssid. Then we print out top 10 in descending order by length of ssid-string. ~\\~\\ 
 \textbf{Code}
 \pythonexternal{"../Lesson 9/exercise-9-3.py"}~\\
-\textbf{Output}
+\textbf{Output - What are the 10 networks I observed the most, and how many times were they observed? Note: the bssid is unique for every network, the name (ssid) of the network is not necessarily unique.}
+\begin{pythonOutput}
+[(u'34:21:09:12:6c:1a', 347),
+ (u'00:24:b2:98:39:d2', 338),
+ (u'34:21:09:12:6c:18', 324),
+ (u'e8:08:8b:c9:c1:79', 318),
+ (u'44:94:fc:56:08:fb', 315),
+ (u'00:22:b0:b3:f2:ea', 314),
+ (u'2c:b0:5d:ef:08:2b', 272),
+ (u'44:94:fc:56:ce:5e', 240),
+ (u'28:cf:e9:84:a1:c3', 211),
+ (u'bc:ee:7b:55:1a:43', 210)]
+\end{pythonOutput}
+\textbf{Output - What are the 10 most common wifi names? (ssid)}
+\begin{pythonOutput}
+[(u'', 15),
+ (u'SIT-GUEST', 15),
+ (u'SIT-BYOD', 13),
+ (u'SIT-PROD', 13),
+ (u'PDA-105', 11),
+ (u'KNS-105', 11),
+ (u'MED-105', 11),
+ (u'KEA-PUBLIC', 6),
+ (u'GST-105', 5),
+ (u'wireless', 4)]
+\end{pythonOutput}
+\textbf{Output - What are the 10 longest wifi names? (again, ssid)}
+\begin{pythonOutput}
+[u'HP-Print-43-Deskjet 3520 series',
+ u'TeliaGatewayA4-B1-E9-2C-9E-CA',
+ u'TeliaGateway08-76-FF-84-FF-8C',
+ u'TeliaGateway9C-97-26-57-15-F9',
+ u'TeliaGateway08-76-FF-46-3E-36',
+ u'TeliaGateway9C-97-26-57-15-99',
+ u'TeliaGateway08-76-FF-8A-EE-32',
+ u'TeliaGateway08-76-FF-85-04-2F',
+ u'TeliaGateway08-76-FF-9C-E0-82',
+ u'Charlotte R.s Wi-Fi-netv\xe6rk']
+
+\end{pythonOutput}
 \textbf{Explanation of code and discussion}
 
 
