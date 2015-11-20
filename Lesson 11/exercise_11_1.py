@@ -43,9 +43,13 @@ def hashing_vectorizer(article_words, num_buckets):
 def tokenizer(article_body):
 	return [word.lower() for word in article_body.split()]
 
-def bow_trainer(articles):
-	vectorizer = CountVectorizer(tokenizer=tokenizer)
+def create_bow(articles, tokenizer, binary):
+	vectorizer = CountVectorizer(tokenizer=tokenizer, binary=binary)
 	X = vectorizer.fit_transform([article["body"] for article in articles])
+	return X
+
+def bow_trainer(articles):
+	X = create_bow(articles, tokenizer, False)
 	y = ["earn" in article["topics"] for article in articles]
 	print(X.shape)
 
