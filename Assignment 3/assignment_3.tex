@@ -181,9 +181,11 @@ The steps method tells MrJob in which order the oher method should run. In our c
   \item \textbf{reducer} sums the values of the key, as we did in exercise 1
   \item \textbf{reducer2} check if all values of the key is even\\
 \end{itemize}
-
-
-
+~\\
+We have split the input file in 5 files and the we call the script wirg the following command: ~\\
+ls graph*.txt | xargs -n1 ./exercise-2.py -q \\
+~\\
+This run the script with all files as arguments, one-by-one in the correct order (1,2,...,5)
 
 ~\\
 \textbf{Code}
@@ -191,6 +193,11 @@ The steps method tells MrJob in which order the oher method should run. In our c
 ~\\
 \textbf{Output}
 \begin{pythonOutput}
+"Has Euler Tour"    true
+"Has Euler Tour"    false
+"Has Euler Tour"    true
+"Has Euler Tour"    true
+"Has Euler Tour"    false
 
 \end{pythonOutput}
 
@@ -200,11 +207,21 @@ The steps method tells MrJob in which order the oher method should run. In our c
 \textit{Implement the MapReduce job from the lecture which finds common friends (note that for the Facebook file, you need to extend the job to convert from a list of edges to the format from the slides – do this with an additional map/reduce job).}\\
 ~\\
 \textbf{Overview}\\
+We have split this assignment in two: one for the example in the slides, and one for the facebook file. ~\\
+\textbf{For the slides example}
 
+\textbf{For the facebook file}
 ~\\
-\textbf{Code}
-%\pythonexternal{"../Lesson 5/exercise5-3.py"}
-\textbf{Output}
+\textbf{Code - Slides example}
+\pythonexternal{"../Lesson 8/exercise-3-1.py"}
+\textbf{Output - Slides example}
+\begin{pythonOutput}
+
+
+\end{pythonOutput}
+\textbf{Code - Facebook file}
+\pythonexternal{"../Lesson 8/exercise-3-2.py"}
+\textbf{Output - Facebook file}
 \begin{pythonOutput}
 
 
