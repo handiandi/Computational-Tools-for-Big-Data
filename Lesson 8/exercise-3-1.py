@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#Use for the examples from slides
+
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 

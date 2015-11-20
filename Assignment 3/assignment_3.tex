@@ -128,19 +128,43 @@ literate=%
 \textbf{Short recap of the exercise}\\
 \textit{Define and implement a MapReduce job to count the occurrences of each word in a text file. Document that it works with a small example.}\\
 ~\\
-\textbf{Overview}
-We \\
+\textbf{Overview}\\
+We make the required method: mapper and reducer.   \\
+The mapper takes a line at the time as value, then loops the word in the lijne through by splitting the line. It "calls" the reducer with the word as key and 1 as value. The reducer sums the valuee by key and yields the result. 
 \\*
 ~\\
 \textbf{Code}
 \pythonexternal{"../Lesson 8/exercise-8-1.py"}
 ~\\
+\textbf{Input}
+\begin{pythonOutput}
+der var en gang en mand
+der booede i en spand
+spanden var af ler
+nu kan jeg ikke mer
+\end{pythonOutput}
 \textbf{Output}
 \begin{pythonOutput}
-
-
+"af"    1
+"booede"    1
+"der"   2
+"en"    3
+"gang"  1
+"i" 1
+"ikke"  1
+"jeg"   1
+"kan"   1
+"ler"   1
+"mand"  1
+"mer"   1
+"nu"    1
+"spand" 1
+"spanden"   1
+"var"   2
 \end{pythonOutput}
-We 
+\textbf{Explanation of output and discussion}\\
+We can see it returns the key (word) and the sum of the value (original the ones). As result we can see there is 3 occurrences of the word 'er' and 2 of the word 'der'. ~\\
+If we them manually (from the text in input), we can see it is true.
 ~\\
 
 \section{Exercise 8.2}
@@ -149,12 +173,21 @@ We
 It is fine if you split the file into 5 different files. You do not need to keep the node and edge counts in the top of the file.}\\
 ~\\
 \textbf{Overview}\\
+Besides of the required mapper/reducer method, we have and additional reducer (reducer2) and a steps method. ~\\
+The steps method tells MrJob in which order the oher method should run. In our case the mapper and reducer should run, and the reducer2. reducer2 reduces the yield result from reducer, where the logic is as followed:
+
+\begin{itemize}
+  \item \textbf{mapper} takes each line and split it into from- and to-edges. Then it yieldes these two as key with value 1
+  \item \textbf{reducer} sums the values of the key, as we did in exercise 1
+  \item \textbf{reducer2} check if all values of the key is even\\
+\end{itemize}
+
 
 
 
 ~\\
 \textbf{Code}
-%\pythonexternal{"../Lesson 5/exercise5-2.py"}
+\pythonexternal{"../Lesson 8/exercise-2.py"}
 ~\\
 \textbf{Output}
 \begin{pythonOutput}
@@ -164,7 +197,7 @@ It is fine if you split the file into 5 different files. You do not need to keep
 
 \section{Exercise 8.3}
 \textbf{Short recap of the exercise}\\
-\textit{Implement the MapReduce job from the lecture which finds common friends.}\\
+\textit{Implement the MapReduce job from the lecture which finds common friends (note that for the Facebook file, you need to extend the job to convert from a list of edges to the format from the slides – do this with an additional map/reduce job).}\\
 ~\\
 \textbf{Overview}\\
 

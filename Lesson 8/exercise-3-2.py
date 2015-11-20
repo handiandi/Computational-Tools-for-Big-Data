@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#Use for the Facebook file
+
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 
