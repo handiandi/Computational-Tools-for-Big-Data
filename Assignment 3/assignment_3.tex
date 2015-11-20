@@ -326,7 +326,7 @@ The following is a step-by-step explaination of the code (primarily the function
   \item Creating a pair of integer values in the form (from\_node , to\_node), by splitting on whitespace
   \item Creating a list of pairs in the form [(from\_node , to\_node), (to\_node , from\_node)]
   \item Creating a pair for each node in position 1 of the pairs in the list. The new pair has the form (node, count) where count is the occurrence of the node, set to 1
-  \item We use reduceByKey to summerize the values
+  \item We use reduceByKey to summerize the values. reduceByKey returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function a+b. 
   \item filter-function find those whos values are not even
   \item If the count of result from filter-function is 0, return true, else return false 
   \item Print out the result\\
@@ -352,6 +352,7 @@ We can see that the output is identical with exercise 8.2, so we assume this res
 
 \section{Exercise 9.3}
 \textbf{Short recap of the exercise}\\
+
 \textit{Compute the following things using Spark:
 \begin{enumerate}
     \item What are the 10 networks I observed the most, and how many times were they observed? Note: the bssid is unique for every network, the name (ssid) of the network is not necessarily unique.
