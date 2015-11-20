@@ -1,0 +1,10 @@
+[u'HP-Print-43-Deskjet 3520 series',
+ u'TeliaGatewayA4-B1-E9-2C-9E-CA',
+ u'TeliaGateway08-76-FF-84-FF-8C',
+ u'TeliaGateway9C-97-26-57-15-F9',
+ u'TeliaGateway08-76-FF-46-3E-36',
+ u'TeliaGateway9C-97-26-57-15-99',
+ u'TeliaGateway08-76-FF-8A-EE-32',
+ u'TeliaGateway08-76-FF-85-04-2F',
+ u'TeliaGateway08-76-FF-9C-E0-82',
+ u'Charlotte R.s Wi-Fi-netv\xe6rk']

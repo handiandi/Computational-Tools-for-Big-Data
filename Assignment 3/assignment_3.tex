@@ -380,26 +380,27 @@ The following is a step-by-step explaination of the code (primarily the function
 \begin{pythonOutput}
 Accuracy using a bag-of-words representation: 
 (10377, 70793)
-0.94894026975
+0.958092485549
 Accuracy using feature-hashing with 2 buckets:
 (10377, 2)
-0.72591522158
+0.721579961464
 Accuracy using feature-hashing with 10 buckets:
 (10377, 10)
-0.879094412331
+0.874759152216
 Accuracy using feature-hashing with 100 buckets:
 (10377, 100)
-0.920038535645
+0.926782273603
 Accuracy using feature-hashing with 500 buckets:
 (10377, 500)
-0.936416184971
+0.933526011561
 Accuracy using feature-hashing with 1000 buckets:
 (10377, 1000)
-0.930154142582
+0.939306358382
+
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-We implemented feature-hashing using the Exercise description and the Lesson 11 slides\footnote{\url{https://www.dropbox.com/s/8vh8nyywttf5y6e/hashing.pdf?dl=0}}.\\ In the articles dataset we found that 3776 articles contained the topic earn out of the total of 10377 articles, by simply guessing this would mean an accuracy of 63.611\%. In the output we can see the shape and accuracies of feature-hashing with a number of buckets. We find that even with only 2 buckets, the accuracy is 72.591\%, and except for the case of 1000 buckets, for a bigger number of buckets the accuracy is nearing the accuracy of the bag-of-words representation. Why the accuracy is lower for 1000 buckets than for 500 buckets we don't know. For the bag-of-words representation with 70793 features the accuracy is 94.894\% and for feature-hashing with 1000 buckets it is 93.015\%.
+We implemented feature-hashing using the Exercise description and the Lesson 11 slides\footnote{\url{https://www.dropbox.com/s/8vh8nyywttf5y6e/hashing.pdf?dl=0}}.\\ In the articles dataset we found that 3776 articles contained the topic earn out of the total of 10377 articles, by simply guessing this would mean an accuracy of 63.611\%. In the output we can see the shape and accuracies of feature-hashing with a number of buckets. We find that even with only 2 buckets, the accuracy is 72.157\%, and for a bigger number of buckets the accuracy is nearing the accuracy of the bag-of-words representation. For the bag-of-words representation with 70793 features the accuracy is 95.809\% and for feature-hashing with 1000 buckets it is 93.930\%.
 
 \section{Exercise 11.2}
 \textbf{Short recap of the exercise}\\

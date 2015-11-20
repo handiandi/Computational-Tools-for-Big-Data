@@ -1,0 +1,10 @@
+[(u'', 15),
+ (u'SIT-GUEST', 15),
+ (u'SIT-BYOD', 13),
+ (u'SIT-PROD', 13),
+ (u'PDA-105', 11),
+ (u'KNS-105', 11),
+ (u'MED-105', 11),
+ (u'KEA-PUBLIC', 6),
+ (u'GST-105', 5),
+ (u'wireless', 4)]

@@ -1,0 +1,5 @@
+Has Euler Tour: True
+Has Euler Tour: False
+Has Euler Tour: True
+Has Euler Tour: True
+Has Euler Tour: False

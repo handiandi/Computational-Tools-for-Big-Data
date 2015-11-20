@@ -19,5 +19,4 @@ def has_euler_tour(text_file_name):
 
 graph_names = ["graph1.txt", "graph2.txt", "graph3.txt", "graph4.txt", "graph5.txt"]
 for file_name in graph_names:
-    print(has_euler_tour(file_name))
-
+    print("Has Euler Tour: {}".format(has_euler_tour(file_name)))
