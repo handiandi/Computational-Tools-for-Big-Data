@@ -12,3 +12,5 @@ The reason for the latter statement is, an ANN dont use much data compared to ot
 Conclusion: DL is a sort of rebirth of ANN which can be used effectively on Big Data
 
 Sources: https://www.quora.com/What-is-the-difference-between-deep-learning-and-machine-learning-1
+
+Deep learning is very effective dealing with unstructured data like media (sounds, images, text)
