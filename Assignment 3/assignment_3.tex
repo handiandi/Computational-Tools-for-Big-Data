@@ -276,8 +276,18 @@ We have split this assignment in two: one for the example in the slides, and one
 ~\\
 \textbf{Overview}
 ~\\
+Following is a summarization of the comments in the file. 
+\begin{enumerate}
+  \item Extract lines in the file
+  \item Splitting the lines into words
+  \item Creating a pair for each word in the form ( word , count ) where count is the occurrence of the word , set to 1
+  \item Counting the words
+  \item Get the result and sort it based on count
+  \item Print out the result\\
+\end{enumerate}
+~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 6/exercise6-1-query.txt"}~\\
+\pythonexternal{"../Lesson 9/exercise-9-1.py"}~\\
 \textbf{Output}~\\
 ~\\
 \textbf{Explanation of code and discussion}\\
@@ -288,10 +298,22 @@ We have split this assignment in two: one for the example in the slides, and one
 It is fine if you split the file into 5 different files. You do not need to keep the node and edge counts in the top of the file.}\\
 ~\\
 \textbf{Overview}
-
+As in the exercise in Week 8, we have splittet the file into 5 different files. ~\\
+We have created a python function 'has_euler_tour' which take a filename string as argument. \\
+~\\
+The following is a step-by-step explaination of the code (primarily the function). 
+\begin{enumerate}
+  \item Loading in the file
+  \item Creating a pair of integer values in the form (from_node , to_node), by splitting on whitespace
+  \item Creating a list of pairs in the form [(from_node , to_node), (to_node , from_node)]
+  \item Creating a pair for each node in position 1 of the pairs in the list. The new pair has the form (node, count) where count is the occurrence of the node, set to 1
+  \item Counting the words
+  \item Get the result and sort it based on count
+  \item Print out the result\\
+\end{enumerate}
 ~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 6/exercise6-2-query.txt"}~\\
+\pythonexternal{"../Lesson 9/exercise-9-2.py"}~\\
 \textbf{Output}~\\
 
 ~\\
@@ -308,7 +330,7 @@ It is fine if you split the file into 5 different files. You do not need to keep
 \end{enumerate}}
 \textbf{Overview}
 \textbf{Code}
-%\pythonexternal{"../Lesson 6/exercise6-3-query.txt"}~\\
+\pythonexternal{"../Lesson 9/exercise-9-3.py"}~\\
 \textbf{Output}
 \textbf{Explanation of code and discussion}
 
