@@ -307,8 +307,9 @@ The following is a step-by-step explaination of the code (primarily the function
   \item Creating a pair of integer values in the form (fromnode , tonode), by splitting on whitespace
   \item Creating a list of pairs in the form [(fromnode , tonode), (tonode , fromnode)]
   \item Creating a pair for each node in position 1 of the pairs in the list. The new pair has the form (node, count) where count is the occurrence of the node, set to 1
-  \item We use reduceByKey to 
-  \item Get the result and sort it based on count
+  \item We use reduceByKey to summerize the values
+  \item filter-function find those whos values are not even
+  \item If the count of result from filter-function is 0, return true, else return false 
   \item Print out the result\\
 \end{enumerate}
 ~\\
