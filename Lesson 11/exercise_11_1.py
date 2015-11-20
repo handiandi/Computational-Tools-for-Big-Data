@@ -37,7 +37,7 @@ def preprocess_texts():
 def hashing_vectorizer(article_words, num_buckets):
 	x = np.zeros(num_buckets, dtype=int)
 	for word in article_words:
-		x[mmh3.hash(word) % NUM_BUCKETS] += 1
+		x[mmh3.hash(word) % num_buckets] += 1
 	return x
 
 def tokenizer(article_body):
@@ -74,9 +74,11 @@ def hash_trainer(articles, num_buckets):
 	print(random_forest.score(X_test, y_test))
 
 if __name__ == '__main__':
-	NUM_BUCKETS = 1000
+	NUM_BUCKETS = [2, 10, 100, 500, 1000]
 	# 3776 of 10377 has earn topic
 	articles = preprocess_texts()
-
+	print("Accuracy using a bag-of-words representation: ")
 	bow_trainer(articles)
-	hash_trainer(articles,NUM_BUCKETS)
+	for number in NUM_BUCKETS:
+		print("Accuracy using feature-hashing with {} buckets:".format(number))
+		hash_trainer(articles,number)
