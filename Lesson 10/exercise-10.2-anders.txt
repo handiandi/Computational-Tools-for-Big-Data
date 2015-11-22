@@ -1,0 +1,13 @@
+What is Convolution Neural Network (CNN)?
+-----------------------------------
+CNN is an variant of the more simpler neural network. 
+
+With neural network (and other commonly machine learning techniques), feature engineering is one of the most essential and important task for good classification (see (1)). Feature engineering is a very hard and complex task, which you would have to do for each type of problems (see (2)). Using CNN, feature engineering is beeing done when we train it. 
+For each training, it gets better and better to filter the input for relevant information (feature engineering). 
+
+Once we learned our hierarchical features, we can simply pass them to a fully connected, simple neural network that combines them in order to classify the input into classes(*).
+
+(1) - http://blog.kaggle.com/2014/08/01/learning-from-the-best/
+(2) - http://timdettmers.com/2015/03/26/convolution-deep-learning/
+
+(*) - taken from (2)
