@@ -256,17 +256,29 @@ We have split this assignment in two: one for the example in the slides, and one
 \textit{Make a MapReduce job which counts the number of triangles in a graph.}\\
 ~\\
 \textbf{Overview}\\
-
+\textit{convert\_mapper}, \textit{convert\_reducer} and \textit{main\_mapper} is the same as in exercise 8.3. ~\\
+We will describe the other mappers and reducers. The description can also be seen in the code.\\
+ ~\\
+\textit{main\_reducer} finds common "friends" (nodes) of its key-values. The new key is the original key and the new friend ( [old\_key, friend] ). It yields the new key and the value 1. \\
+~\\
+We then use \textit{main\_reducer2} to reduce by key and sums the value. \\
+~\\
+\textit{main\_mapper2} checks if both length of key is 3 and value is 3. If it is, it yield 1 as value, else 0. The key is the summation of what we wil find: "Number of Triangles" \\
+~\\
+We then use \textit{main\_reducer3} to reduce by key and sums the value, which gives us the final result. \\
 
 ~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 5/exercise5-4.py"}
+\pythonexternal{"../Lesson 8/exercise-8-4.py"}
 ~\\
 \textbf{Output}
 \begin{pythonOutput}
-
+./exercise-8-4-v2.py 8.4_small_test.txt -q
+"Number of Triangles"   120676
 \end{pythonOutput}
-
+\textbf{Explanation of output and discussion}\\
+We can see we found 120676 triangles in the graph of the road network of California.~\\
+From their website, we can see that this is the official number, which mean that our code is working
 
 
 %-------------- Week 9 ---------------------
