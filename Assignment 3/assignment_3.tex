@@ -456,14 +456,36 @@ Then we count them with reduceByKey and print out top 10 in descending order (by
 \textit{In this exercise you will be using the Caffe Deep Learning framework to classify a picture of a cat, and a picture of your own choosing.}\\
 ~\\
 \textbf{Overview}\\
-We start the virtual machine by running \textit{vagrant up} and navigate via our browser to \textit{localhost:8003}
+We start the virtual machine by running \textit{vagrant up} and navigate via our browser to \textit{localhost:8003}\\
+We then run the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig, and a picture of a ladder.
 ~\\
-\textbf{Output}
+\textbf{Output - cat}\\
+When running the code with the default cat picture we get the following output:
 \begin{pythonOutput}
-
+Predicted class is #282.
+['n02123159 tiger cat' 'n02123045 tabby, tabby cat'
+ 'n02124075 Egyptian cat' 'n02119022 red fox, Vulpes vulpes'
+ 'n02127052 lynx, catamount']
+\end{pythonOutput}
+\textbf{Output - pig}
+\begin{figure}[h!]
+\begin{center}
+\caption{Picture of a pig.}
+\label{fig:pig}
+\includegraphics[scale=0.2]{"../Lesson 10/images/pig"}
+\end{center}
+\end{figure}
+Next we ran the code using the picture shown in Figure \ref{fig:pig}, this resulted in the following output:
+\begin{pythonOutput}
+Predicted class is #341.
+['n02395406 hog, pig, grunter, squealer, Sus scrofa'
+ 'n01632777 axolotl, mud puppy, Ambystoma mexicanum'
+ 'n03223299 doormat, welcome mat' 'n02328150 Angora, Angora rabbit'
+ 'n02412080 ram, tup']
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
 
+The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat", we then tried the pig picture in Figure \ref{fig:pig}
 %-------------- Week 11 ---------------------
 \section{Exercise 11.1}
 \textbf{Short recap of the exercise}\\
