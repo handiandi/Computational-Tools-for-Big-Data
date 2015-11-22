@@ -1,0 +1,12 @@
+Deep Learning (DL) is a subset/branch of Machine Learning (which is the study of algorithms which can improve themselves over time).
+DL is used as any other Machine Learning technique, to learn from data, and predict an outcome based on the trained model. DL is based on Artificial Neural Networks (ANN - a Machine Learning model), the difference between ANN and DL is, that DL trains multi-layered or hierarchical ANN's.
+
+It is able to use a technique called representational learning to learn features of the dataset, thus when you give it a raw representation of the data (that is human interpretable), it learns itself what the different features are and it's then able to do recognition/supervised learning.
+
+The ANN's each learns a feature through a nonlinear transformation and pass it along to the next ANN in the hierarchy until it gets to a classifier. Through each ANN the features learned are higher representations of the data. For example for facial recognition, for the first ANN receiving the input data, the feature learned is edges, then the next ANN learns different combinations of edges forming a part of a face, and so on.
+
+Deep learning is very effective dealing with unstructured data like media (sounds, images, videos, text, time-series data)
+
+It can be used for recommender systems and thus try to predict a rating or peference an user would give to an item, this is used currently for media streaming services like Spotify or Netflix, which can recommend new music or shows based on your playlist.
+
+
