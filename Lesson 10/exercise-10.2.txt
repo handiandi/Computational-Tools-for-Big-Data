@@ -19,3 +19,4 @@ Once we learned our hierarchical features, we can simply pass them to a fully co
 (1) - http://blog.kaggle.com/2014/08/01/learning-from-the-best/
 (2) - http://timdettmers.com/2015/03/26/convolution-deep-learning/
 (3) - http://colah.github.io/posts/2014-07-Conv-Nets-Modular/
+.
