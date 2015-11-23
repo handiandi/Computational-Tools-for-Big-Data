@@ -1,0 +1,49 @@
+#### Summary ####
+There are 7 buckets with the following number of articles in them:
+----------------------
+1
+92
+3
+1
+1
+1
+1
+#################
+
+#### Printing 3 random articles from buckets which have more than 3 articles ####
+----------------------
+
+-----------------------
+Bucket with 92 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Allied-Signal Inc said it
+completed the sale seven businesses in its electronics and
+instrumentation sector for 1.8 billion dlrs in cash and in debt
+assumed by the purchasers.
+    The company said las
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Ford Motor Co neared General Motors
+Corp last year in executive bonuses, while it topped the larger
+automaker in profit sharing payments to workers.
+    Ford, which outstripped GM in earnings last yea
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr loss 43 cts vs profit eight cts
+    Net loss 3.1 mln vs profit 502,896
+    Revs 5.6 mln vs 4.2 mln
+    NOTE:1986 net includes negative effect of accounting change
+of 354,650 or five cts a share.
+ 

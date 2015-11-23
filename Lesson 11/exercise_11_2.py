@@ -28,7 +28,7 @@ def create_minhashed_matrix(X, permutations):
 
 
 if __name__ == '__main__':
-	NUMBER_OF_PERMUTATIONS = 20
+	NUMBER_OF_PERMUTATIONS = 10
 
 	# get 100 articles
 	articles = sorted(exercise_11_1.preprocess_texts(), key=lambda k: k['id'])
@@ -47,11 +47,26 @@ if __name__ == '__main__':
 	# create a dictionary of: tupled minhash representation -> list of indexes
 	bucket_dict = create_bucket_dict(X_mod)
 
+	print("#### Summary ####")
+	print("There are {} buckets with the following number of articles in them:\n----------------------".format(len(bucket_dict)))
 	for key, indexes in bucket_dict.items():
 		print(len(indexes))
+	print("#################\n")
+	print("#### Printing 3 random articles from buckets which have more than 3 articles ####\n----------------------")
 	for key, indexes in bucket_dict.items():
-		if len(indexes) > 1 and len(indexes) < 50:
-			for index in indexes:
-				print(articles[index]["body"][:200])
+		#if len(indexes) > 1 and len(indexes) < 50:
+		#	for index in indexes:
+		#		print(articles[index]["body"][:200])
+		#		print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
+		#	print("\n-------------\nNew bucket\n-------------\n")
+		if len(indexes)>3:
+			print("\n-----------------------\nBucket with {} articles in it\n-----------------------\n".format(len(indexes)))
+			x = list(range(0, len(indexes)-1))
+			random.shuffle(x) #Shuffle the articles based on a seed
+			for index in x[:3]:
 				print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
-			print("\n-------------\nNew bucket\n-------------\n")
+				print(articles[index]["body"][:200])
+
+
+
+
