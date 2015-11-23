@@ -1,22 +1,14 @@
 #### Summary ####
-There are 9 buckets with the following number of articles in them:
+There are 1 buckets with the following number of articles in them:
 ----------------------
-1
-85
-2
-2
-1
-6
-1
-1
-1
+100
 #################
 
 #### Printing 3 random articles from buckets which have more than 3 articles ####
 ----------------------
 
 -----------------------
-Bucket with 85 articles in it
+Bucket with 100 articles in it
 -----------------------
 
 
@@ -24,68 +16,78 @@ XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Shr 52 cts vs 45 cts
-    Net 2,623,000 vs 2,256,000
-    Nine mths
-    Shr 1.55 dlrs vs 1.45 dlrs
-    Net 7,744,000 vs 6,542,000
+Carolyn Bean Publishing Ltd said
+it has completed the acquisition of greeting card company
+Millen Cards, which had sales of over 1,500,000 dlrs in 1986,
+for undisclosed terms.
+    The company said 90 pct of Millen's cards have been sold in
+the northeast and mid-Atlantic states, but Bean expects to
+increase sales to 2,500,000 dlrs this year by distributing the
+line nationally.
+    Millen specializes in Jewish religious cards and also sells
+traditional greeting cards.
  Reuter
 
+['acq']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Shr 46.5 H.K. Cents vs 29.3
-    Final div 14 cents, making 20 cents (no comparison)
-    Net 1.23 billion dlrs vs 777.5 mln
-    Turnover 9.06 billion dlrs vs 7.52 billion
-    Note - Dividend payable Ma
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-The USDA monthly cold storage report
-for meats is expected to have little, if any, effect on
-livestock and meat futures at the Chicago Mercantile Exchange
-Monday and daily fundamentals will likely pro
-
------------------------
-Bucket with 6 articles in it
------------------------
-
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Shr 52 cts vs 45 cts
-    Net 2,623,000 vs 2,256,000
-    Nine mths
-    Shr 1.55 dlrs vs 1.45 dlrs
-    Net 7,744,000 vs 6,542,000
+Pantera's Corp said it agreed to
+buy ten pizza restaurants in southeastern Colorado from
+creditors foreclosing on the facilities.
+    The purchase price includes 1.25 mln dlrs in cash and
+company stock, it said.
+    Separately, Pantera's said it issued an area development
+agreement with a franchisee group for northeastern Colorado,
+including the Denver area, for the opening of about 20
+franchised Pantera's pizza restaurants.
  Reuter
 
+['acq']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Triumph Capital Inc said it has signed a
-letter of intent to acquire First Securities Transfer Systems
-Inc of Pompano Beach, Fla., for undisclosed terms.
-    The company said it is also entering the c
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Shr 77 cts vs 76 cts
-    Net 13,843,000 vs 14,478,000
-    Sales 374.6 mln vs 368.3 mln
-    Avg shrs 18,003,000 vs 19,025,000
-    Year
-    Shr 2.16 dlrs vs 2.65 dlrs
-    Net 39,503,000 vs 51,573,000
-  
+Schlumberger Ltd said it terminated an
+agreement in principle for Fujitsu Ltd to buy 80 pct of its
+Fairchild Semiconductor operations.
+    The company said the rising political controversy in the
+U.S. concerning the venture made it unlikely that the sale of
+the Fairchild stake could be completed within a reasonable
+time.
+    The sale has been opposed by the U.S. Commerce Department
+and the U.S. Defense Department, in part on national security
+grounds.
+    The company said termination of the agreement opened other
+possibilities, including a possible leveraged buyout of the
+semiconductor maker by Fairchild management.
+    In the interim, Fairchild would continue its ongoing
+business within Schlumberger, the oilfield services concern
+said.
+    Last October, Schlumberger announced the sale of the
+Fairchild stake and said it would take a 200 mln dlrs charge in
+the fourth quarter from the sale. The company ended up
+recording special charges of 2.1 billion dlrs in the fourth
+quarter, leading to a loss of 2.02 billion dlrs for the year.
+    Schlumberger never announced a price for the sale, but
+industry analysts have estimated the value of the deal at about
+200 mln dlrs.
+    The proposed sale was under antitrust review by the U.S.
+Justice Department. Additionally, Commerce Secretary Malcolm
+Baldridge and other U.S. officials have voiced reservations
+about the transaction since it was announced.
+    Government officials have expressed concern that the sale
+could reduce the competitiveness of U.S. chip makers by putting
+key advanced technology into Japanese hands.
+    New, high-technology semiconductors are used in
+supercomputers, which are faster and more powerful than
+existing computers.
+    Schlumberger is an oilfield services company controlled by
+French interests and headquartered in New York. Fujitsu Ltd is
+a computer and telecommunications company based in Japan.
+ Reuter
+
+['acq']

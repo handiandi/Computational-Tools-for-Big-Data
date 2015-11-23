@@ -1,17 +1,135 @@
 #### Summary ####
-There are 7 buckets with the following number of articles in them:
+There are 6 buckets with the following number of articles in them:
 ----------------------
 1
+4
+1
+1
+1
 92
-3
-1
-1
-1
-1
 #################
 
 #### Printing 3 random articles from buckets which have more than 3 articles ####
 ----------------------
+
+-----------------------
+Bucket with 4 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Bundesbank vice president Helmut
+Schlesinger said he saw no reason to lower interest rates now.
+    With money supply growth showing no sign of slowing down in
+May and the dollar stable or even rising against the mark,
+Schlesinger told Reuters that he was not convinced that a
+further cut in interest rates was needed.
+    The economy is picking up, after contracting by a
+seasonally adjusted 1/2 to one pct in the first quarter from
+the fourth, he added. "We may have an increase in gnp starting
+in the second quarter," he said in an interview.
+    Concerned by the first quarter downturn, the U.S. Has been
+pressing West Germany to pump up its economy and boost its
+imports, either through fiscal or monetary policy.
+    Schlesinger said the contraction in the first quarter was
+mainly due to adverse weather conditions, just as occured in
+1986. Year-on-year growth was thus about two pct.
+    He estimated that economic growth for the year as a whole
+would probably be between one and two pct.
+   "It is not a question of monetary conditions if domestic
+demand does not grow strongly," he said, noting that interest
+rates are at historically low levels and funds are ample.
+    Schlesinger said he saw no signs that central bank money
+stock growth was slowing down from its recent year-on-year pace
+of 7-1/2 to eight pct, well above the Bundesbank's three to six
+pct target.
+    He said the target could still be achieved but much will
+depend on the direction of long-term capital flows. Heavy
+inflows, particularly in January around the time of the EMS
+revaluation, boosted domestic money supply.
+    "There is still a certain hope that the net inflow of
+foreign money can be diminished or can even be a little bit
+reversed," Schlesinger said.
+    A major reason for the inflows was the market's conviction
+that the mark was headed higher. "As we can see from the market,
+expectations for a further revaluation of the deutschemark have
+diminished," Schlesinger said.
+    The recent widening of interest rate differentials, the
+fact that the dollar has fallen sharply in a very short period
+and an improvement in real trade balances have all combined
+towards stabilizing the dollar, he said.
+    Asked if central banks might act to prevent a sharp dollar
+rise, as the U.S. Did in March when the dollar rose above 1.87
+marks, he said this would depend on the circumstances.
+    At midday here, the dollar stood at 1.8340/45 marks.
+    "Central banks are always in contact about these
+fluctuations but I cannot give any answer how they would react,"
+Schelsinger said.
+    "One has to look at how it (the market) is moving," he said,
+adding, "It is not only our own case, it is also the American
+case."
+    He said that the West German export industry has been hit
+hard by the dollar's sharp fall and would probably like to see
+some correction now. "But it wouldn't be good to have short-term
+fluctuations," he said. "Let us wait and see."
+    "It is mainly the strength of the (dollar) fall in a very
+short period which was a little bit of a shock, than the level
+(of rates) as such," Schlesinger said.
+    The sharp rise of the mark, coupled with weak prices of
+such key commodities as oil, had a favourable impact on West
+German inflation down year.
+    Although there have recently been signs of inflation
+picking up, he said that this was due to changes in key
+commodity prices. The underlying inflation rate this year would
+be unchanged, at about one to 1-1/2 pct, he said.
+    Schlesinger said the problem of rapid money supply growth
+was longer term, in that the economy was building up the
+potential for a possible eventual resurgence of inflation.
+    The above-target growth of money supply over the past 16
+months had prompted some discussion of the usefulness of
+targets themselves, a matter which might be taken up at the
+mid-year meeting of the Bundesbank's council, Schlesigner said.
+    But he added: "I don't see any great pressure to go away
+from it."
+ REUTER
+
+['interest', 'gnp']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+The cost of living in North
+Rhine-Westphalia, Germany's most populous state, fell 0.1 pct
+in the month to mid-March to stand 0.5 pct lower than at the
+same time a year earlier, the regional statistics office said.
+    Prices had risen 0.3 pct in the month to mid-February but
+had fallen 0.7 pct year-on-year.
+    The regional figures are considered a good guide to
+national inflation trends. The Federal Statistics Office is due
+to publish provisional national figures for March by the end of
+this month.
+ REUTER
+
+['cpi']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Thailand's foreign reserves of gold,
+special drawing rights and convertible currencies fell to 3.86
+billion dlrs at end-February from 3.95 billion the previous
+month, but were above the 3.08 billion held at the same time
+last year, the Bank of Thailand said.
+    It said the reserves were equal to about five months' worth
+of imports.
+ REUTER
+
+['reserves']
 
 -----------------------
 Bucket with 92 articles in it
@@ -22,28 +140,45 @@ XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Allied-Signal Inc said it
-completed the sale seven businesses in its electronics and
-instrumentation sector for 1.8 billion dlrs in cash and in debt
-assumed by the purchasers.
-    The company said las
+Shr 63 cts vs 50 cts
+    Net 73.8 mln vs 62.3 mln
+    Sales 664.2 mln vs 600.6 mln
+    Nine mths
+    Shr 2.06 dlrs vs 1.67 dlrs
+    Net 241.2 mln vs 205.9 mln
+    Sales 2.04 billion vs 1.80 billion
+    Avg shrs 117.1 mln vs 123.4 mln
+ Reuter
+
+['earn']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Ford Motor Co neared General Motors
-Corp last year in executive bonuses, while it topped the larger
-automaker in profit sharing payments to workers.
-    Ford, which outstripped GM in earnings last yea
+<National Beverage Corp>
+said it agreed to acquire privately held Faygo Beverages Inc
+for an undisclosed amount of cash.
+    The company said Detroit-based Faygo, a soft drink maker,
+has annual revenues of more than 100 mln dlrs.
+    National Beverage, which is also privately held, owns and
+bottles Shasta Beverages, Spree All Natural Beverages and
+private label brands in its 11 bottling facilities in the
+United States.
+ Reuter
+
+['acq']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Shr loss 43 cts vs profit eight cts
-    Net loss 3.1 mln vs profit 502,896
-    Revs 5.6 mln vs 4.2 mln
-    NOTE:1986 net includes negative effect of accounting change
-of 354,650 or five cts a share.
- 
+Champion Products Inc said its
+board of directors approved a two-for-one stock split of its
+common shares for shareholders of record as of April 1, 1987.
+    The company also said its board voted to recommend to
+shareholders at the annual meeting April 23 an increase in the
+authorized capital stock from five mln to 25 mln shares.
+ Reuter
+
+['earn']

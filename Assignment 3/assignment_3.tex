@@ -480,7 +480,7 @@ Predicted class is #282.
 \begin{center}
 \caption{Picture of a pig.}
 \label{fig:pig}
-\includegraphics[scale=0.2]{"../Lesson 10/images/pig"}
+\includegraphics[scale=0.5]{"../Lesson 10/images/pig"}
 \end{center}
 \end{figure}
 \begin{pythonOutput}
@@ -495,7 +495,7 @@ Predicted class is #341.
 \begin{center}
 \caption{Picture of a beer glass.}
 \label{fig:beer_glass}
-\includegraphics[scale=0.5]{"../Lesson 10/images/beer_glass"}
+\includegraphics[scale=0.25]{"../Lesson 10/images/beer_glass"}
 \end{center}
 \end{figure}
 \begin{pythonOutput}
@@ -544,19 +544,465 @@ We implemented feature-hashing using the Exercise description and the Lesson 11 
 
 \section{Exercise 11.2}
 \textbf{Short recap of the exercise}\\
-\textit{}\\
+\textit{Implement your own MinHash algorithm. Try with different number of hash functions/permutations (for example 3, 5, 10).
+Look at which documents end up in the same buckets. Do they look similar? Do they share the same topics?}\\
 ~\\
 \textbf{Overview}\\
 
 ~\\
 \textbf{Code}\\
-%\pythonexternal{"../Lesson 7/flajolet_martin.py"}
+\pythonexternal{"../Lesson 11/exercise_11_2.py"}
 ~\\
-\textbf{Output}
+\textbf{Output - with permutations = 3}\\
 \begin{pythonOutput}
+#### Summary ####
+There are 1 buckets with the following number of articles in them:
+----------------------
+100
+#################
+
+#### Printing 3 random articles from buckets which have more than 3 articles ####
+----------------------
+
+-----------------------
+Bucket with 100 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Carolyn Bean Publishing Ltd said
+it has completed the acquisition of greeting card company
+Millen Cards, which had sales of over 1,500,000 dlrs in 1986,
+for undisclosed terms.
+    The company said 90 pct of Millen's cards have been sold in
+the northeast and mid-Atlantic states, but Bean expects to
+increase sales to 2,500,000 dlrs this year by distributing the
+line nationally.
+    Millen specializes in Jewish religious cards and also sells
+traditional greeting cards.
+ Reuter
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Pantera's Corp said it agreed to
+buy ten pizza restaurants in southeastern Colorado from
+creditors foreclosing on the facilities.
+    The purchase price includes 1.25 mln dlrs in cash and
+company stock, it said.
+    Separately, Pantera's said it issued an area development
+agreement with a franchisee group for northeastern Colorado,
+including the Denver area, for the opening of about 20
+franchised Pantera's pizza restaurants.
+ Reuter
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Schlumberger Ltd said it terminated an
+agreement in principle for Fujitsu Ltd to buy 80 pct of its
+Fairchild Semiconductor operations.
+    The company said the rising political controversy in the
+U.S. concerning the venture made it unlikely that the sale of
+the Fairchild stake could be completed within a reasonable
+time.
+    The sale has been opposed by the U.S. Commerce Department
+and the U.S. Defense Department, in part on national security
+grounds.
+    The company said termination of the agreement opened other
+possibilities, including a possible leveraged buyout of the
+semiconductor maker by Fairchild management.
+    In the interim, Fairchild would continue its ongoing
+business within Schlumberger, the oilfield services concern
+said.
+    Last October, Schlumberger announced the sale of the
+Fairchild stake and said it would take a 200 mln dlrs charge in
+the fourth quarter from the sale. The company ended up
+recording special charges of 2.1 billion dlrs in the fourth
+quarter, leading to a loss of 2.02 billion dlrs for the year.
+    Schlumberger never announced a price for the sale, but
+industry analysts have estimated the value of the deal at about
+200 mln dlrs.
+    The proposed sale was under antitrust review by the U.S.
+Justice Department. Additionally, Commerce Secretary Malcolm
+Baldridge and other U.S. officials have voiced reservations
+about the transaction since it was announced.
+    Government officials have expressed concern that the sale
+could reduce the competitiveness of U.S. chip makers by putting
+key advanced technology into Japanese hands.
+    New, high-technology semiconductors are used in
+supercomputers, which are faster and more powerful than
+existing computers.
+    Schlumberger is an oilfield services company controlled by
+French interests and headquartered in New York. Fujitsu Ltd is
+a computer and telecommunications company based in Japan.
+ Reuter
+
+['acq']
+
+\end{pythonOutput}
+\textbf{Output - with permutations = 5}\\
+\begin{pythonOutput}
+#### Summary ####
+There are 6 buckets with the following number of articles in them:
+----------------------
+1
+4
+1
+1
+1
+92
+#################
+
+#### Printing 3 random articles from buckets which have more than 3 articles ####
+----------------------
+
+-----------------------
+Bucket with 4 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Bundesbank vice president Helmut
+Schlesinger said he saw no reason to lower interest rates now.
+    With money supply growth showing no sign of slowing down in
+May and the dollar stable or even rising against the mark,
+Schlesinger told Reuters that he was not convinced that a
+further cut in interest rates was needed.
+    The economy is picking up, after contracting by a
+seasonally adjusted 1/2 to one pct in the first quarter from
+the fourth, he added. "We may have an increase in gnp starting
+in the second quarter," he said in an interview.
+    Concerned by the first quarter downturn, the U.S. Has been
+pressing West Germany to pump up its economy and boost its
+imports, either through fiscal or monetary policy.
+    Schlesinger said the contraction in the first quarter was
+mainly due to adverse weather conditions, just as occured in
+1986. Year-on-year growth was thus about two pct.
+    He estimated that economic growth for the year as a whole
+would probably be between one and two pct.
+   "It is not a question of monetary conditions if domestic
+demand does not grow strongly," he said, noting that interest
+rates are at historically low levels and funds are ample.
+    Schlesinger said he saw no signs that central bank money
+stock growth was slowing down from its recent year-on-year pace
+of 7-1/2 to eight pct, well above the Bundesbank's three to six
+pct target.
+    He said the target could still be achieved but much will
+depend on the direction of long-term capital flows. Heavy
+inflows, particularly in January around the time of the EMS
+revaluation, boosted domestic money supply.
+    "There is still a certain hope that the net inflow of
+foreign money can be diminished or can even be a little bit
+reversed," Schlesinger said.
+    A major reason for the inflows was the market's conviction
+that the mark was headed higher. "As we can see from the market,
+expectations for a further revaluation of the deutschemark have
+diminished," Schlesinger said.
+    The recent widening of interest rate differentials, the
+fact that the dollar has fallen sharply in a very short period
+and an improvement in real trade balances have all combined
+towards stabilizing the dollar, he said.
+    Asked if central banks might act to prevent a sharp dollar
+rise, as the U.S. Did in March when the dollar rose above 1.87
+marks, he said this would depend on the circumstances.
+    At midday here, the dollar stood at 1.8340/45 marks.
+    "Central banks are always in contact about these
+fluctuations but I cannot give any answer how they would react,"
+Schelsinger said.
+    "One has to look at how it (the market) is moving," he said,
+adding, "It is not only our own case, it is also the American
+case."
+    He said that the West German export industry has been hit
+hard by the dollar's sharp fall and would probably like to see
+some correction now. "But it wouldn't be good to have short-term
+fluctuations," he said. "Let us wait and see."
+    "It is mainly the strength of the (dollar) fall in a very
+short period which was a little bit of a shock, than the level
+(of rates) as such," Schlesinger said.
+    The sharp rise of the mark, coupled with weak prices of
+such key commodities as oil, had a favourable impact on West
+German inflation down year.
+    Although there have recently been signs of inflation
+picking up, he said that this was due to changes in key
+commodity prices. The underlying inflation rate this year would
+be unchanged, at about one to 1-1/2 pct, he said.
+    Schlesinger said the problem of rapid money supply growth
+was longer term, in that the economy was building up the
+potential for a possible eventual resurgence of inflation.
+    The above-target growth of money supply over the past 16
+months had prompted some discussion of the usefulness of
+targets themselves, a matter which might be taken up at the
+mid-year meeting of the Bundesbank's council, Schlesigner said.
+    But he added: "I don't see any great pressure to go away
+from it."
+ REUTER
+
+['interest', 'gnp']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+The cost of living in North
+Rhine-Westphalia, Germany's most populous state, fell 0.1 pct
+in the month to mid-March to stand 0.5 pct lower than at the
+same time a year earlier, the regional statistics office said.
+    Prices had risen 0.3 pct in the month to mid-February but
+had fallen 0.7 pct year-on-year.
+    The regional figures are considered a good guide to
+national inflation trends. The Federal Statistics Office is due
+to publish provisional national figures for March by the end of
+this month.
+ REUTER
+
+['cpi']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Thailand's foreign reserves of gold,
+special drawing rights and convertible currencies fell to 3.86
+billion dlrs at end-February from 3.95 billion the previous
+month, but were above the 3.08 billion held at the same time
+last year, the Bank of Thailand said.
+    It said the reserves were equal to about five months' worth
+of imports.
+ REUTER
+
+['reserves']
+
+-----------------------
+Bucket with 92 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr 63 cts vs 50 cts
+    Net 73.8 mln vs 62.3 mln
+    Sales 664.2 mln vs 600.6 mln
+    Nine mths
+    Shr 2.06 dlrs vs 1.67 dlrs
+    Net 241.2 mln vs 205.9 mln
+    Sales 2.04 billion vs 1.80 billion
+    Avg shrs 117.1 mln vs 123.4 mln
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+<National Beverage Corp>
+said it agreed to acquire privately held Faygo Beverages Inc
+for an undisclosed amount of cash.
+    The company said Detroit-based Faygo, a soft drink maker,
+has annual revenues of more than 100 mln dlrs.
+    National Beverage, which is also privately held, owns and
+bottles Shasta Beverages, Spree All Natural Beverages and
+private label brands in its 11 bottling facilities in the
+United States.
+ Reuter
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Champion Products Inc said its
+board of directors approved a two-for-one stock split of its
+common shares for shareholders of record as of April 1, 1987.
+    The company also said its board voted to recommend to
+shareholders at the annual meeting April 23 an increase in the
+authorized capital stock from five mln to 25 mln shares.
+ Reuter
+
+['earn']
+
+\end{pythonOutput}
+\textbf{Output - with permutations = 10}\\
+\begin{pythonOutput}
+#### Summary ####
+There are 15 buckets with the following number of articles in them:
+----------------------
+69
+1
+1
+1
+1
+1
+3
+13
+2
+1
+2
+1
+2
+1
+1
+#################
+
+#### Printing 3 random articles from buckets which have more than 3 articles ####
+----------------------
+
+-----------------------
+Bucket with 69 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr 63 cts vs 50 cts
+    Net 73.8 mln vs 62.3 mln
+    Sales 664.2 mln vs 600.6 mln
+    Nine mths
+    Shr 2.06 dlrs vs 1.67 dlrs
+    Net 241.2 mln vs 205.9 mln
+    Sales 2.04 billion vs 1.80 billion
+    Avg shrs 117.1 mln vs 123.4 mln
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Newmont Mining Corp <NEM> said Magma
+Copper Co anticipates being able to produce copper at a profit
+by 1991, assuming copper prices remain at their current levels.
+    In an information statement distributed to Newmont
+shareholders explaining the dividend of Magma shares declared
+Tuesday, Newmont said Magma had a net loss of 46.6 mln dlrs in
+1986, adding this was equal to 1.22 cts a share.
+    Newmont holders will receive 80 pct of Magma's stock as a
+dividend of one share for each of the 30,458,000 Newmont shares
+now held. Newmont will retain 15 pct of the stock.
+    The 1986 net loss was on a pro forma basis, Newmont said.
+On a historical basis, it added, Magma had a 1986 net loss of
+58.1 mln dlrs on a loss from operations of 42.3 mln dlrs.
+    On Dec 31, 1986, Newmont said, Magma had about 85.0 mln
+dlrs of net operating loss carryforwards expiring in 1999-2000
+and about 4.0 mln dlrs of investment tax credit carryover
+expiring in 2000-2001.
+    Newmont said Magma has pre-tax losses of 290 mln dlrs
+during the 1981 through 1985 period, noting the five major U.S.
+primary copper producers reported aggregate pre-tax losses of
+1.9 billion dlrs during five year period.
+    Newmont said Magma had total sales of 347.3 mln dlrs last
+year, including copper sales of 293.4 mln dlrs.
+    It said the copper sales value was up from 267.6 mln dlrs
+in 1985 reflecting a 10.1 pct increase in quantity sold to
+212,000 short tons and a 0.4 pct decrease in price.
+ Reuter
+
+['earn', 'copper']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Esso Malaysia Bhd, a unit of Exxon
+Corp of the U.S., Reported net profit of 70 mln ringgit from
+its petroleum and ammonia operations in 1986 compared with 48.7
+mln in 1985. Chairman Gerald F Cox said the improved
+performance was mainly due to product prices falling more
+slowly than crude prices during the year.
+    He added that total sales volume increased as a result of
+higher offtake by affiliated companies, while inland market
+sales were maintained at around the previous year's levels.
+    But growth prospects in 1987 remained weak and 1986 results
+are unlikely to be repeated in the current financial year.
+ REUTER
+
+['earn']
+
+-----------------------
+Bucket with 13 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Treasury balances at the Federal
+Reserve fell on April 10 to 3.373 billion dlrs from 3.523
+billion dlrs on the previous business day, the Treasury said in
+its latest budget statement.
+    Balances in tax and loan note accounts fell to 11.645
+billion dlrs from 11.869 billion dlrs on the same respective
+days.
+    The Treasury's operating cash balance totaled 15.018
+billion dlrs compared with 15.392 billion dlrs on April 9.
+ Reuter
+
+['money-supply']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Champion Products Inc said its
+board of directors approved a two-for-one stock split of its
+common shares for shareholders of record as of April 1, 1987.
+    The company also said its board voted to recommend to
+shareholders at the annual meeting April 23 an increase in the
+authorized capital stock from five mln to 25 mln shares.
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Qtr ends April 30
+    Shr loss 10 cts vs profit nine cts
+    Net loss 163,465 vs profit 131,815
+    Revs 3,672,731 vs 3,763,829
+    Nine mths
+    Shr profit four cts vs profit one ct
+    Net profit 57,911 vs profit 11,380
+    Revs 11,753,950 vs 10,794,822
+ Reuter
+
+['earn']
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-
-
+We will comment for each result.
+\textbf{Output - permutations: 3}\\
+We can see that all of the 100 articles has been put in the same bucket, that is they are categorized as similar. If we look at the three (random chosed) articles and compare them, all of them tells about a company that buy something. With all topics the same as well, this support that they really are similar!~\\
+\textbf{Output - permutations: 5}\\
+Based on the three articles of the four, in the first bucket, the subject is about money, gold and interest (procents). It is valid that these are categorized as similar. \\
+~\\
+The 3 articles in the big bucket is all about earning and numbers (mln). It is a slight different than the latter, but it is a different, so it is valid that these are in a different bucket. \\
+~\\
+\textbf{Output - permutations: 10}\\
+The three articles from the big bucket (69 articles), is all about earnings and numbers (mln) - just like the latter. The topic of all three contains 'earn' keyword. So it is valid that these are in the same bucket. \\
+~\\
+Based on the three articles, the second bucket (with 13 articles) doesn't make much sence. All of them is about earnings as well, so the two bucket should have been merged. \\
+~\\
+\textbf{Overall comments}\\
 \end{document}
