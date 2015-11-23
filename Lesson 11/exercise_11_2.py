@@ -27,10 +27,15 @@ def create_minhashed_matrix(X, permutations):
 
 
 if __name__ == '__main__':
-	NUMBER_OF_PERMUTATIONS = 6
+	NUMBER_OF_PERMUTATIONS = 20
 
 	# get 100 articles
-	articles = exercise_11_1.preprocess_texts()[:100]
+	articles = exercise_11_1.preprocess_texts()
+	articles.sort(key=lambda a: a["id"])
+	random.seed(1)
+	random.shuffle(articles)
+	random.seed()
+	articles = articles[:100]
 
 	# create binary bag of words matrix with the tokenizer we defined in exercise 11-1
 	X = exercise_11_1.create_bow(articles, exercise_11_1.tokenizer, True).toarray()
