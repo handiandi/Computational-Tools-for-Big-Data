@@ -1,22 +1,18 @@
-A Convolutional Neural Network (CNN) is a variant of the Artificial Neural Network (ANN). It is typically used in image recognition.
+A Convolutional Neural Network (CNN) is a variant of the Artificial Neural Network (ANN). It is inspired by the human visual system and is typically used in image recognition.
 
 It works similarly to a (ANN) by using layers of neurons where each layer feeds into the next layer and for each layer, the layer will obtain higher-level features.
 
-However where in an ANN each neuron in a given layer feeds into all the neurons in the next layer, in a CNN neurons only feed in to a given number of neurons in the next layer, that number or patch of neurons is called the local receptive field, 
-
+However where in an ANN each neuron in a given layer feeds into all the neurons in the next layer, in a CNN a subset or "patch" of neurons feeds into a number of neurons in the next layer, that patch of neurons is called the local receptive field, for image recognition, this means small "overlapping windows" of the input image is building the next layer resulting in a slightly smaller layer than the former. In a CNN each layer will have the same weights and bias and thus detect the same feature just at different windows in the image.(4)
 
 A CNN often makes use of a max-pooling layer, in between convolutional layers, which takes a maximum of the features over segments of the input layer to reduce the spatial size of the data thus reducing the amount of parameters, and makes the model invariant to very small transformations of the data (overfitting).
-
-
-
 
 With neural network (and other commonly machine learning techniques), feature engineering is one of the most essential and important task for good classification (see (1)). Feature engineering is a very hard and complex task, which you would have to do for each type of problems (see (2)). Using CNN, feature engineering is beeing done when we train it. 
 For each training, it gets better and better to filter the input for relevant information (feature engineering). 
 
 Once we learned our hierarchical features, we can simply pass them to a fully connected, simple neural network that combines them in order to classify the input into classes(2).
 
-
+Sources:
 (1) - http://blog.kaggle.com/2014/08/01/learning-from-the-best/
 (2) - http://timdettmers.com/2015/03/26/convolution-deep-learning/
 (3) - http://colah.github.io/posts/2014-07-Conv-Nets-Modular/
-.
+(4) - http://neuralnetworksanddeeplearning.com/chap6.html
