@@ -46,7 +46,7 @@ class FindTriangles(MRJob):
 	"""
 	Its reduce by key and sums the value and yields this
 	"""
-	def main_reducer2(self, key, values):
+	def sum_reducer(self, key, values):
 		yield(key, sum(values))
 
 	"""
@@ -55,7 +55,7 @@ class FindTriangles(MRJob):
 	"Number of Triangles"
 	If not, it yields the same key but with the value 0
 	"""
-	def main_mapper2(self, key, value):
+	def count_triangle_mapper(self, key, value):
 		n = 0
 		if len(key) ==3 and value==3:
 			n = 1
@@ -64,15 +64,15 @@ class FindTriangles(MRJob):
 	"""
 	It sums the triangles
 	"""
-	def main_reducer3(self, key, values):
+	def sum_triangle_reducer(self, key, values):
 		yield(key, sum(values))
 
 	def steps(self):
 		return [
 		MRStep(mapper=self.convert_mapper, reducer=self.convert_reducer),
 		MRStep(mapper=self.main_mapper, reducer=self.main_reducer),
-		MRStep(reducer=self.main_reducer2),
-		MRStep(mapper=self.main_mapper2, reducer=self.main_reducer3) 
+		MRStep(reducer=self.sum_reducer),
+		MRStep(mapper=self.count_triangle_mapper, reducer=self.sum_triangle_reducer) 
 		]
 
 if __name__ == '__main__':
