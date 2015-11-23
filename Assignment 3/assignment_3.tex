@@ -172,12 +172,12 @@ It is fine if you split the file into five different files. You do not need to k
 ~\\
 \textbf{Overview}\\
 For this exercise we use one mapper and two reducers.~\\
-The steps method tells MrJob in which order the methods should run. In our case the mapper and reducer should run, and then reducer2. reducer2 reduces the yield result from reducer, where the logic is as follows:
+The steps method tells MrJob in which order the methods should run. The order of execution is mapper, reducer, reducer2.
 
 \begin{itemize}
-  \item \textbf{mapper} takes each line and split it into from- and to-edges. Then it yields these two as key with value 1
-  \item \textbf{reducer} sums the values of the key, as we did in exercise 8.1
-  \item \textbf{reducer2} checks if all values of the key is even\\
+  \item \textit{mapper} - takes each line and split it into from- and to-edges. Then it yields these two as (key,1) pairs
+  \item \textit{reducer} - sums the values of the key, as we did in exercise 8.1
+  \item \textit{reducer2} - checks if all values of the key is even\\
 \end{itemize}
 ~\\
 We  split the input file in five files and get a concatenation of outputs with the following bash command: ~\\
@@ -206,9 +206,21 @@ This runs the script with all graph files as arguments in ascending order.
 ~\\
 \textbf{Overview}\\
 We split this assignment in two: one for the example in the slides, and one for the facebook file. ~\\
-\textbf{For the slides example}
-
+\textbf{For the slides example}\\
+For finding common friends of the slides we use a \textit{mapper} and \textit{reducer} drawing inspiration from the Lecture 8 slides\footnote{\url{https://www.dropbox.com/s/xogs1ozzq7aqbod/mapreduce.pdf?dl=0}}:
+\begin{itemize}
+\item \textit{mapper} - converts to sorted node pairs and their common friends, then we create two groups based on node pair key.
+\item \textit{reducer} - reduce by yielding the intersection of the two groups.
+\end{itemize}
+The functionality of the \textit{main\_mapper} and \textit{main\_reducer} are similar to the previous exercise.
+~\\
 \textbf{For the facebook file}
+For finding common friends of the Facebook file we convert from a list of edges to the slides format. This is done by the \textit{convert\_mapper} and \textit{convert\_reducer}:
+\begin{itemize}
+\item \textit{convert\_mapper} - simply duplicates the to- and -from edge in (to,from) and (from, to) pairs.
+\item \textit{convert\_reducer} - reduce by key, creating a tuple of neighbor nodes.
+\end{itemize}
+The functionality of the \textit{main\_mapper} and \textit{main\_reducer} are similar to the previous exercise.
 ~\\
 \textbf{Code - Slides example}
 \pythonexternal{"../Lesson 8/exercise-3-1.py"}
@@ -254,17 +266,15 @@ We split this assignment in two: one for the example in the slides, and one for 
 \textit{Make a MapReduce job which counts the number of triangles in a graph.}\\
 ~\\
 \textbf{Overview}\\
-\textit{convert\_mapper}, \textit{convert\_reducer} and \textit{main\_mapper} is the same as in exercise 8.3. ~\\
-We will describe the other mappers and reducers. The description can also be seen in the code.\\
+The convert\_mapper, convert\_reducer and main\_mapper steps are the same as in exercise 8.3. ~\\
+The other steps are:\\
  ~\\
-\textit{main\_reducer} finds common "friends" (nodes) of its key-values. The new key is the original key and the new friend ( [old\_key, friend] ). It yields the new key and the value 1. \\
-~\\
-We then use \textit{main\_reducer2} to reduce by key and sums the value. \\
-~\\
-\textit{main\_mapper2} checks if both length of key is 3 and value is 3. If it is, it yield 1 as value, else 0. The key is the summation of what we wil find: "Number of Triangles" \\
-~\\
-We then use \textit{main\_reducer3} to reduce by key and sums the value, which gives us the final result. \\
-
+ \begin{itemize}
+\item \textit{main\_reducer} -  finds common "friends" (nodes) of its key-values. The new key is the original key and the new friend ( [old\_key, friend] ). It yields the new key and the value 1.
+\item \textit{sum\_reducer} - to reduce by key and sums the value.
+\item \textit{count\_triangle\_mapper} - checks if both length of key is 3 and value is 3. If it is, it yield 1 as value, else 0. The key is the summation of what we wil find: "Number of Triangles"
+\item \textit{sum\_triangle\_reducer} - to reduce by key and sum the value, which gives us the final result.
+\end{itemize}
 ~\\
 \textbf{Code}\\
 \pythonexternal{"../Lesson 8/exercise-8-4.py"}
@@ -466,7 +476,7 @@ For each training, it gets better and better to filter the input for relevant in
 ~\\
 \textbf{Overview}\\
 We started the virtual machine by running \textit{vagrant up} and navigating via our browser to \textit{localhost:8003}\\
-We executed the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig as seen in Figure \ref{fig:pig}, a picture of a beer glass \ref{fig:beer_glass} and below each picture we got an output.
+We executed the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig as seen in Figure \ref{fig:pig}, a picture of a beer glass \ref{fig:beer_glass}, a picture of a cloud and below each picture we got an output.
 ~\\
 \textbf{Output - cat}\\
 \begin{pythonOutput}
@@ -504,9 +514,23 @@ Predicted class is #855.
  'n07615774 ice lolly, lolly, lollipop, popsicle'
  'n04131690 saltshaker, salt shaker' 'n02948072 candle, taper, wax light']
 \end{pythonOutput}
+
+\textbf{Output - cloud}
+\begin{figure}[h!]
+\begin{center}
+\caption{Picture of cloud.}
+\label{fig:cloud}
+\includegraphics[scale=0.5]{"../Lesson 10/images/cloud"}
+\end{center}
+\end{figure}
+\begin{pythonOutput}
+Predicted class is #190.
+['n02095889 Sealyham terrier, Sealyham' 'n04266014 space shuttle'
+ 'n09288635 geyser' 'n02948072 candle, taper, wax light' 'n03825788 nipple']
+\end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
 
-The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat" among the top 4 answers, we then tried the pig picture in Figure \ref{fig:pig} which we can read resulted in the correct classification as hog/pig. Next we tried somewhat to trick it by showing it an alternatively shaped beer glass as shown in Figure \ref{fig:beer_glass}, this was also correctly identified as the second answer, .
+The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat" among the top 4 answers, we then tried the pig picture in Figure \ref{fig:pig} which we can read resulted in the correct classification as hog/pig. Next we tried somewhat to trick it by showing it an alternatively shaped beer glass as shown in Figure \ref{fig:beer_glass}, this was also correctly identified in the second answer, next we tried a cloud as seen in Figure \ref{fig:cloud}, and it seemed to do the trick as none of the answers given by the model were correct.
 %-------------- Week 11 ---------------------
 \section{Exercise 11.1}
 \textbf{Short recap of the exercise}\\
