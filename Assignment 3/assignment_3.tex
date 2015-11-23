@@ -129,8 +129,8 @@ literate=%
 \textit{Define and implement a MapReduce job to count the occurrences of each word in a text file. Document that it works with a small example.}\\
 ~\\
 \textbf{Overview}\\
-We make the required method: mapper and reducer.   \\
-The mapper takes a line at the time as value, then loops the word in the lijne through by splitting the line. It "calls" the reducer with the word as key and 1 as value. The reducer sums the valuee by key and yields the result. 
+We implement the MapReduce jobs by creating mappers and reducers. A mapper takes key/value pairs and generates key/value pairs, a reducer iterates through values for each distinct key, and generates an output.\\\\
+For this exercise, the mapper takes a line as value, then splits them and yields each word and the count 1. The reducer sums the value for each unique key and yields the result. 
 \\*
 ~\\
 \textbf{Code}
@@ -138,18 +138,18 @@ The mapper takes a line at the time as value, then loops the word in the lijne t
 ~\\
 \textbf{Input}
 \begin{pythonOutput}
-der var en gang en mand
-der booede i en spand
+der var engang en mand
+der boede i en spand
 spanden var af ler
 nu kan jeg ikke mer
 \end{pythonOutput}
 \textbf{Output}
 \begin{pythonOutput}
 "af"    1
-"booede"    1
+"boede"    1
 "der"   2
-"en"    3
-"gang"  1
+"en"    2
+"engang"  1
 "i" 1
 "ikke"  1
 "jeg"   1
@@ -163,29 +163,27 @@ nu kan jeg ikke mer
 "var"   2
 \end{pythonOutput}
 \textbf{Explanation of output and discussion}\\
-We can see it returns the key (word) and the sum of the value (original the ones). As result we can see there is 3 occurrences of the word 'er' and 2 of the word 'der'. ~\\
-If we them manually (from the text in input), we can see it is true.
-~\\
+We can see it returns the key (word) and the sum of the ones, thus the word count.~\\
 
 \section{Exercise 8.2}
 \textbf{Short recap of the exercise}\\
 \textit{Define and implement a MapReduce job that determines if a graph has an Euler tour (all vertices have even degree) where you can assume that the graph you get is connected.
-It is fine if you split the file into 5 different files. You do not need to keep the node and edge counts in the top of the file.}\\
+It is fine if you split the file into five different files. You do not need to keep the node and edge counts in the top of the file.}\\
 ~\\
 \textbf{Overview}\\
-Besides of the required mapper/reducer method, we have and additional reducer (reducer2) and a steps method. ~\\
-The steps method tells MrJob in which order the oher method should run. In our case the mapper and reducer should run, and the reducer2. reducer2 reduces the yield result from reducer, where the logic is as followed:
+For this exercise we use one mapper and two reducers.~\\
+The steps method tells MrJob in which order the methods should run. In our case the mapper and reducer should run, and then reducer2. reducer2 reduces the yield result from reducer, where the logic is as follows:
 
 \begin{itemize}
-  \item \textbf{mapper} takes each line and split it into from- and to-edges. Then it yieldes these two as key with value 1
-  \item \textbf{reducer} sums the values of the key, as we did in exercise 1
-  \item \textbf{reducer2} check if all values of the key is even\\
+  \item \textbf{mapper} takes each line and split it into from- and to-edges. Then it yields these two as key with value 1
+  \item \textbf{reducer} sums the values of the key, as we did in exercise 8.1
+  \item \textbf{reducer2} checks if all values of the key is even\\
 \end{itemize}
 ~\\
-We have split the input file in 5 files and the we call the script wirg the following command: ~\\
+We  split the input file in five files and get a concatenation of outputs with the following bash command: ~\\
 ls graph*.txt | xargs -n1 ./exercise-2.py -q \\
 ~\\
-This run the script with all files as arguments, one-by-one in the correct order (1,2,...,5)
+This runs the script with all graph files as arguments in ascending order.
 
 ~\\
 \textbf{Code}
@@ -207,7 +205,7 @@ This run the script with all files as arguments, one-by-one in the correct order
 \textit{Implement the MapReduce job from the lecture which finds common friends (note that for the Facebook file, you need to extend the job to convert from a list of edges to the format from the slides – do this with an additional map/reduce job).}\\
 ~\\
 \textbf{Overview}\\
-We have split this assignment in two: one for the example in the slides, and one for the facebook file. ~\\
+We split this assignment in two: one for the example in the slides, and one for the facebook file. ~\\
 \textbf{For the slides example}
 
 \textbf{For the facebook file}
@@ -371,24 +369,21 @@ We can see that the output is identical with exercise 8.2, so we assume this res
     \item What are the 10 most common wifi names? (ssid)
     \item What are the 10 longest wifi names? (again, ssid)
 \end{enumerate}}
-\textbf{Overview}
-We have made one single file with the code for all three tasks. We wille explain the task, and in the two others, we will explain the differences ffrom task 1. ~\\
-Note: The outputs is spread out on three output instead of one single. ~\\
+\textbf{Overview}~\\
+We have created a single file with the code for all three tasks, for each task we will explain the relevant functions used if they differ from the previous task. ~\\
 
-~\\
 \textbf{What are the 10 networks I observed the most, and how many times were they observed?}~\\
-After loading the file, we extract bssid from it by converting it to a dict usin the eval() function. Make a pair (bssid, count) where count is sat to 1. Then we count them with reduceByKey and print out top 10 in descending order (by count). ~\\
+We load the wifi.data file, then we extract bssid from it by converting it to a dict usin the eval() function. We make a pair (bssid, count) where count is 1. Then we add the counts together with reduceByKey and print out top 10 in descending order (by count). ~\\
 
- \textbf{What are the 10 most common wifi names? (ssid)}~\\
-We extract distinctive pairs between ssid and bssid to count the ssid, but not for the same router/access point!
-From these, we create a pair of ssid and count (ssid, count) where count is sat to 1. ~\\
-Then we count them with reduceByKey and print out top 10 in descending order (by count).~\\
+ \textbf{What are the 10 most common wifi names? (SSID)}~\\
+We extract distinctive pairs of SSIDs and BSSID using the distinct function, but omit duplicate access points.
+We then count the SSIDs and print them like in the previous exercise. ~\\
 
- \textbf{What are the 10 longest wifi names? (again, ssid)}~\\
- We do the same as the latter task, and choose the distinctive ssid. Then we print out top 10 in descending order by length of ssid-string. ~\\~\\ 
+ \textbf{What are the 10 longest wifi names? (SSID)}~\\
+We get the distinct SSID, Then we print out top 10 in descending order by using the negative length of the SSID as the key. ~\\~\\ 
 \textbf{Code}
 \pythonexternal{"../Lesson 9/exercise-9-3.py"}~\\
-\textbf{Output - What are the 10 networks I observed the most, and how many times were they observed? Note: the bssid is unique for every network, the name (ssid) of the network is not necessarily unique.}
+\textbf{Output - What are the 10 networks I observed the most, and how many times were they observed? Note: the BSSID is unique for every network, the name (SSID) of the network is not necessarily unique.}
 \begin{pythonOutput}
 [(u'34:21:09:12:6c:1a', 347),
  (u'00:24:b2:98:39:d2', 338),
@@ -401,7 +396,7 @@ Then we count them with reduceByKey and print out top 10 in descending order (by
  (u'28:cf:e9:84:a1:c3', 211),
  (u'bc:ee:7b:55:1a:43', 210)]
 \end{pythonOutput}
-\textbf{Output - What are the 10 most common wifi names? (ssid)}
+\textbf{Output - What are the 10 most common wifi names? (SSID)}
 \begin{pythonOutput}
 [(u'', 15),
  (u'SIT-GUEST', 15),
@@ -414,7 +409,7 @@ Then we count them with reduceByKey and print out top 10 in descending order (by
  (u'GST-105', 5),
  (u'wireless', 4)]
 \end{pythonOutput}
-\textbf{Output - What are the 10 longest wifi names? (again, ssid)}
+\textbf{Output - What are the 10 longest wifi names? (SSID)}
 \begin{pythonOutput}
 [u'HP-Print-43-Deskjet 3520 series',
  u'TeliaGatewayA4-B1-E9-2C-9E-CA',
@@ -429,50 +424,51 @@ Then we count them with reduceByKey and print out top 10 in descending order (by
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}
-
+From the outputs we can see that the network with BSSID 34:21:09:12:6c:1a was observed the most, the most common wifi name was empty string and SIT-GUEST and the longest wifi name was HP-Print-43-Deskjet 3520 series.
 
 
 %-------------- Week 10 ---------------------
 \section{Exercise 10.1}
-\textbf{Short recap of the exercise}
-\textit{}
-\textbf{Overview}
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 7/bloom_filter.py"}
-~\\
-\textbf{Output}
-\begin{pythonOutput}
+\textbf{Short recap of the exercise}\\
+\textit{Explain in your own words what Deep Learning is.}~\\
+\textbf{Answer}\\
+Deep Learning (DL) is a subset/branch of Machine Learning (which is the study of algorithms which can improve themselves over time).\\
 
-\end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
+DL is used as any other Machine Learning technique, to learn from data, and predict an outcome based on the trained model. DL is based on Artificial Neural Networks (ANN - a Machine Learning model), an ANN is a machine learning model inspired by the neural network of the brain, it consists of a large number of interconnected weighted neurons which can activate each other and the weights can be tuned which makes it adaptable and able to learn. The difference between ANN and DL is, that DL trains multi-layered or hierarchical ANN's.\\
 
+A DL model is able to use a technique called representational learning to learn features of the dataset, thus when you give it a raw representation of the data (that is human interpretable), it learns itself what the different features are and it's then able to do recognition/supervised learning.\\
+
+The ANN's each learns a feature through a nonlinear transformation and pass it along to the next ANN in the hierarchy until it gets to a classifier. Through each ANN the features learned are higher representations of the data. For example for facial recognition, for the first ANN receiving the input data, the feature learned is edges, then the next ANN learns different combinations of edges forming a part of a face, and so on.\\
+
+Deep learning is very effective dealing with unstructured data like media (sounds, images, videos, text, time-series data)\\
+
+It can be used for recommender systems and thus try to predict a rating or peference an user would give to an item, this is used currently for media streaming services like Spotify or Netflix, which can recommend new music or shows based on your playlist.\\
 
 \section{Exercise 10.2}
 \textbf{Short recap of the exercise}\\
-\textit{}\\
+\textit{Explain in your own words what a Convolutional Neural Network is.}\\
 ~\\
-\textbf{Overview}\\
+\textbf{Answer}\\
+A Convolutional Neural Network (CNN) is a variant of the Artificial Neural Network (ANN). It is inspired by the human visual system and is typically used in image recognition.\\
 
-~\\
-\textbf{Code}\\
-%\pythonexternal{"../Lesson 7/flajolet_martin.py"}
-~\\
-\textbf{Output}
-\begin{pythonOutput}
+It works similarly to a (ANN) by using layers of neurons where each layer feeds into the next layer and for each layer, the layer will obtain higher-level features.\\
 
-\end{pythonOutput}
-\textbf{Explanation of code and discussion}\\
+However where in an ANN each neuron in a given layer feeds into all the neurons in the next layer, in a CNN a subset or "patch" of neurons feeds into a number of neurons in the next layer, that patch of neurons is called the local receptive field, for image recognition, this means small "overlapping windows" of the input image is building the next layer resulting in a slightly smaller layer than the former. In a CNN each layer will have the same weights and bias and thus detect the same feature just at different windows in the image. Using the same weights and bias reduce the parameters involved and computational power needed.\footnote{\url{http://neuralnetworksanddeeplearning.com/chap6.html}}\\
+
+A CNN often makes use of a max-pooling layer, in between convolutional layers, which takes a maximum of the features over segments of the input layer, to reduce the spatial size of the data thus reducing the amount of parameters, and makes the model invariant to very small transformations of the data (overfitting).\footnote{\url{http://colah.github.io/posts/2014-07-Conv-Nets-Modular/}}.\\
+
+With neural network (and other commonly machine learning techniques), feature engineering is one of the most essential and important task for good classification\footnote{\url{http://blog.kaggle.com/2014/08/01/learning-from-the-best/}}. Feature engineering is a very hard and complex task, which you would have to do for each type of problems. Using CNN, feature engineering is beeing done when we train it. 
+For each training, it gets better and better to filter the input for relevant information (feature engineering). Once we learned our hierarchical features, we can simply pass them to a fully connected, simple neural network that combines them in order to classify the input into classes\footnote{\url{http://timdettmers.com/2015/03/26/convolution-deep-learning/}}.\\
 
 \section{Exercise 10.3}
 \textbf{Short recap of the exercise}\\
 \textit{In this exercise you will be using the Caffe Deep Learning framework to classify a picture of a cat, and a picture of your own choosing.}\\
 ~\\
 \textbf{Overview}\\
-We start the virtual machine by running \textit{vagrant up} and navigate via our browser to \textit{localhost:8003}\\
-We then run the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig, and a picture of a ladder.
+We started the virtual machine by running \textit{vagrant up} and navigating via our browser to \textit{localhost:8003}\\
+We executed the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig as seen in Figure \ref{fig:pig}, a picture of a beer glass \ref{fig:beer_glass} and below each picture we got an output.
 ~\\
 \textbf{Output - cat}\\
-When running the code with the default cat picture we get the following output:
 \begin{pythonOutput}
 Predicted class is #282.
 ['n02123159 tiger cat' 'n02123045 tabby, tabby cat'
@@ -487,7 +483,6 @@ Predicted class is #282.
 \includegraphics[scale=0.2]{"../Lesson 10/images/pig"}
 \end{center}
 \end{figure}
-Next we ran the code using the picture shown in Figure \ref{fig:pig}, this resulted in the following output:
 \begin{pythonOutput}
 Predicted class is #341.
 ['n02395406 hog, pig, grunter, squealer, Sus scrofa'
@@ -495,9 +490,23 @@ Predicted class is #341.
  'n03223299 doormat, welcome mat' 'n02328150 Angora, Angora rabbit'
  'n02412080 ram, tup']
 \end{pythonOutput}
+\textbf{Output - beer glass}
+\begin{figure}[h!]
+\begin{center}
+\caption{Picture of a beer glass.}
+\label{fig:beer_glass}
+\includegraphics[scale=0.5]{"../Lesson 10/images/beer_glass"}
+\end{center}
+\end{figure}
+\begin{pythonOutput}
+Predicted class is #855.
+['n04423845 thimble' 'n02823750 beer glass'
+ 'n07615774 ice lolly, lolly, lollipop, popsicle'
+ 'n04131690 saltshaker, salt shaker' 'n02948072 candle, taper, wax light']
+\end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
 
-The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat", we then tried the pig picture in Figure \ref{fig:pig}
+The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat" among the top 4 answers, we then tried the pig picture in Figure \ref{fig:pig} which we can read resulted in the correct classification as hog/pig. Next we tried somewhat to trick it by showing it an alternatively shaped beer glass as shown in Figure \ref{fig:beer_glass}, this was also correctly identified as the second answer, .
 %-------------- Week 11 ---------------------
 \section{Exercise 11.1}
 \textbf{Short recap of the exercise}\\
