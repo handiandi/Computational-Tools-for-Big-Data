@@ -46,6 +46,6 @@ if __name__ == '__main__':
 	for key, indexes in bucket_dict.items():
 		if len(indexes) > 1 and len(indexes) < 50:
 			for index in indexes:
-				print(articles[index]["body"])
-				print("XXXXXXXXXX")
-			print("-------------")
+				print(articles[index]["body"][:200])
+				print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
+			print("\n-------------\nNew bucket\n-------------\n")
