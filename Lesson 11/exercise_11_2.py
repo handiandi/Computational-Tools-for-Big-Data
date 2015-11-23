@@ -58,7 +58,8 @@ if __name__ == '__main__':
 			print("\n-----------------------\nBucket with {} articles in it\n-----------------------\n".format(len(indexes)))
 			for index in random.sample(indexes, 3):
 				print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
-				print(articles[index]["body"][:200])
+				print(articles[index]["body"])
+				print(articles[index]["topics"])
 
 
 
