@@ -54,16 +54,9 @@ if __name__ == '__main__':
 	print("#################\n")
 	print("#### Printing 3 random articles from buckets which have more than 3 articles ####\n----------------------")
 	for key, indexes in bucket_dict.items():
-		#if len(indexes) > 1 and len(indexes) < 50:
-		#	for index in indexes:
-		#		print(articles[index]["body"][:200])
-		#		print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
-		#	print("\n-------------\nNew bucket\n-------------\n")
 		if len(indexes)>3:
 			print("\n-----------------------\nBucket with {} articles in it\n-----------------------\n".format(len(indexes)))
-			x = list(range(0, len(indexes)-1))
-			random.shuffle(x) #Shuffle the articles based on a seed
-			for index in x[:3]:
+			for index in random.sample(indexes, 3):
 				print("\nXXXXXXXXXX\nNew article\nXXXXXXXXXX\n")
 				print(articles[index]["body"][:200])
 
