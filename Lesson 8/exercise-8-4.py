@@ -57,7 +57,7 @@ class FindTriangles(MRJob):
 	"""
 	def count_triangle_mapper(self, key, value):
 		n = 0
-		if len(key) ==3 and value==3:
+		if len(key) == 3 and value == 3:
 			n = 1
 		yield("Number of Triangles", n)
 

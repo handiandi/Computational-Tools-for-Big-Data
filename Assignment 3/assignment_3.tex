@@ -564,7 +564,9 @@ Accuracy using feature-hashing with 1000 buckets:
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-We implemented feature-hashing using the Exercise description and the Lesson 11 slides\footnote{\url{https://www.dropbox.com/s/8vh8nyywttf5y6e/hashing.pdf?dl=0}}.\\ In the articles dataset we found that 3776 articles contained the topic earn out of the total of 10377 articles, by simply guessing this would mean an accuracy of 63.611\%. In the output we can see the shape and accuracies of feature-hashing with a number of buckets. We find that even with only 2 buckets, the accuracy is 72.157\%, and for a bigger number of buckets the accuracy is nearing the accuracy of the bag-of-words representation. For the bag-of-words representation with 70793 features the accuracy is 95.809\% and for feature-hashing with 1000 buckets it is 93.930\%.
+We implemented feature-hashing using the Exercise description and the Lesson 11 slides\footnote{\url{https://www.dropbox.com/s/8vh8nyywttf5y6e/hashing.pdf?dl=0}}.\\
+We created the bag-of-words representation with a custom tokenizer that split the strings and lowercased the tokens.\\
+In the articles dataset we found that 3776 articles contained the topic earn out of the total of 10377 articles, by simply guessing this would mean an accuracy of 63.611\%. In the output we can see the shape and accuracies of feature-hashing with a number of buckets. We find that even with only 2 buckets, the accuracy is 72.157\%, and for a bigger number of buckets the accuracy is nearing the accuracy of the bag-of-words representation. For the bag-of-words representation with 70793 features the accuracy is 95.809\% and for feature-hashing with 1000 buckets it is 93.930\%.
 
 \section{Exercise 11.2}
 \textbf{Short recap of the exercise}\\
@@ -1015,9 +1017,10 @@ Qtr ends April 30
 
 \end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
-We will comment for each result.
 \textbf{Output - permutations: 3}\\
-We can see that all of the 100 articles has been put in the same bucket, that is they are categorized as similar. If we look at the three (random chosed) articles and compare them, all of them tells about a company that buy something. With all topics the same as well, this support that they really are similar!~\\
+We implemented the minhash algorithm from the slides of Lesson 11\footnote{\url{https://www.dropbox.com/s/8vh8nyywttf5y6e/hashing.pdf?dl=0}}.\\
+We ran the algorithm on 100 random articles with 3, 5 and 10 permutations. For creating the bag-of-words representation we used a custom tokenizer of splitting the string and converting to lower-case.\\
+We can see that all of the 100 articles has been put in the same bucket, that is they are categorized as similar. If we look at the three (random chosed) articles and compare them, all of them seem to be related to finance, however this just seems to be a coincidence since only one bucket is created.~\\
 \textbf{Output - permutations: 5}\\
 Based on the three articles of the four, in the first bucket, the subject is about money, gold and interest (procents). It is valid that these are categorized as similar. \\
 ~\\
@@ -1026,7 +1029,9 @@ The 3 articles in the big bucket is all about earning and numbers (mln). It is a
 \textbf{Output - permutations: 10}\\
 The three articles from the big bucket (69 articles), is all about earnings and numbers (mln) - just like the latter. The topic of all three contains 'earn' keyword. So it is valid that these are in the same bucket. \\
 ~\\
-Based on the three articles, the second bucket (with 13 articles) doesn't make much sence. All of them is about earnings as well, so the two bucket should have been merged. \\
+Based on the three articles, the second bucket (with 13 articles) doesn't make much sense. All of them is about earnings as well, so the two bucket should have been merged. \\
 ~\\
-\textbf{Overall comments}\\
+
+It seems the higher number of permutations results in larger spread of buckets.
+
 \end{document}

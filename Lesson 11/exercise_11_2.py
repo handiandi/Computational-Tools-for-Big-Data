@@ -5,7 +5,6 @@ import exercise_11_1
 import random
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-from operator import itemgetter
 
 def create_bucket_dict(X):
 	bucket_dict = {}
