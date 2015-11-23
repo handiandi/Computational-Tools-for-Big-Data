@@ -466,7 +466,7 @@ For each training, it gets better and better to filter the input for relevant in
 ~\\
 \textbf{Overview}\\
 We started the virtual machine by running \textit{vagrant up} and navigating via our browser to \textit{localhost:8003}\\
-We executed the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig as seen in Figure \ref{fig:pig}, a picture of a beer glass \ref{fig:beer_glass} and below each picture we got an output.
+We executed the code contained in the Jupyter notebook with a series of pictures: the default cat picture, a picture of a pig as seen in Figure \ref{fig:pig}, a picture of a beer glass \ref{fig:beer_glass}, a picture of a cloud and below each picture we got an output.
 ~\\
 \textbf{Output - cat}\\
 \begin{pythonOutput}
@@ -504,9 +504,23 @@ Predicted class is #855.
  'n07615774 ice lolly, lolly, lollipop, popsicle'
  'n04131690 saltshaker, salt shaker' 'n02948072 candle, taper, wax light']
 \end{pythonOutput}
+
+\textbf{Output - cloud}
+\begin{figure}[h!]
+\begin{center}
+\caption{Picture of cloud.}
+\label{fig:cloud}
+\includegraphics[scale=0.5]{"../Lesson 10/images/cloud"}
+\end{center}
+\end{figure}
+\begin{pythonOutput}
+Predicted class is #190.
+['n02095889 Sealyham terrier, Sealyham' 'n04266014 space shuttle'
+ 'n09288635 geyser' 'n02948072 candle, taper, wax light' 'n03825788 nipple']
+\end{pythonOutput}
 \textbf{Explanation of code and discussion}\\
 
-The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat" among the top 4 answers, we then tried the pig picture in Figure \ref{fig:pig} which we can read resulted in the correct classification as hog/pig. Next we tried somewhat to trick it by showing it an alternatively shaped beer glass as shown in Figure \ref{fig:beer_glass}, this was also correctly identified as the second answer, .
+The predicted class for the default cat picture results in a correct classification as "tabby" or "tabby cat" among the top 4 answers, we then tried the pig picture in Figure \ref{fig:pig} which we can read resulted in the correct classification as hog/pig. Next we tried somewhat to trick it by showing it an alternatively shaped beer glass as shown in Figure \ref{fig:beer_glass}, this was also correctly identified in the second answer, next we tried a cloud as seen in Figure \ref{fig:cloud}, and it seemed to do the trick as none of the answers given by the model were correct.
 %-------------- Week 11 ---------------------
 \section{Exercise 11.1}
 \textbf{Short recap of the exercise}\\
