@@ -5,6 +5,7 @@ import exercise_11_1
 import random
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
+from operator import itemgetter
 
 def create_bucket_dict(X):
 	bucket_dict = {}
@@ -30,8 +31,13 @@ if __name__ == '__main__':
 	NUMBER_OF_PERMUTATIONS = 6
 
 	# get 100 articles
-	articles = exercise_11_1.preprocess_texts()[:100]
+	#articles = #[:100]
 
+	articles = sorted(exercise_11_1.preprocess_texts(), key=lambda k: k['id']) #gets all articles and sort it by id key
+	SEED = 448
+	random.seed(SEED)
+	random.shuffle(articles) #Shuffle the articles based on a seed
+	articles = articles[:100] #take the first 100 articles
 	# create binary bag of words matrix with the tokenizer we defined in exercise 11-1
 	X = exercise_11_1.create_bow(articles, exercise_11_1.tokenizer, True).toarray()
 
