@@ -8,8 +8,6 @@ import mmh3
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
-from nltk.tokenize import RegexpTokenizer
-from nltk.stem.snowball import SnowballStemmer
 from sklearn import cross_validation
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -43,13 +41,7 @@ def hashing_vectorizer(article_words, num_buckets):
 	return x
 
 def tokenizer(article_body):
-	article_body = article_body.lower()
-
-	stemmer = SnowballStemmer("english")
-	tokenizer = RegexpTokenizer(r'\w+')
-	words = tokenizer.tokenize(article_body)
-	
-	return [stemmer.stem(word) for word in words]
+	return [word.lower() for word in article_body.split()]
 
 def create_bow(articles, tokenizer, binary):
 	vectorizer = CountVectorizer(tokenizer=tokenizer, binary=binary)
