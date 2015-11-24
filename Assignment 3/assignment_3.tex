@@ -1541,27 +1541,25 @@ We implemented the minhash algorithm from the slides of Lesson 11\footnote{\url{
 We ran the algorithm on 100 random articles with 3, 5 and 10 permutations. The 100 articles was the same for each permutation with help of seed in the random library of python. For creating the bag-of-words representation we used a custom tokenizer of splitting the string and converting to lower-case.\\
 ~\\
 \textbf{Output - permutations: 3}\\
-We have one really big bucket with 91 articles in it and 7 other buckets with only one or two articles in them.\\
+We have one very large bucket with 91 articles in it and 7 other buckets with only one or two articles in them.\\
 ~\\
-If we look at the big bucket, we can see that 78\% of the articles is n one of four topics and nearly 66\% is in one of two topics! The two biggest topics is 'earn' and acqusition ('acq') which is strong correlated~\\
-This indicates that this bucket is categorized pretty well, based on topic alone. \\
+If we look at the large bucket we can see that it mainly consists of the topics ("earn"), accounting for ~45\%, however articles with topics related to agriculture like ("grain"), ("corn"), and perhaps ("crude") seems to have been misplaced").\\
 ~\\
-When we look at the topics from the other buckets, wee can see some topics which "should" have been in the big buckets. Although there can be some distinguish word in the text, which account for putting the article in another bucket. Or maybe its simply an error. \\
+When we look at the topics from the other buckets, we recognize topics which "should" have been in the large bucket. Although there can be some distinguish word in the text, which account for putting the article in another bucket. Or maybe its simply an error. \\
 ~\\
 
 \textbf{Output - permutations: 5}\\
-In this output we have alot of bukets: 39. There are two big buckets with 25 articles in each. ~\\
-If we look at the first of them, 18 out of the 25 articles (72\%) is in a single topic ('earn'). For the other bucket 10 out of 25 (40\%) is in a single topic ('acq'). \\
+In this output we have 39 buckets: There are two larger buckets with 25 articles in each. ~\\
+If we look at the first of them, 18 out of the 25 articles (~72\%) is in a single topic ('earn'). For the other bucket 10 out of 25 (40\%) is in a single topic ('acq'). \\
 ~\\
 4 topics out of 9 in the second bucket, can also be found in the first bucket. One topic is in top 3 in both buckets. ~\\
-This can indicate some overlap between the two buckets. \\
+This can indicate some overlap between the two buckets. We see the topics of the majority of the two buckets are related to finance. \\
 ~\\
 \textbf{Output - permutations: 10}\\
-Here we also have alot of bucket: 37. The biggest bucket has 31 articles. 
-14 articles (45\%) is in a single topic ('earn')
+We got 37 buckets, with the biggest bucket having 31 articles, with 14 articles (45\%) having the topic ('earn'), second-largest bucket has 12 articles with 7 containing topic ("acq") accounting for (~58\%), third-largest bucket has 9 articles with all of them containing the topic ("earn") thus (100\%).
 ~\\
 
 It seems the higher number of permutations results in larger spread of buckets.
-In hindsight we could have compared the topics of all articles in each bucket and checked for similarity this way, however we chose to look at both the article body as well as the topic for a sample of the articles grouped together in buckets, and the results on their similarity seem higher for higher permutations but are in the end inconclusive.
+The results on the similarity of the buckets seem higher for higher permutations but are in the end inconclusive.
 
 \end{document}
