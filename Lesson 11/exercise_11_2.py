@@ -5,7 +5,7 @@ import exercise_11_1
 import random
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-
+from collections import Counter
 def create_bucket_dict(X):
 	bucket_dict = {}
 	for index, row in enumerate(X):
@@ -50,6 +50,11 @@ if __name__ == '__main__':
 	print("There are {} buckets with the following number of articles in them:\n----------------------".format(len(bucket_dict)))
 	for key, indexes in bucket_dict.items():
 		print(len(indexes))
+		topics = [articles[i]["topics"] for i in indexes]
+		# flatten
+		topics = [topic for sublist in topics for topic in sublist]
+		print(Counter(topics))
+
 	print("#################\n")
 	print("#### Printing 3 random articles from buckets which have more than 3 articles ####\n----------------------")
 	for key, indexes in bucket_dict.items():
