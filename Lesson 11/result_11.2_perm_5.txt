@@ -1,19 +1,130 @@
 #### Summary ####
-There are 6 buckets with the following number of articles in them:
+There are 39 buckets with the following:
 ----------------------
-1
-4
-1
-1
-1
-92
+Number of articles: 2
+Topic count: Counter({'acq': 1, 'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1, 'nat-gas': 1})
+
+Number of articles: 1
+Topic count: Counter({'hog': 1, 'livestock': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 3
+Topic count: Counter({'earn': 2, 'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 5
+Topic count: Counter({'acq': 3, 'crude': 1, 'money-fx': 1, 'nzdlr': 1})
+
+Number of articles: 25
+Topic count: Counter({'earn': 18, 'interest': 1, 'wheat': 1, 'crude': 1, 'money-supply': 1, 'corn': 1, 'acq': 1, 'money-fx': 1, 'coffee': 1})
+
+Number of articles: 2
+Topic count: Counter({'earn': 2})
+
+Number of articles: 1
+Topic count: Counter({'grain': 1})
+
+Number of articles: 1
+Topic count: Counter({'money-supply': 1})
+
+Number of articles: 1
+Topic count: Counter({'grain': 1})
+
+Number of articles: 1
+Topic count: Counter({'cpi': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 2
+Topic count: Counter({'grain': 1, 'acq': 1, 'corn': 1, 'strategic-metal': 1})
+
+Number of articles: 1
+Topic count: Counter({'cpi': 1})
+
+Number of articles: 1
+Topic count: Counter({'sugar': 1})
+
+Number of articles: 1
+Topic count: Counter({'livestock': 1, 'pork-belly': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 25
+Topic count: Counter({'acq': 10, 'earn': 6, 'money-fx': 3, 'interest': 2, 'crude': 2, 'grain': 1, 'gnp': 1, 'gold': 1, 'sugar': 1, 'orange': 1, 'lead': 1, 'zinc': 1, 'wheat': 1, 'silver': 1, 'lei': 1})
+
+Number of articles: 3
+Topic count: Counter({'ship': 1, 'silver': 1, 'crude': 1, 'acq': 1, 'copper': 1, 'zinc': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'reserves': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1, 'nat-gas': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'interest': 1})
+
+Number of articles: 1
+Topic count: Counter({'interest': 1, 'gnp': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'yen': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'grain': 1, 'corn': 1})
+
+Number of articles: 1
+Topic count: Counter({'copper': 1, 'earn': 1})
+
+Number of articles: 3
+Topic count: Counter({'acq': 2, 'earn': 1})
+
 #################
 
 #### Printing 3 random articles from buckets which have more than 3 articles ####
 ----------------------
 
 -----------------------
-Bucket with 4 articles in it
+Bucket with 5 articles in it
 -----------------------
 
 
@@ -21,164 +132,226 @@ XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Bundesbank vice president Helmut
-Schlesinger said he saw no reason to lower interest rates now.
-    With money supply growth showing no sign of slowing down in
-May and the dollar stable or even rising against the mark,
-Schlesinger told Reuters that he was not convinced that a
-further cut in interest rates was needed.
-    The economy is picking up, after contracting by a
-seasonally adjusted 1/2 to one pct in the first quarter from
-the fourth, he added. "We may have an increase in gnp starting
-in the second quarter," he said in an interview.
-    Concerned by the first quarter downturn, the U.S. Has been
-pressing West Germany to pump up its economy and boost its
-imports, either through fiscal or monetary policy.
-    Schlesinger said the contraction in the first quarter was
-mainly due to adverse weather conditions, just as occured in
-1986. Year-on-year growth was thus about two pct.
-    He estimated that economic growth for the year as a whole
-would probably be between one and two pct.
-   "It is not a question of monetary conditions if domestic
-demand does not grow strongly," he said, noting that interest
-rates are at historically low levels and funds are ample.
-    Schlesinger said he saw no signs that central bank money
-stock growth was slowing down from its recent year-on-year pace
-of 7-1/2 to eight pct, well above the Bundesbank's three to six
-pct target.
-    He said the target could still be achieved but much will
-depend on the direction of long-term capital flows. Heavy
-inflows, particularly in January around the time of the EMS
-revaluation, boosted domestic money supply.
-    "There is still a certain hope that the net inflow of
-foreign money can be diminished or can even be a little bit
-reversed," Schlesinger said.
-    A major reason for the inflows was the market's conviction
-that the mark was headed higher. "As we can see from the market,
-expectations for a further revaluation of the deutschemark have
-diminished," Schlesinger said.
-    The recent widening of interest rate differentials, the
-fact that the dollar has fallen sharply in a very short period
-and an improvement in real trade balances have all combined
-towards stabilizing the dollar, he said.
-    Asked if central banks might act to prevent a sharp dollar
-rise, as the U.S. Did in March when the dollar rose above 1.87
-marks, he said this would depend on the circumstances.
-    At midday here, the dollar stood at 1.8340/45 marks.
-    "Central banks are always in contact about these
-fluctuations but I cannot give any answer how they would react,"
-Schelsinger said.
-    "One has to look at how it (the market) is moving," he said,
-adding, "It is not only our own case, it is also the American
-case."
-    He said that the West German export industry has been hit
-hard by the dollar's sharp fall and would probably like to see
-some correction now. "But it wouldn't be good to have short-term
-fluctuations," he said. "Let us wait and see."
-    "It is mainly the strength of the (dollar) fall in a very
-short period which was a little bit of a shock, than the level
-(of rates) as such," Schlesinger said.
-    The sharp rise of the mark, coupled with weak prices of
-such key commodities as oil, had a favourable impact on West
-German inflation down year.
-    Although there have recently been signs of inflation
-picking up, he said that this was due to changes in key
-commodity prices. The underlying inflation rate this year would
-be unchanged, at about one to 1-1/2 pct, he said.
-    Schlesinger said the problem of rapid money supply growth
-was longer term, in that the economy was building up the
-potential for a possible eventual resurgence of inflation.
-    The above-target growth of money supply over the past 16
-months had prompted some discussion of the usefulness of
-targets themselves, a matter which might be taken up at the
-mid-year meeting of the Bundesbank's council, Schlesigner said.
-    But he added: "I don't see any great pressure to go away
-from it."
- REUTER
-
-['interest', 'gnp']
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-The cost of living in North
-Rhine-Westphalia, Germany's most populous state, fell 0.1 pct
-in the month to mid-March to stand 0.5 pct lower than at the
-same time a year earlier, the regional statistics office said.
-    Prices had risen 0.3 pct in the month to mid-February but
-had fallen 0.7 pct year-on-year.
-    The regional figures are considered a good guide to
-national inflation trends. The Federal Statistics Office is due
-to publish provisional national figures for March by the end of
-this month.
- REUTER
-
-['cpi']
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Thailand's foreign reserves of gold,
-special drawing rights and convertible currencies fell to 3.86
-billion dlrs at end-February from 3.95 billion the previous
-month, but were above the 3.08 billion held at the same time
-last year, the Bank of Thailand said.
-    It said the reserves were equal to about five months' worth
-of imports.
- REUTER
-
-['reserves']
-
------------------------
-Bucket with 92 articles in it
------------------------
-
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Shr 63 cts vs 50 cts
-    Net 73.8 mln vs 62.3 mln
-    Sales 664.2 mln vs 600.6 mln
-    Nine mths
-    Shr 2.06 dlrs vs 1.67 dlrs
-    Net 241.2 mln vs 205.9 mln
-    Sales 2.04 billion vs 1.80 billion
-    Avg shrs 117.1 mln vs 123.4 mln
+Progressive Savings and Loan
+Association <PRSL> said it has agreed in principle to be
+purchased by Far West Financial Corp's Far West Savings and
+Loan Association.
+    The acquisition would be a cash merger, with Progressive
+shareholders receiving up to three dlrs per share, the company
+said.
+    Progressive Savings has assets of about 500 mln dlrs and
+operates ten offices in Los Angeles and Orange counties.
+    The agreement is subject to federal and shareholder
+approval.
  Reuter
-
-['earn']
 
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-<National Beverage Corp>
-said it agreed to acquire privately held Faygo Beverages Inc
-for an undisclosed amount of cash.
-    The company said Detroit-based Faygo, a soft drink maker,
-has annual revenues of more than 100 mln dlrs.
-    National Beverage, which is also privately held, owns and
-bottles Shasta Beverages, Spree All Natural Beverages and
-private label brands in its 11 bottling facilities in the
-United States.
- Reuter
-
 ['acq']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Champion Products Inc said its
-board of directors approved a two-for-one stock split of its
-common shares for shareholders of record as of April 1, 1987.
-    The company also said its board voted to recommend to
-shareholders at the annual meeting April 23 an increase in the
-authorized capital stock from five mln to 25 mln shares.
+Nippon Life Insurance Co's 538 mln dlr
+purchase of a 13 pct stake in Shearson Lehman Brothers Inc
+brokerage unit is a shrewd move that other Japanese insurers
+are likely to follow, securities analysts said.
+    The investment in one of Wall Street's top brokerage houses
+is likely to pay off in dollars and international market
+position, they said. "It's part of a trend towards growing
+capital participation by Japanese insurance firms in foreign
+financial institutions," said Simon Smithson, an analyst with
+Kleinwort Benson International Inc in Tokyo.
+    The investment in Shearson Lehman, a growing firm described
+by some analysts as the top U.S. Retail brokerage, will give
+Nippon Life a ringside seat and possibly lower commissions on
+Wall Street, where it invests an increasing percentage of its
+assets of 90.2 billion dlrs, they said.
+    Nippon Life staff will also acquire expertise in business
+sectors which have not yet opened up in Japan, they added.
+    The agreement between the two companies calls for a 50-50
+joint venture in London focussing on investment advisory asset
+management, market research, and consulting on financing.
+    Nippon Life is Japan's largest insurance company and the
+world's biggest institutional investor, analysts said.
+    The Japanese finance ministry is expected to approve the
+deal in April, making Nippon Life the first Japanese life
+insurance firm to take a stake in a U.S. Financial firm.
+    The limit on foreign assets as a proportion of Japanese
+insurers' assets was increased to 25 pct from 10 pct last year.
+Since then, they have stepped up purchases of foreign stocks
+and sought to deepen their understandng of foreign markets and
+instruments.
+    Last year, a Sumitomo Life Insurance Co official was
+appointed to E.F. Hutton Group Inc unit E.F. Hutton and Co's
+board and Sumitomo Bank Ltd spent 500 mln dlrs to become a
+limited partner in Goldman, Sachs and Co.
+    Smithson said Japanese banks started buying smaller and
+problem-plagued banks in 1984. "But now Japanese are going for
+blue-chip organisations," he said.
+    "It's a reflection of what has happened in manufacturing
+industries," said Brian Waterhouse at James Capel and Co. "With a
+historically high yen, and historically low interest rates,
+there's an increasing disincentive to invest in Japan."
+    Competition in fund management has grown along with greater
+Japanese savings. The typical salaried employee has 7.33 mln
+yen in savings, reflecting an annual average savings rate of 17
+to 18 pct, he said.
+    To stay competitive, fund managers must invest overseas and
+gain experience with financial instruments which are likely to
+spread to Japan with further deregulation. "The high regulatory
+environment has delayed (life insurance firms')
+diversification. Now there's a growing number of new products
+in an environment of increasing competition for performance on
+fund management," Smithson said.
+ REUTER
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Former Prime Minister Robert
+Muldoon, an outspoken advocate of a managed float for the N.Z.
+Dollar, said the currency is at least 10 pct overvalued.
+    Muldoon said in a speech last night the exchange rate
+should be around 48 U.S. Cents instead of the current 57 cents.
+    "A reasonable value for the New Zealand dollar would be
+between 10 and 15 pct less and nearer 15 than 10. Perhaps
+around about 48 cents," he said.
+    The Labour Party government removed exchange controls and
+floated the dollar two years ago when it was worth 44 cents.
+    Muldoon has no rank in the opposition National Party, and
+party leaders, with an eye to general elections to be held by
+September, have rejected his calls for a managed float.
+    He said the dollar was high because of "grossly excessive"
+interest rates for government stock.
+    "I know of no other country which is implementing such a
+free floating policy," he added. "There is widespread agreement
+internationally that we have no alternative to floating
+currencies in the short to medium term. But we need more
+effective methods of managing them so as to limit the
+volatility which has caused so much concern and damage."
+ REUTER
+
+['money-fx', 'nzdlr']
+
+-----------------------
+Bucket with 25 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+THE FOLLOWING RAINFALL WAS RECORDED IN
+THE AREAS OVER PAST 72 HOURS
+    PARANA STATE: UMUARAMA NIL, PARANAVAI 1.5 MILLIMETRES,
+LONDRINA NIL, MARINGA NIL.
+    SAO PAULO STATE: PRESIDENTE PRUDENTE O.6 MM, VOTUPORANGA
+12.0 MM, FRANCA 28.0 MM, CATANDUVA 10.0 MM, SAO CARLOS NIL, SAO
+SIMAO NIL. REUTER11:43/VB
+
+['coffee']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr 52 cts vs 45 cts
+    Net 2,623,000 vs 2,256,000
+    Nine mths
+    Shr 1.55 dlrs vs 1.45 dlrs
+    Net 7,744,000 vs 6,542,000
  Reuter
-
+
 ['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr 13 cts vs 47 cts
+    Net 13,492,000 vs 46,417,000
+    Revs 720.2 mln vs 793.6 mln
+    Avg shrs 99,085,000 vs 96,804,000
+    NOTE: Per-share results reflect payment of preferred
+dividend requirements
+ Reuter
+
+['earn']
+
+-----------------------
+Bucket with 25 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+The average price of mexico's crude
+oil exports in first quarter 1987 will be 15.25 dlrs per
+barrel, according to preliminary figures issued in a press
+release by the state oil company Petroleos Mexicanos (PEMEX).
+    It gave no direct comparison with the year-ago figure but
+said crude and products sales were expected to rise to 1.99
+billion dlrs this quarter, 420 mln dlrs higher than expected
+and 22 pct better than the year-ago quarter.
+    Prospects for the second quarter were relatively favourable
+with crude exports seen at 1.320 mln bpd after an expected
+1.324 mln this month, 1.323 in February and 1.395 mln in
+January.
+ REUTER
+
+['crude']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Hecla Mining Co said it
+has agreed to purchase a 28 pct interest in the Greens Creek
+Joint Venture from British Petroleum Co PLC's Amselco Minerals
+Inc unit.
+    The venture expects to bring into production a
+gold-silver-lead-zinc ore body on Admiralty Island, Alaska,
+containing about 3,500,000 short tons of ore assaying about
+0.18 ounce of gold, 24.0 ounces of silver, 9.7 pct zinc and 3.9
+pct zinc per short ton, Hecla said.  It said there is
+significant potential for the discovery of additional ore.
+    Hecla said initial production from a trackless underground
+mine is scheduled for late 1988 at a rate of about 1,000 tons
+or ore per day.  "At this rate, the Greens Creek mine will be
+the largest domestic silver mine and is expected to be one of
+the lowest cost producers."
+    The company said it estimates its total investment in the
+project, including its share of preproduction costs, at about
+45 mln dlrs, to be funded through internally generated cash and
+existing lines of credit.  It said Amselco will retain a
+majority interest in the project.  Other interest holders are
+CSX Corp <CSX> and <Exaias Resources Corp>.
+ Reuter
+
+['acq', 'gold', 'silver', 'zinc', 'lead']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Hayes-Albion Corp said its shareholders
+approved a plan to merge with and become a wholly onwed
+subsidiary of privately held Harvard Industries Inc.
+    St. Louis-based Harvard Industries, a manufacturer and
+distributor of automobile supplies, held 80 pct of Hayes
+following completion of a 13 dlrs a share cash tender offer in
+December.
+    Under the merger agreement, remaining shareholders of
+Hayes, a Jackson, Mich.-based maker of auto supplies, will
+receive 13 dlrs cash for their shares.
+    Trading in Hayes common will cease at the close of business
+today, the company said.
+ Reuter
+
+['acq']

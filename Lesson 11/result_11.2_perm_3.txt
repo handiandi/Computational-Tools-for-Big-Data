@@ -1,14 +1,37 @@
 #### Summary ####
-There are 1 buckets with the following number of articles in them:
+There are 8 buckets with the following:
 ----------------------
-100
+Number of articles: 1
+Topic count: Counter({'interest': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 2
+Topic count: Counter({'money-fx': 1, 'earn': 1, 'interest': 1})
+
+Number of articles: 2
+Topic count: Counter({'acq': 2})
+
+Number of articles: 91
+Topic count: Counter({'earn': 41, 'acq': 19, 'crude': 6, 'grain': 5, 'corn': 3, 'money-fx': 3, 'money-supply': 2, 'nat-gas': 2, 'gnp': 2, 'cpi': 2, 'silver': 2, 'interest': 2, 'livestock': 2, 'copper': 2, 'zinc': 2, 'sugar': 2, 'wheat': 2, 'strategic-metal': 1, 'pork-belly': 1, 'coffee': 1, 'gold': 1, 'lei': 1, 'orange': 1, 'hog': 1, 'reserves': 1, 'yen': 1, 'lead': 1, 'nzdlr': 1})
+
+Number of articles: 1
+Topic count: Counter({'interest': 1, 'money-fx': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1, 'ship': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
 #################
 
 #### Printing 3 random articles from buckets which have more than 3 articles ####
 ----------------------
 
 -----------------------
-Bucket with 100 articles in it
+Bucket with 91 articles in it
 -----------------------
 
 
@@ -16,78 +39,88 @@ XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Carolyn Bean Publishing Ltd said
-it has completed the acquisition of greeting card company
-Millen Cards, which had sales of over 1,500,000 dlrs in 1986,
-for undisclosed terms.
-    The company said 90 pct of Millen's cards have been sold in
-the northeast and mid-Atlantic states, but Bean expects to
-increase sales to 2,500,000 dlrs this year by distributing the
-line nationally.
-    Millen specializes in Jewish religious cards and also sells
-traditional greeting cards.
+Lennar Corp chairman and president,
+Leonard Miller, said the current backlog of orders and the
+strong economy point to strong revenues and earnings for the
+balance of fiscal 1987.
+    He said the company's backlog of sales deposits on Feb 28
+was 2,416, an increase of 976 units over the previous year.
+    Lennar recorded net earnings for the first quarter 1987 of
+4,403,000, or 51 cts per share, compared to 1,775,000, or 20
+cts per share the prior first quarter. It recorded net earnings
+of 12.5 mln dlrs, or 1.43 dlrs per share, for fiscal 1986.
+    The company also said that at its April 29 annual meeting,
+shareholders will vote on increasing the company's authorized
+common stock to 45 mln shares from 15 mln. This will include 30
+mln shares of common stock and 15 mln shares of class B common
+stock, it added.
+    Those shareholders who elect to convert their shares into
+class B stock will be entitled to 10 votes per share while
+other shareholders will retain one vote per share, Lennar said.
+    The company said if this is approved, it intneds to pay
+holders of Class B stock a quarterly cash dividend of five cts
+per share and holders of the other common stock a quarterly
+cash dividend of six cts per share.
  Reuter
-
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+ChemLawn Corp said it has
+started talks on the possible sale of the company with "various
+parties" that it did not identify.
+    The company said the talks began after it considred and
+rejected Waste Management Inc's <WMX> 27 dlr per share tender
+offer for all its sharesd.
+    ChemLawn gave no details on the talks.
+ Reuter
+
 ['acq']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Pantera's Corp said it agreed to
-buy ten pizza restaurants in southeastern Colorado from
-creditors foreclosing on the facilities.
-    The purchase price includes 1.25 mln dlrs in cash and
-company stock, it said.
-    Separately, Pantera's said it issued an area development
-agreement with a franchisee group for northeastern Colorado,
-including the Denver area, for the opening of about 20
-franchised Pantera's pizza restaurants.
- Reuter
-
-['acq']
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Schlumberger Ltd said it terminated an
-agreement in principle for Fujitsu Ltd to buy 80 pct of its
-Fairchild Semiconductor operations.
-    The company said the rising political controversy in the
-U.S. concerning the venture made it unlikely that the sale of
-the Fairchild stake could be completed within a reasonable
-time.
-    The sale has been opposed by the U.S. Commerce Department
-and the U.S. Defense Department, in part on national security
-grounds.
-    The company said termination of the agreement opened other
-possibilities, including a possible leveraged buyout of the
-semiconductor maker by Fairchild management.
-    In the interim, Fairchild would continue its ongoing
-business within Schlumberger, the oilfield services concern
+Unocal Corp said it intends to
+increase its spending for capital projects to 929 mln dlrs in
+1987, eight pct more than the 862 mln spent in 1986.
+    The company said in its annual report that it would
+increase spending for exploration and development of petroleum
+resources by about three pct to 614 mln dlrs from 1986's 595
+mln dlrs, assuming oil prices hold around current levels.
+    The planned spending for exploration and production in 1987
+remains well below the 1.1 billion dlrs spent in 1985, Unocal
 said.
-    Last October, Schlumberger announced the sale of the
-Fairchild stake and said it would take a 200 mln dlrs charge in
-the fourth quarter from the sale. The company ended up
-recording special charges of 2.1 billion dlrs in the fourth
-quarter, leading to a loss of 2.02 billion dlrs for the year.
-    Schlumberger never announced a price for the sale, but
-industry analysts have estimated the value of the deal at about
-200 mln dlrs.
-    The proposed sale was under antitrust review by the U.S.
-Justice Department. Additionally, Commerce Secretary Malcolm
-Baldridge and other U.S. officials have voiced reservations
-about the transaction since it was announced.
-    Government officials have expressed concern that the sale
-could reduce the competitiveness of U.S. chip makers by putting
-key advanced technology into Japanese hands.
-    New, high-technology semiconductors are used in
-supercomputers, which are faster and more powerful than
-existing computers.
-    Schlumberger is an oilfield services company controlled by
-French interests and headquartered in New York. Fujitsu Ltd is
-a computer and telecommunications company based in Japan.
+    The company's proved developed and undeveloped reserves of
+crude oil rose slightly in 1986, Unocal said. Net crude oil and
+condensate reserves were 752 mln bbls as of Dec 31, 1986,
+compared to 751 mln bbls at the end of 1985, Unocal said.
+    The company said its net crude oil and condensate
+production averaged 248,200 barrels per day in 1986 compared to
+251,300 bpd in 1985.
+    Unocal said its worldwide natural gas reserves were 6.07
+billion cubic feet in 1986 compared to 1985's 6.19 billion. Net
+natural gas output averaged 976 mln cubic feet per day in 1986,
+down 10 pct from 1985's 1,084 mln, the company said.
+    Unocal said its average sales prices for crude oil was
+12.67 dlrs a barrel worldwide in 1986 compared to 23.81 dlrs in
+1985, and its average sales price for natural gas was 2.03 dlrs
+per thousand cubic feet in 1986 against 2.24 dlrs in 1985.
+    Average production costs for crude oil and natural gas
+declined nearly 30 pct to 3.41 dlrs per bbl of oil equivalent
+in 1986 from 4.81 dlrs in 1985, Unocal said.
+    In the annual report, the company called for imposition of
+an oil import fee by the U.S. government to set a floor price
+of about 25 dlrs a barrel for crude oil.
+    "Simply stabilizing prices at about 18 dlrs per barrel    
+will not materialy slow the drop in U.S. production or the rise
+in imports," Chairman Fred Hartley said in the annual report.
+    "Without decisive action in Washington, this nation will
+once again become a hostage to OPEC's plans and policies,"
+Hartley said.
  Reuter
-
-['acq']
+
+['crude', 'nat-gas']

@@ -47,13 +47,12 @@ if __name__ == '__main__':
 	bucket_dict = create_bucket_dict(X_mod)
 
 	print("#### Summary ####")
-	print("There are {} buckets with the following number of articles in them:\n----------------------".format(len(bucket_dict)))
+	print("There are {} buckets with the following:\n----------------------".format(len(bucket_dict)))
 	for key, indexes in bucket_dict.items():
-		print(len(indexes))
 		topics = [articles[i]["topics"] for i in indexes]
 		# flatten
 		topics = [topic for sublist in topics for topic in sublist]
-		print(Counter(topics))
+		print("Number of articles: {}\nTopic count: {}\n".format(len(indexes),Counter(topics)))
 
 	print("#################\n")
 	print("#### Printing 3 random articles from buckets which have more than 3 articles ####\n----------------------")

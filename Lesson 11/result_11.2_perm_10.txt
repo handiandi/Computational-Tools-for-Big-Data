@@ -1,28 +1,124 @@
 #### Summary ####
-There are 15 buckets with the following number of articles in them:
+There are 37 buckets with the following:
 ----------------------
-69
-1
-1
-1
-1
-1
-3
-13
-2
-1
-2
-1
-2
-1
-1
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1, 'ship': 1})
+
+Number of articles: 2
+Topic count: Counter({'pork-belly': 1, 'acq': 1, 'livestock': 1})
+
+Number of articles: 1
+Topic count: Counter({'money-fx': 1, 'interest': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 9
+Topic count: Counter({'earn': 9})
+
+Number of articles: 1
+Topic count: Counter({'money-supply': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 6
+Topic count: Counter({'interest': 2, 'earn': 2, 'money-fx': 1, 'sugar': 1, 'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'orange': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 7
+Topic count: Counter({'earn': 5, 'crude': 2, 'nat-gas': 1, 'copper': 1, 'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 2
+Topic count: Counter({'interest': 1, 'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'crude': 1, 'nat-gas': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 12
+Topic count: Counter({'acq': 7, 'earn': 4, 'crude': 1, 'zinc': 1, 'silver': 1, 'lead': 1, 'strategic-metal': 1, 'gold': 1})
+
+Number of articles: 1
+Topic count: Counter({'interest': 1, 'gnp': 1})
+
+Number of articles: 1
+Topic count: Counter({'copper': 1, 'zinc': 1, 'silver': 1})
+
+Number of articles: 1
+Topic count: Counter({'gnp': 1})
+
+Number of articles: 1
+Topic count: Counter({'corn': 1, 'wheat': 1})
+
+Number of articles: 31
+Topic count: Counter({'earn': 14, 'grain': 4, 'acq': 4, 'money-fx': 2, 'nzdlr': 1, 'reserves': 1, 'corn': 1, 'sugar': 1, 'yen': 1, 'crude': 1, 'coffee': 1, 'cpi': 1, 'wheat': 1, 'money-supply': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'grain': 1, 'corn': 1})
+
+Number of articles: 1
+Topic count: Counter({'hog': 1, 'livestock': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 2
+Topic count: Counter({'acq': 2})
+
+Number of articles: 1
+Topic count: Counter({'cpi': 1})
+
+Number of articles: 1
+Topic count: Counter({'earn': 1})
+
+Number of articles: 1
+Topic count: Counter({'lei': 1})
+
+Number of articles: 1
+Topic count: Counter({'acq': 1})
+
+Number of articles: 1
+Topic count: Counter({'money-fx': 1})
+
 #################
 
 #### Printing 3 random articles from buckets which have more than 3 articles ####
 ----------------------
 
 -----------------------
-Bucket with 69 articles in it
+Bucket with 9 articles in it
 -----------------------
 
 
@@ -30,17 +126,163 @@ XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Shr 63 cts vs 50 cts
-    Net 73.8 mln vs 62.3 mln
-    Sales 664.2 mln vs 600.6 mln
-    Nine mths
-    Shr 2.06 dlrs vs 1.67 dlrs
-    Net 241.2 mln vs 205.9 mln
-    Sales 2.04 billion vs 1.80 billion
-    Avg shrs 117.1 mln vs 123.4 mln
+Oper primary shr 1.03 dlr vs 2.55 dlrs
+    Oper diluted shr 94 cts vs 1.76 dlrs
+    Oper net 15.2 mln vs 23.4 mln
+    Revs 272.0 mln vs 232 mln
+    Avg shrs primary 7,625,000 vs 5,534,000
+    Avg shrs diluted 12.3 mln vs 10.3 mln
+    Year
+    Oper shr 1.06 dlr vs 3.17 dlrs
+    Oper net 39 mln vs 56.1 mln
+    Revs 830.2 mln vs 657.9 mln
+    Avg shrs 7,490,000 vs 5,557,000
+    NOTE: 1986 oper net excludes 10.4 mln dlrs for discontinued
+operations.
+    1985 4th qtr excludes a loss of 4,570,000 dlrs and
+6,330,000 dlrs, respectively, for discontinued operations.
+    1986 oper net excludes a 10.5 mln dlr or 1.40 dlr per shr
+loss from early extinquishment of notes.
+    1986 and 1985 oper per share amounts are reported after
+paying 31.0 mln dlrs and 38.5 mln dlrs, respectively, for
+preferred stock dividends.
+    1986 and 1985 4th qtr per share amounts are reported after
+paying 7,292,000 dlrs and 9,333,000 dlrs, respectively, for
+preferred stock dividends.
+    1985's discontinued operations are restated.
+
  Reuter
-
+
 ['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Net loss 1,321,000 vs loss 1,397,000
+    Sales 31.1 mln vs 29.2 mln
+    1st half
+    Net loss 94,000 vs loss 1,745,000
+    Sales 63.0 mln vs 61.9 mln
+    NOTE: Company recently went private.
+    Latest quarter net includes 24,000 dlr tax credit.
+    Current half net includes gain 2,041,000 dlrs pretax from
+termination of pension plan.
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Shr 77 cts vs 76 cts
+    Net 13,843,000 vs 14,478,000
+    Sales 374.6 mln vs 368.3 mln
+    Avg shrs 18,003,000 vs 19,025,000
+    Year
+    Shr 2.16 dlrs vs 2.65 dlrs
+    Net 39,503,000 vs 51,573,000
+    Revs 1.41 billion vs 1.41 billion
+    Avg shrs 18,269,000 vs 19,497,000
+    NOTE: 1986 period ended February One
+    Company changed fiscal yearend to January 31 from October
+31. 1986 results were restated to reflect the change.
+ Reuter
+
+['earn']
+
+-----------------------
+Bucket with 6 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Marine Midland Banks Inc said it is
+raising its prime lending rate to 7-3/4 pct from 7-1/2 pct,
+effective immediately.
+ Reuter
+
+['interest']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Champion Products Inc said its
+board of directors approved a two-for-one stock split of its
+common shares for shareholders of record as of April 1, 1987.
+    The company also said its board voted to recommend to
+shareholders at the annual meeting April 23 an increase in the
+authorized capital stock from five mln to 25 mln shares.
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+<Industrial Equity (Pacific) Ltd>,
+(IEP) the Hong Kong-listed unit of Brierley Investments Ltd
+<BRYA.WE>, said it has lifted its stakes in British oil company
+Ultramar Plc <UMAR.L> and U.S. Firm <Ogelbay Norton Co>.
+    IEP told the Stock Exchange it now holds 36.03 mln Ultramar
+shares representing 13.07 pct of the issued capital. It holds
+388,600 shares in Ogelbay representing 11.68 pct of the
+Delaware-based company.
+    No other details were available.
+ REUTER
+
+['acq']
+
+-----------------------
+Bucket with 7 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Amoco Corp's petroleum liquids reserves
+total 2.42 billion barrels at the end of 1986, down from 2.77
+billion a year earlier, but its natural gas reserves increased
+to 15.37 trillion cubic feet from 15.14 trillion, the company's
+annual report said.
+    It said the drop in crude oil and natural gas liquid
+reserves reflected downward revisions of previous estimates
+caused by the sharp drop in oil prices last year. This
+accounted for 178 mln barrels of a worldwide downward revision
+of 188 mln barrels, with 158 mln barrels of the total revision
+occurring in the United States, the report said.
+    Amoco said there were upward revisions in the size of its
+worldwide gas reserves totalling 404 billion cubic feet last
+year, while it discovered 568 billion cubic feet and purchased
+298 billion cubic feet of reserves.
+    Production of one trillion cubic feet offset much of these
+gains, the report said.
+    All of the gas reserve purchases, as well as all of the 14
+mln barrels of oil reserves bought in 1986, were in the United
+States, Amoco said, noting it has spent 1.1 billion dlrs to
+acquire U.S. producing properties over the past three years.
+    Commenting on 1987, Amoco said acquisitions "will be an
+integral part of our strategy, should reserves become available
+at attractive prices."
+    The company said it expects "the marketing climate for
+natural gas to improve in 1987, which should provide the
+opportunity for Amoco to expand sales. As prices and demand
+improve, we are poised to accelerate capital spending on our
+inventory of attractive opportunities."
+    Amoco previously announced a 1987 capital spending budget
+of 3.2 billion dlrs. Such spending totaled 3.18 billion dlrs
+last year, down from 5.31 billion in 1985.
+ Reuter
+
+['crude', 'nat-gas']
 
 XXXXXXXXXX
 New article
@@ -73,76 +315,146 @@ year, including copper sales of 293.4 mln dlrs.
 in 1985 reflecting a 10.1 pct increase in quantity sold to
 212,000 short tons and a 0.4 pct decrease in price.
  Reuter
-
+
 ['earn', 'copper']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Esso Malaysia Bhd, a unit of Exxon
-Corp of the U.S., Reported net profit of 70 mln ringgit from
-its petroleum and ammonia operations in 1986 compared with 48.7
-mln in 1985. Chairman Gerald F Cox said the improved
-performance was mainly due to product prices falling more
-slowly than crude prices during the year.
-    He added that total sales volume increased as a result of
-higher offtake by affiliated companies, while inland market
-sales were maintained at around the previous year's levels.
-    But growth prospects in 1987 remained weak and 1986 results
-are unlikely to be repeated in the current financial year.
+<BP Oil Ltd>, the U.K. Marketing and
+refining arm of British Petroleum Co Plc <BP.L>, raised its
+pretax operating profit on a replacement cost basis to 182 mln
+stg in calendar 1986, compared with 66 mln stg in 1985.
+    Sales and operating revenue fell to 3.1 billion stg from
+4.2 billion on a replacement cost basis. Historical cost
+operating profit was 61 mln stg, up from 16 mln.
+    BP Oil said 1985 profits had been depressed by exceptional
+items. Its profit figures were stated before interest charges.
+    Chief executive David Kendall said improved results
+mirrored benefits of a restructuring program undertaken in
+recent years.
+    However, he warned future financial pressure on the
+industry will be severe.
+    "The U.K. Oil marketing and refining industry will need to
+invest larger sums - probably around 500 mln stg a year - for a
+good many years," he said in a statement.
+ Reuter
+
+['earn', 'crude']
+
+-----------------------
+Bucket with 12 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+ChemLawn Corp said it has
+started talks on the possible sale of the company with "various
+parties" that it did not identify.
+    The company said the talks began after it considred and
+rejected Waste Management Inc's <WMX> 27 dlr per share tender
+offer for all its sharesd.
+    ChemLawn gave no details on the talks.
+ Reuter
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Magnetic Technologies Corp said
+it expects the second half to show continued growth in earnings
+and sales.
+    The company today reported a profit for the first half
+ended January 31 of 105,013 dlrs, compared with a year-earlier
+loss of 745,641 dlrs, on sales of 3,661,565 dlrs, up from
+2,810,132 dlrs.  In all of last year, Magnetic earned 996,000
+dlrs after a loss from discontinued operations of 359,000 dlrs,
+on sales of 6,084,000 dlrs.
+ Reuter
+
+['earn']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Di Giorgio Corp said it plans to
+respond to an unsolicited recapitalization plan proposed by
+Gabelli and Co Inc after the company, its board and its
+investment bankers evaluate the proposal.
+    Earlier, Gabelli said in a filing with the Securities and
+Exchange Commission that it holds a 28.5 pct stake in DiGiorgio
+and that it, together with Gamco Investors Inc may seek control
+of the company.
+    In addition, on June 25 the Gabelli group proposed to
+acquire all of Di Giorgio's common shares for a combination of
+20 dlrs per share in cash, a subordinated note with a face
+value of eight dlrs and one common share of the post-buyout
+company.
+    The June 25 buyout proposal remains open until July 17.
+ Reuter
+
+['acq']
+
+-----------------------
+Bucket with 31 articles in it
+-----------------------
+
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+DTD Enterprises Inc said it filed an
+8-K report indicating that <EaglesLair Development Corp> had
+assumed control of the company under a reorganization plan
+signed last month.
+    The company said D. Gerald Lach, president of EaglesLair,
+was named president and a director of DTD.
+    In addition, DTS's board resigned and EaglesLair appointed
+new directors, the company said.
+ Reuter
+
+['acq']
+
+XXXXXXXXXX
+New article
+XXXXXXXXXX
+
+Thailand's foreign reserves of gold,
+special drawing rights and convertible currencies fell to 3.86
+billion dlrs at end-February from 3.95 billion the previous
+month, but were above the 3.08 billion held at the same time
+last year, the Bank of Thailand said.
+    It said the reserves were equal to about five months' worth
+of imports.
  REUTER
-
-['earn']
 
------------------------
-Bucket with 13 articles in it
------------------------
-
+['reserves']
 
 XXXXXXXXXX
 New article
 XXXXXXXXXX
 
-Treasury balances at the Federal
-Reserve fell on April 10 to 3.373 billion dlrs from 3.523
-billion dlrs on the previous business day, the Treasury said in
-its latest budget statement.
-    Balances in tax and loan note accounts fell to 11.645
-billion dlrs from 11.869 billion dlrs on the same respective
-days.
-    The Treasury's operating cash balance totaled 15.018
-billion dlrs compared with 15.392 billion dlrs on April 9.
+U.S. Trade Representative Clayton
+Yeutter said the Export Enhancement Program, EEP, should be
+used as a "tactical tool" and not as a general policy.
+    Yeutter made the comment in response to a question whether
+the U.S. should expand the EEP to cover grain sales to the
+Soviet Union.
+    He did not comment directly on the Soviet question,
+replying that any decision would be made at the highest levels
+of the Reagan administration, and "I don't want to preempt that."
+    Yeutter told the National Grain and Feed Association EEP
+should continue to be used as a tactical tool against the
+European Community but not as a general policy. He said
+selective EEP use has been successful in pressuring the E.C.
  Reuter
-
-['money-supply']
 
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Champion Products Inc said its
-board of directors approved a two-for-one stock split of its
-common shares for shareholders of record as of April 1, 1987.
-    The company also said its board voted to recommend to
-shareholders at the annual meeting April 23 an increase in the
-authorized capital stock from five mln to 25 mln shares.
- Reuter
-
-['earn']
-
-XXXXXXXXXX
-New article
-XXXXXXXXXX
-
-Qtr ends April 30
-    Shr loss 10 cts vs profit nine cts
-    Net loss 163,465 vs profit 131,815
-    Revs 3,672,731 vs 3,763,829
-    Nine mths
-    Shr profit four cts vs profit one ct
-    Net profit 57,911 vs profit 11,380
-    Revs 11,753,950 vs 10,794,822
- Reuter
-
-['earn']
+['grain']
