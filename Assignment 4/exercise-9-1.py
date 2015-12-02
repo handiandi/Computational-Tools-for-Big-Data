@@ -4,6 +4,8 @@
 # ### Exercise 1
 
 # ####Write a Spark job to count the occurrences of each word in a text file. Document that it works with a small example.
+from pyspark import SparkContext
+sc = SparkContext("local", "test")
 
 lines = sc.textFile("exercise1_data.txt") #Extracting the lines in the file
 
