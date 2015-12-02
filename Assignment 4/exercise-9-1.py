@@ -8,7 +8,9 @@ from pyspark import SparkContext,SparkFiles
 # Write a Spark job to count the occurrences of each word in a text file. Document that it works with a small example.
 CONNECTION_STR = "spark://"+os.environ["SPARK_MASTER_PORT_7077_TCP_ADDR"]+":"+os.environ["SPARK_MASTER_ENV_SPARK_MASTER_PORT"]
 sc = SparkContext(CONNECTION_STR,"test")
+
 sc.addFile(os.path.join(os.path.dirname(os.path.realpath(__file__)),"exercise1_data.txt"))
+
 with open(SparkFiles.get("exercise1_data.txt")) as testFile:
     lines = sc.parallelize(testFile.readlines())
 
